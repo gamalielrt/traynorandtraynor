@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <title>Traynor & Traynor</title>
+    </head>
+
+    <body>
+        <h1 id="maintitle">Traynor & Traynor</h1>
+        <div id="menubutton" onClick="activateMenu()">
+            <img id="menuicon" src="assets/plus.png" width="20" height="20">
+        </div>
+        <div id="menu" hidden>
+            <p>About</p>
+            <p>Work</p>
+            <p>Clients</p>
+        </div>
+        <div id="contentcanvas">
+            <table id="contenttable">
+                <tr id="contenttablerow1">
+                    <td></td>
+                    <td></td> 
+                    <td></td>
+                  </tr>
+                  <tr id="contenttablerow2">
+                    <td></td>
+                    <td id = pagecontent >Content</td> 
+                    <td></td>
+                  </tr>
+                  <tr id="contenttablerow3">
+                    <td></td>
+                    <td></td> 
+                    <td></td>
+                  </tr>
+                </table>
+            </table>
+        </div>
+        <script>
+            var menuOpen = false;
+
+            function activateMenu() {
+                switch (menuOpen) {
+                    case false :
+                        console.log("menu is Open");
+                        menuOpen = true;
+                        document.getElementById("menu").style.display = 'block';
+                        document.getElementById("menuicon").src = "assets/minus.png";
+                        break;
+                    case true :
+                        console.log("menu is Closed");
+                        document.getElementById("menu").style.display = 'none';
+                        document.getElementById("menuicon").src = "assets/plus.png";
+
+
+                        menuOpen = false;
+                        break;
+
+                }
+            }
+
+        </script>
+    </body>
+
+
+
+
+
+
+</html>

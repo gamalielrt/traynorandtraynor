@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: black;
+    font-family : Arial, Helvetica, sans-serif;
+    line-height: 1;
+    font-size: 10px;
+    background-color: rgb(195, 195, 195);
+
+
+}
+
+#maintitle {
+    z-index: 1;
+    text-align: right;
+    right:10px;
+    line-height: 0;
+    position: fixed;
+
+}
+
+#menubutton {
+    z-index: 1;
+    position: fixed;
+
+}
+
+#menu {
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+
+
+}
+
+#contentcanvas {
+    z-index: -1;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+
+}
+
+#contenttable {
+    width: 100%;
+    height: 100%;
+}
+
+#pagecontent {
+    background-color: #818181;
+    text-align: center;
+}
+
+#contenttablerow1 {
+    height: 10px;
+}
+#contenttablerow3 {
+    height: 10px;
+}
+
+#pagecontent {
+    width: 95%;
+}
