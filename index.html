@@ -13,9 +13,9 @@
             <img id="menuicon" src="assets/plus.png" width="20" height="20">
         </div>
         <div id="menu" hidden>
-            <p>About</p>
-            <p>Work</p>
-            <p>Clients</p>
+            <p onClick="navigateToPage(1)">About</p>
+            <p onClick="navigateToPage(2)">Work</p>
+            <p onClick="navigateToPage(3)">Clients</p>
         </div>
         <div id="contentcanvas">
             <table id="contenttable">
@@ -43,13 +43,13 @@
             function activateMenu() {
                 switch (menuOpen) {
                     case false :
-                        console.log("menu is Open");
+                        //console.log("menu is Open");
                         menuOpen = true;
                         document.getElementById("menu").style.display = 'block';
                         document.getElementById("menuicon").src = "assets/minus.png";
                         break;
                     case true :
-                        console.log("menu is Closed");
+                        //console.log("menu is Closed");
                         document.getElementById("menu").style.display = 'none';
                         document.getElementById("menuicon").src = "assets/plus.png";
 
@@ -58,6 +58,30 @@
                         break;
 
                 }
+            }
+
+            function navigateToPage(page) {
+                console.log(page);
+
+                switch (page) {
+
+                    case (1) :
+                        //console.log("about");
+                        document.getElementById("pagecontent").innerHTML = 'About';
+                        break;
+                    case (2) :
+                        //console.log("work");
+                        document.getElementById("pagecontent").innerHTML = 'Work';
+
+                        break;
+                    case (3) :
+                        //console.log("clients");
+                        document.getElementById("pagecontent").innerHTML = 'Clients';
+
+                        break;
+                }
+                
+
             }
 
         </script>
