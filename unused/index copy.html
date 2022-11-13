@@ -3,8 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
-
         <link rel="stylesheet" href="main.css">
         <title>Traynor & Traynor</title>
     </head>
@@ -16,42 +14,75 @@
         <script src="js/OBJLoader.js"></script>
         <script src="js/OrbitControls.js"></script>
         <script src="js/postprocessing.js"></script>
-        <script src="js/TweenMax.min.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-
-
     
     
-
-        <div id="buttons" >
-            <img id="musicbutton" src="assets/symbol1.png" height="80" width="80" onClick="navigateToPage(1)">
-            <img id="visualbutton" src="assets/symbol2.png" height="80" width="80" onClick="navigateToPage(2)">
-            <img id="aboutbutton" src="assets/symbol3.png" height="80" width="80" onClick="navigateToPage(3)">
-            <img id="titlegif" src="assets/chromegif.png" height="100" width="100">
-
-            
-        </div>
-
-
-
-       <!-- <div id="menubutton" onClick="activateMenu()">
+        <h1 id="maintitle">Traynor & Traynor</h1>
+        <div id="menubutton" onClick="activateMenu()">
             <img id="menuicon" src="assets/plus.png" width="20" height="20">
         </div>
-        
         <div id="menu" hidden>
             <p onClick="navigateToPage(1)">Music</p>
             <p onClick="navigateToPage(2)">Visual</p>
             <p onClick="navigateToPage(3)">About</p>
 
-        </div>-->
-
-        <div id="contentcanvas">
-            <div id = contenttablemiddle >
-                <div id = "pagecontent"></div>
-            </div> 
         </div>
+        <div id="contentcanvas">
+            <table id="contenttable">
+                <tr id="contenttablerow1">
+                    <td></td>
+                    <td></td> 
+                    <td></td>
+                  </tr>
+                  <tr id="contenttablerow2">
+                    <td id = contenttablecolumn1></td>
+                    <td id = contenttablemiddle >
+                        <div id = "pagecontent">
 
+                            <!-- 
+
+
+
+
+                            
+                            <div id="abbeyroadalbum">
+
+                                <img id="blanksquarel" src="assets/blanksquare.png">
+
+                                <img id="abbeyroadimg" src="assets/albumcovers/abbeyroad.jpeg">
+                                <img id="abbeyroadbackimg" src="assets/albumcovers/abbeyroadback.jpeg">
+
+
+                                <img id="blanksquarer" src="assets/blanksquare.png"> 
+                            </div>
+
+
+
+
+                            <img id="al2" src="assets/albumcovers/blonde.jpeg">
+                            <img id="al3" src="assets/albumcovers/blondeonblonde.jpeg">
+                            <img id="al4" src="assets/albumcovers/camoflage.jpeg">
+                            <img id="al5" src="assets/albumcovers/chocolatestarfish.jpeg">
+                            <img id="al6" src="assets/albumcovers/inthezone.jpeg">
+                            <img id="al7" src="assets/albumcovers/purplerain.jpeg">
+                            <img id="al8" src="assets/albumcovers/screamadelica.png">
+                            <img id="al9" src="assets/albumcovers/sexmachine.jpeg">
+                            <img id="al10" src="assets/albumcovers/thriller.jpeg">
+                            <img id="al11" src="assets/albumcovers/tonightsthenight.jpeg">
+
+                            -->
+    
+                        </div>
+                    </td> 
+                    <td id = contenttablecolumn3></td>
+                  </tr>
+                  <tr id="contenttablerow3">
+                    <td></td>
+                    <td></td> 
+                    <td></td>
+                  </tr>
+                </table>
+            </table>
+        </div>
         <script>
             var menuOpen = false;
 
@@ -85,18 +116,7 @@
 
                         displayMusic();
                         calcAlbumSize();
-                        albumHover();
                         window.addEventListener('resize', calcAlbumSize, true);
-
-                        document.getElementById("contenttablemiddle").style.left = '-4%';
-                        document.getElementById("pagecontent").style.width = '100%';
-                        document.getElementById("contenttablemiddle").style.paddingLeft = '3%';
-
-                        //console.log(document.getElementById("contenttablemiddle").style.left, document.getElementById("pagecontent").style.width,document.getElementById("contenttablemiddle").style.paddingLeft)
-
-
-
-
 
 
                         break;
@@ -106,22 +126,9 @@
 
                     case (2) :
 
-
-                        displayVisualPosts();
-
-
+                        //console.log("clients");
+                        document.getElementById("pagecontent").innerHTML = 'Visual';
                         window.removeEventListener('resize', calcAlbumSize, true);
-
-                        document.getElementById("contenttablemiddle").style.left = '0';
-                        document.getElementById("pagecontent").style.width = '96%';
-                        document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
-
-                        //console.log(document.getElementById("contenttablemiddle").style.left, document.getElementById("pagecontent").style.width,document.getElementById("contenttablemiddle").style.paddingLeft)
-
-
-
-
-
 
 
 
@@ -135,13 +142,8 @@
                     document.getElementById("pagecontent").innerHTML = 'About';
                     window.removeEventListener('resize', calcAlbumSize, true);
 
-                    document.getElementById("contenttablemiddle").style.left = '0';
-                    document.getElementById("pagecontent").style.width = '96%';
-                    document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
 
-
-
-                    break;
+                        break;
 
 
 
@@ -150,82 +152,49 @@
 
             }
 
+            /*
 
+            
+            function setUpAbbeyRoad () {
+                document.getElementById("abbeyroadalbum").width = 300;
 
-
-            ///////////    DISPLAY VISUAL
-
-
-            class VisualPost {
-                constructor(ID, date, content, caption) {
-                    this._ID = ID;
-                    this._date = date;
-                    this._content = content;
-                    this._caption = caption;
-                }
-                get ID() {
-                    return this._ID;
-                }
-                get date() {
-                    return this._date;
-                }
-                get content() {
-                    return this._content;
-                }
-                get caption() {
-                    return this._caption;
-                }
-            }
-
-            class VisualPosts {
-                constructor() {
-                    this.visualPosts = [];
-                }
-
-                newVisualPost (ID, date, content, caption) {
-                    let a = new VisualPost(ID, date, content, caption);
-                    this.visualPosts.push(a);
-                    return a;
-                }
-                get numberOfVisualPosts () {
-                    return this.visualPosts.length;
-                }
-            }
-
-            visualPostList = new VisualPosts();
-
-            visualPostList.newVisualPost('0', '11/11/22', '<iframe  src="https://www.youtube.com/embed/4_QK8IxhZRg" title="YouTube video player" frameborder="0"  allowfullscreen position= absolute top=0 left = 0 width = 100% height = 100%  ></iframe>', 'Regressive Left - World on Fire');
-
-            // Display Visual Posts
-
-            function displayVisualPosts () {
-                document.getElementById("pagecontent").innerHTML = '';
-
-                for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
-                    document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'">' + visualPostList.visualPosts[i].content +'</div>';
-                    document.getElementById('vpcontdiv'+i).style.width = '100%';
-                    //document.getElementById('vpcontdiv'+i).style.height = '0';
-
-
-                    //document.getElementById('vpcontdiv'+i).style.paddingBottom = '56.25%';
-                    //document.getElementById('vpcontdiv'+i).style.position = 'relative';
-                    //document.getElementById('vpcontdiv'+i).style.backgroundColor = 'rgba(55, 0, 255, 0.486)';
-
-
-                    //document.getElementById('vpcontdiv'+i).style.position = 'relative';
-
-
-
-                    //console.log(i, document.getElementById('vpcontdiv'+i).style.width)
-
-                    document.getElementById("pagecontent").innerHTML += '<div id = "vpcapdiv'+ i +'">' + visualPostList.visualPosts[i].caption +'</div>';
-
-
-                }
-
-
+                document.getElementById("blanksquarel").width = 0;
+                document.getElementById("abbeyroadimg").width = 300;
+                document.getElementById("abbeyroadbackimg").width = 0;
+                document.getElementById("blanksquarer").width = 0;
 
             }
+
+            var abbeyRoadButton = document.getElementById("abbeyroadalbum");
+
+            abbeyRoadButton.addEventListener("mouseover", mouseOn, false);
+            abbeyRoadButton.addEventListener("mouseout", mouseOff, false);
+
+            function mouseOn (){
+                console.log("mouse on");
+
+                setInterval(()=> console.log("hi"),100 )
+
+            }
+            function mouseOff (){
+                console.log("mouse off")
+            }
+
+
+
+            setUpAbbeyRoad();
+
+            */
+
+            
+
+
+
+
+
+
+
+
 
 
             ///////////    DISPLAY ALBUMS
@@ -290,21 +259,17 @@
 
             // Display albums
 
-            const albumOpacity = '75%';
-
 
             function displayMusic() {
                 document.getElementById("pagecontent").innerHTML = '';
 
                 for (let i=0; i<albumList.numberOfAlbums; i++ ) {
-                    document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "getAlbumDetails('+ i + ')" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
+                    document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "getAlbumDetails('+ i + ')" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
 
                     document.getElementById("aldiv" + i).style.display = 'inline-block';
                     //document.getElementById("aldiv" + i).style.border = '1px solid black';
 
                     document.getElementById("al" + i).style.position = 'relative';
-                    document.getElementById("al" + i).style.opacity = albumOpacity;
-
 
 
 
@@ -315,51 +280,19 @@
 
 
             const randomNumberL = [];
-            const randomNumberT = [];
+                const randomNumberT = [];
 
-            for (let i=0; i<albumList.numberOfAlbums; i++) {
-
-                randomNumberL.push(Math.floor(Math.random()*10));
-                randomNumberT.push(Math.floor(Math.random()*10));
-
-                //console.log(randomNumberT[i]);
-
-            }
-            
-
-            function albumHover () {
                 for (let i=0; i<albumList.numberOfAlbums; i++) {
 
-                    let tl = gsap.timeline();
-
-
-                    
-                    tl.to(document.getElementById("al"+[i]), { 
-                        y: 10-randomNumberT[i],
-                        duration: 2-(randomNumberT[i]/5), 
-                        ease: "power4.inout"
-
-                    })
-
-                    .to(document.getElementById("al"+[i]), {
-                        y: -randomNumberT[i], 
-                        duration: 2, 
-                        yoyo: true, repeat: -1,
-                        ease: "power4.inout"
-
-                    });
-
-                    
+                    randomNumberL.push(Math.floor(Math.random()*30));
+                    randomNumberT.push(Math.floor(Math.random()*30));
 
                 }
-            }
 
             // Resize albums to window
 
 
             function calcAlbumSize () {
-
-
                 
 
 
@@ -369,27 +302,27 @@
                     sideLength : 0
                 };
 
-                if (contentWidth <= 500) {
+                if (contentWidth <= 200) {
 
                     albumFormat.columns = 1;
                     albumFormat.sideLength = Math.floor(document.getElementById("contenttablemiddle").offsetWidth /1);
 
-                } else if (contentWidth > 500 && contentWidth <= 1000) {
+                } else if (contentWidth > 200 && contentWidth <= 400) {
 
                     albumFormat.columns = 2;
                     albumFormat.sideLength = Math.floor(document.getElementById("contenttablemiddle").offsetWidth /2);
 
-                }  else if (contentWidth > 1000 && contentWidth <= 1500) {
+                } else if (contentWidth > 400 && contentWidth <= 600) {
 
                     albumFormat.columns = 3;
                     albumFormat.sideLength = Math.floor(document.getElementById("contenttablemiddle").offsetWidth /3);
 
-                }  else if (contentWidth > 1500 ) {
+                } else if (contentWidth > 600 && contentWidth <= 800) {
 
                     albumFormat.columns = 4;
                     albumFormat.sideLength = Math.floor(document.getElementById("contenttablemiddle").offsetWidth /4);
 
-                } /*else if (contentWidth > 800 && contentWidth <= 1000) {
+                } else if (contentWidth > 800 && contentWidth <= 1000) {
 
                     albumFormat.columns = 5;
                     albumFormat.sideLength = Math.floor(document.getElementById("contenttablemiddle").offsetWidth /5);
@@ -400,15 +333,15 @@
                     albumFormat.columns = 6;
                     albumFormat.sideLength = Math.floor(document.getElementById("contenttablemiddle").offsetWidth /6);
 
-                }*/
+                }
 
 
 
                 for (let i=0; i<albumList.numberOfAlbums; i++ ) {
 
 
-                    document.getElementById("aldiv"+i).style.width = albumFormat.sideLength-17+'px';
-                    document.getElementById("aldiv"+i).style.height = albumFormat.sideLength-17+'px';
+                    document.getElementById("aldiv"+i).style.width = albumFormat.sideLength-3+'px';
+                    document.getElementById("aldiv"+i).style.height = albumFormat.sideLength-3+'px';
 
                     document.getElementById("al"+i).width = albumFormat.sideLength-(albumFormat.sideLength/5);
 
@@ -418,8 +351,6 @@
 
 
                 }
-
-                //console.log(contentWidth,document.getElementById("aldiv1").style.width, albumFormat.sideLength);
             }
 
             //When album clicked
@@ -427,16 +358,6 @@
             function getAlbumDetails(value) {
                 console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
             }
-
-            //When Mouse over Album
-
-            function albumMouseOver (x) {
-                x.style.opacity = '100%';
-            }
-            function albumMouseOut (x) {
-                x.style.opacity = albumOpacity;
-            }
-
 
 
 
@@ -462,24 +383,6 @@
 
                 scene.background = new THREE.Color(0xeb8334);
 
-
-                camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1,10000);
-
-                renderer = new THREE.WebGLRenderer({antialias:true});
-
-                renderer.setPixelRatio( window.devicePixelRatio* 0.5 );
-
-                renderer.setSize(window.innerWidth,window.innerHeight);
-                document.body.appendChild(renderer.domElement);
-                scene.fog = new THREE.FogExp2( 0xeb8334, 0.0003 );
-
-                var axesHelper = new THREE.AxesHelper( 5000 );
-                
-                
-                
-                //scene.add( axesHelper );
-
-                
                 /*scene.background = new THREE.CubeTextureLoader()
                     .setPath('assets/centerassets/skybox/')
                     .load( [
@@ -493,6 +396,15 @@
                     ])*/
 
 
+                camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1,10000);
+
+                renderer = new THREE.WebGLRenderer({antialias:true});
+                renderer.setSize(window.innerWidth,window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+                scene.fog = new THREE.FogExp2( 0xeb8334, 0.0002 );
+
+                var axesHelper = new THREE.AxesHelper( 5000 );
+                //scene.add( axesHelper );
 
 
 
@@ -516,7 +428,7 @@
                 //scene.add(light3);
 
                 var light3Helper = new THREE.PointLightHelper( light3, 9 );
-                //scene.add( light3Helper );
+                scene.add( light3Helper );
 
 
 
@@ -737,7 +649,6 @@
 
                 }
 
-
                 function animate() {
                     renderer.render(scene,camera);
                     //composer.render();
@@ -748,8 +659,6 @@
                     orbit2Group.rotation.y -= 0.002;
 
                 }
-
-
 
             init();
 
