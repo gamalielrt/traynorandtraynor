@@ -204,7 +204,7 @@
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
                     document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'">' + visualPostList.visualPosts[i].content +'</div>';
                     document.getElementById('vpcontdiv'+i).style.width = '100%';
-                    //document.getElementById('vpcontdiv'+i).style.height = '0';
+                    document.getElementById('vpcontdiv'+i).style.height = '100%';
 
 
                     //document.getElementById('vpcontdiv'+i).style.paddingBottom = '56.25%';
@@ -219,6 +219,13 @@
                     //console.log(i, document.getElementById('vpcontdiv'+i).style.width)
 
                     document.getElementById("pagecontent").innerHTML += '<div id = "vpcapdiv'+ i +'">' + visualPostList.visualPosts[i].caption +'</div>';
+
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+
+
+
 
 
                 }
