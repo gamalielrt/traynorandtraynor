@@ -48,7 +48,13 @@
 
         <div id="contentcanvas">
             <div id = contenttablemiddle >
-                <div id = "pagecontent"></div>
+                <div id = "pagecontent" >
+
+                    <!--<div id="iframediv">
+                        <iframe  src="https://www.youtube.com/embed/4_QK8IxhZRg"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+
+                    </div>-->
+                </div>
             </div> 
         </div>
 
@@ -95,7 +101,7 @@
                         //console.log(document.getElementById("contenttablemiddle").style.left, document.getElementById("pagecontent").style.width,document.getElementById("contenttablemiddle").style.paddingLeft)
 
 
-
+                        THREEgoToMusic();
 
 
 
@@ -116,7 +122,8 @@
                         document.getElementById("pagecontent").style.width = '96%';
                         document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
 
-                        //console.log(document.getElementById("contenttablemiddle").style.left, document.getElementById("pagecontent").style.width,document.getElementById("contenttablemiddle").style.paddingLeft)
+                        THREEgoToVisual();
+
 
 
 
@@ -132,7 +139,17 @@
 
                     case (3) :
 
-                    document.getElementById("pagecontent").innerHTML = 'About';
+                    THREEgoToAbout();
+
+                    document.getElementById("pagecontent").innerHTML = '';
+
+
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+
+
+                    document.getElementById("pagecontent").innerHTML += 'About';
                     window.removeEventListener('resize', calcAlbumSize, true);
 
                     document.getElementById("contenttablemiddle").style.left = '0';
@@ -157,11 +174,12 @@
 
 
             class VisualPost {
-                constructor(ID, date, content, caption) {
+                constructor(ID, date, content, caption, type) {
                     this._ID = ID;
                     this._date = date;
                     this._content = content;
                     this._caption = caption;
+                    this._type = type;
                 }
                 get ID() {
                     return this._ID;
@@ -175,6 +193,9 @@
                 get caption() {
                     return this._caption;
                 }
+                get type() {
+                    return this._type;
+                }
             }
 
             class VisualPosts {
@@ -182,8 +203,8 @@
                     this.visualPosts = [];
                 }
 
-                newVisualPost (ID, date, content, caption) {
-                    let a = new VisualPost(ID, date, content, caption);
+                newVisualPost (ID, date, content, caption, type) {
+                    let a = new VisualPost(ID, date, content, caption, type);
                     this.visualPosts.push(a);
                     return a;
                 }
@@ -194,29 +215,40 @@
 
             visualPostList = new VisualPosts();
 
-            visualPostList.newVisualPost('0', '11/11/22', '<iframe  src="https://www.youtube.com/embed/4_QK8IxhZRg" title="YouTube video player" frameborder="0"  allowfullscreen position= absolute top=0 left = 0 width = 100% height = 100%  ></iframe>', 'Regressive Left - World on Fire');
+            visualPostList.newVisualPost('0', '11/11/22', '<iframe  src="https://www.youtube.com/embed/4_QK8IxhZRg"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>', 'Regressive Left - World on Fire Music Video', 'video');
+            visualPostList.newVisualPost('1', '16/11/22', '<iframe  src="https://www.youtube.com/embed/TMCb90JpvxY"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>', 'Waterbaby - Thin Air Visualiser', 'video');
+
+            visualPostList.newVisualPost('3', '16/11/22', '<iframe  src="https://www.youtube.com/embed/pwZFlYmLuRw"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>', 'Waterbaby - Thin Air Visualiser', 'video');
+
+            //<iframe width="560" height="315" src="https://www.youtube.com/embed/-ACXhZ4OtAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
             // Display Visual Posts
 
             function displayVisualPosts () {
                 document.getElementById("pagecontent").innerHTML = '';
 
+                document.getElementById("pagecontent").innerHTML += '<br>';
+                document.getElementById("pagecontent").innerHTML += '<br>';
+                document.getElementById("pagecontent").innerHTML += '<br>';
+
+
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
-                    document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'">' + visualPostList.visualPosts[i].content +'</div>';
+
+                    document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'"></div>';
+
                     document.getElementById('vpcontdiv'+i).style.width = '100%';
-                    document.getElementById('vpcontdiv'+i).style.height = '100%';
+                    document.getElementById('vpcontdiv'+i).style.paddingTop = '56.25%';
+                    document.getElementById('vpcontdiv'+i).style.position = 'relative';
+
+                    document.getElementById('vpcontdiv'+i).innerHTML += visualPostList.visualPosts[i].content;
+
+                    //'<iframe  src="https://www.youtube.com/watch?v=4quhFLBy-9s"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>'
 
 
-                    //document.getElementById('vpcontdiv'+i).style.paddingBottom = '56.25%';
-                    //document.getElementById('vpcontdiv'+i).style.position = 'relative';
-                    //document.getElementById('vpcontdiv'+i).style.backgroundColor = 'rgba(55, 0, 255, 0.486)';
-
-
-                    //document.getElementById('vpcontdiv'+i).style.position = 'relative';
-
-
-
-                    //console.log(i, document.getElementById('vpcontdiv'+i).style.width)
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
 
                     document.getElementById("pagecontent").innerHTML += '<div id = "vpcapdiv'+ i +'">' + visualPostList.visualPosts[i].caption +'</div>';
 
@@ -302,6 +334,11 @@
 
             function displayMusic() {
                 document.getElementById("pagecontent").innerHTML = '';
+
+                document.getElementById("pagecontent").innerHTML += '<br>';
+                document.getElementById("pagecontent").innerHTML += '<br>';
+                document.getElementById("pagecontent").innerHTML += '<br>';
+
 
                 for (let i=0; i<albumList.numberOfAlbums; i++ ) {
                     document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "getAlbumDetails('+ i + ')" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
@@ -461,6 +498,66 @@
 
             var orbit1Group = new THREE.Group();
             var orbit2Group = new THREE.Group();
+
+            
+            function THREEgoToVisual () {
+
+                //controls.autoRotate = false;
+                //controls.enabled = false;
+
+                //camTarget.y = 1000;
+
+                gsap.to(camTarget, {y:1000, duration:3})
+                //gsap.to(camera, {zoom:200, duration:3})
+
+                //camera.zoom = 10;
+                //camera.updateProjectionMatrix;
+
+
+
+                controls.update();
+
+            }
+
+            function THREEgoToMusic () {
+
+                //controls.autoRotate = false;
+                //controls.enabled = false;
+
+                //camTarget.y = 1000;
+
+                gsap.to(camTarget, {y:500, duration:3})
+                //gsap.to(camera, {zoom:200, duration:3})
+
+                //camera.zoom = 10;
+                //camera.updateProjectionMatrix;
+
+
+
+                controls.update();
+
+            }
+
+            function THREEgoToAbout () {
+
+                //controls.autoRotate = false;
+                //controls.enabled = false;
+
+                //camTarget.y = 1000;
+
+                gsap.to(camTarget, {y:2000, duration:3})
+                //gsap.to(camera, {zoom:200, duration:3})
+
+                //camera.zoom = 10;
+                //camera.updateProjectionMatrix;
+
+
+
+                controls.update();
+
+            }
+
+
 
 
             function init() {
