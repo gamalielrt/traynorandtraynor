@@ -215,10 +215,13 @@
 
             visualPostList = new VisualPosts();
 
-            visualPostList.newVisualPost('0', '11/11/22', '<iframe  src="https://www.youtube.com/embed/4_QK8IxhZRg"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>', 'Regressive Left - World on Fire Music Video', 'video');
-            visualPostList.newVisualPost('1', '16/11/22', '<iframe  src="https://www.youtube.com/embed/TMCb90JpvxY"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>', 'Waterbaby - Thin Air Visualiser', 'video');
+            visualPostList.newVisualPost('0', '11/11/22', 'https://www.youtube.com/embed/4_QK8IxhZRg', 'Regressive Left - World on Fire Music Video', 'video');
+            visualPostList.newVisualPost('1', '16/11/22', 'https://www.youtube.com/embed/n27fAUG7Bok', 'Sweat - Be Complete Video', 'video');
+            visualPostList.newVisualPost('4', '16/11/22', 'fatdogposter.png', 'Fat Dog Press Shot - CGI', 'image');
 
-            visualPostList.newVisualPost('3', '16/11/22', '<iframe  src="https://www.youtube.com/embed/pwZFlYmLuRw"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>', 'Waterbaby - Thin Air Visualiser', 'video');
+            visualPostList.newVisualPost('3', '16/11/22', 'https://www.youtube.com/embed/pwZFlYmLuRw', 'Waterbaby - Thin Air Visualiser', 'video');
+
+
 
             //<iframe width="560" height="315" src="https://www.youtube.com/embed/-ACXhZ4OtAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -235,16 +238,32 @@
 
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
 
-                    document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'"></div>';
+                    if (visualPostList.visualPosts[i].type == 'video') {
 
-                    document.getElementById('vpcontdiv'+i).style.width = '100%';
-                    document.getElementById('vpcontdiv'+i).style.paddingTop = '56.25%';
-                    document.getElementById('vpcontdiv'+i).style.position = 'relative';
+                        document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'"></div>';
 
-                    document.getElementById('vpcontdiv'+i).innerHTML += visualPostList.visualPosts[i].content;
+                        document.getElementById('vpcontdiv'+i).style.width = '100%';
+                        document.getElementById('vpcontdiv'+i).style.paddingTop = '56.25%';
+                        document.getElementById('vpcontdiv'+i).style.position = 'relative';
 
-                    //'<iframe  src="https://www.youtube.com/watch?v=4quhFLBy-9s"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>'
+                        document.getElementById('vpcontdiv'+i).innerHTML += '<iframe  src="' + visualPostList.visualPosts[i].content +'"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
 
+                    } else if (visualPostList.visualPosts[i].type == 'image') {
+
+                        document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'"></div>';
+
+
+                        document.getElementById('vpcontdiv'+i).style.width = '100%';
+                        document.getElementById('vpcontdiv'+i).style.paddingTop = '100%';
+                        document.getElementById('vpcontdiv'+i).style.position = 'relative';
+
+                        document.getElementById('vpcontdiv'+i).style.float = 'left';
+
+
+                        document.getElementById('vpcontdiv'+i).innerHTML = '<img src="assets/visualImages/' + visualPostList.visualPosts[i].content + '"style="position:absolute;top:0;left:0;width:100%;">';
+
+
+                    }
 
                     document.getElementById("pagecontent").innerHTML += '<br>';
                     document.getElementById("pagecontent").innerHTML += '<br>';
@@ -495,69 +514,51 @@
 
             var camPosition = new THREE.Vector3(900, 600, -20);
             var camTarget = new THREE.Vector3(-760,500,260);
+            var cameraZoom = {var : 1};
 
             var orbit1Group = new THREE.Group();
             var orbit2Group = new THREE.Group();
 
             
-            function THREEgoToVisual () {
-
-                //controls.autoRotate = false;
-                //controls.enabled = false;
-
-                //camTarget.y = 1000;
-
-                gsap.to(camTarget, {y:1000, duration:3})
-                //gsap.to(camera, {zoom:200, duration:3})
-
-                //camera.zoom = 10;
-                //camera.updateProjectionMatrix;
-
-
-
-                controls.update();
-
-            }
 
             function THREEgoToMusic () {
 
-                //controls.autoRotate = false;
-                //controls.enabled = false;
-
-                //camTarget.y = 1000;
-
                 gsap.to(camTarget, {y:500, duration:3})
-                //gsap.to(camera, {zoom:200, duration:3})
-
-                //camera.zoom = 10;
-                //camera.updateProjectionMatrix;
+                gsap.to(cameraZoom, {var:1, duration:3})
 
 
 
-                controls.update();
+
 
             }
+
+            function THREEgoToVisual () {
+
+                gsap.to(camTarget, {y:1000, duration:3})
+                gsap.to(cameraZoom, {var:6, duration:3})
+
+
+
+            }
+
 
             function THREEgoToAbout () {
 
-                //controls.autoRotate = false;
-                //controls.enabled = false;
-
-                //camTarget.y = 1000;
-
                 gsap.to(camTarget, {y:2000, duration:3})
-                //gsap.to(camera, {zoom:200, duration:3})
-
-                //camera.zoom = 10;
-                //camera.updateProjectionMatrix;
+                gsap.to(cameraZoom, {var:1, duration:3})
 
 
 
-                controls.update();
 
             }
 
 
+            function updateCamera (){
+                    camera.zoom = cameraZoom.var;
+                    camera.updateProjectionMatrix();
+
+
+                }
 
 
             function init() {
@@ -568,6 +569,10 @@
 
 
                 camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1,10000);
+
+
+
+
 
                 renderer = new THREE.WebGLRenderer({antialias:true});
 
@@ -847,9 +852,12 @@
                     //composer.render();
                     requestAnimationFrame(animate);
                     controls.update();
+                    updateCamera();
 
                     orbit1Group.rotation.y += 0.001;
                     orbit2Group.rotation.y -= 0.002;
+
+                    
 
                 }
 
