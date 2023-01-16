@@ -1154,10 +1154,10 @@
 
                 var centremtl = new THREE.MeshLambertMaterial({
                     map : centertex,
-                    //shininess : 1,
+
                     color: 0x191919,
-                    //normalMap: centernormaltex,
-                    //normalScale: new THREE.Vector2( 0, 1 )
+                    //color: 0x03fc03, 
+                    //wireframe: true
 
                 });
 
@@ -1621,30 +1621,157 @@
 
                 ///////////////  DINOS
 
-                
+                /*
+
+                ////////////WIREFRAME
+
+
+                var wireframemtl = new THREE.MeshLambertMaterial({
+                    //map : centertex,
+                    color: 0x03fc03, 
+                    wireframe: true
+
+                });
+
+                loader = new THREE.OBJLoader();
+                loader.load( 'assets/wireframeassets/dinowireframe.obj', function ( dinowiremesh ) {
+                                
+
+                    dinowiremesh.traverse( function ( node ) {
+
+                        if ( node.isMesh ) node.material = wireframemtl;             
+                    } );
+
+                    dinowiremesh.position.y = 300;
+                    scene.add( dinowiremesh );
+                });
+
+                */
+
+
 
 
                 mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/dinoassets/' )
-                .load( 'gamLo1.mtl', function ( materials ) {
+                .setPath( 'assets/newdinoassets/' )
+                .load( 'gam1.mtl', function ( materials ) {
 
                     materials.preload();
 
                     objLoader = new THREE.OBJLoader()
                     
                         objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/dinoassets/' )
-                        objLoader.load( 'gamLo1.obj', function ( gam ) {
+                        objLoader.setPath( 'assets/newdinoassets/' )
+                        objLoader.load( 'gam1.obj', function ( gam ) {
 
-                            gam.position.y = -2000;
+                            gam.position.y = 200;
                             scene.add( gam );
 
                         } );
 
                 } );
 
-                
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdinoassets/' )
+                .load( 'dante1.mtl', function ( materials ) {
 
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdinoassets/' )
+                        objLoader.load( 'dante1.obj', function ( dante1 ) {
+
+                            dante1.position.y = 200;
+                            scene.add( dante1 );
+
+                        } );
+
+                } );
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdinoassets/' )
+                .load( 'dante2.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdinoassets/' )
+                        objLoader.load( 'dante2.obj', function ( dante2 ) {
+
+                            dante2.position.y = 200;
+                            scene.add( dante2 );
+
+                        } );
+
+                } );
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdinoassets/' )
+                .load( 'dinos1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdinoassets/' )
+                        objLoader.load( 'dinos1.obj', function ( dinos1 ) {
+
+                            dinos1.position.y = 200;
+                            scene.add( dinos1 );
+
+                        } );
+
+                } );
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdinoassets/' )
+                .load( 'dinos2.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdinoassets/' )
+                        objLoader.load( 'dinos2.obj', function ( dinos2 ) {
+
+                            dinos2.position.y = 200;
+                            scene.add( dinos2 );
+
+                        } );
+
+                } );
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdinoassets/' )
+                .load( 'dinos3.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdinoassets/' )
+                        objLoader.load( 'dinos3.obj', function ( dinos3 ) {
+
+                            dinos3.position.y = 200;
+                            scene.add( dinos3 );
+
+                        } );
+
+                } );
+
+
+
+
+
+
+                
+                /*
 
                 mtlLoader = new THREE.MTLLoader()
                 .setPath( 'assets/dinoassets/' )
@@ -1658,7 +1785,7 @@
                         objLoader.setPath( 'assets/dinoassets/' )
                         objLoader.load( 'danteLo1.obj', function ( dante ) {
 
-                            dante.position.y = -2000;
+                            dante.position.y = 200;
                             scene.add( dante );
 
                         } );
@@ -1681,12 +1808,16 @@
                         objLoader.setPath( 'assets/dinoassets/' )
                         objLoader.load( 'dinosLo1.obj', function ( dinos ) {
 
-                            dinos.position.y = -2000;
+                            dinos.position.y = 200;
                             scene.add( dinos );
 
                         } );
 
                 } );
+
+                */
+
+                
 
                 
 
