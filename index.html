@@ -89,9 +89,9 @@
 
                     case (1) :
 
-                        //displayMusic();
-                        //calcAlbumSize();
-                        //albumHover();
+                        displayMusic();
+                        calcAlbumSize();
+                        albumHover();
                         window.addEventListener('resize', calcAlbumSize, true);
 
                         document.getElementById("contenttablemiddle").style.left = '-4%';
@@ -113,7 +113,7 @@
                     case (2) :
 
 
-                        //displayVisualPosts();
+                        displayVisualPosts();
 
 
                         window.removeEventListener('resize', calcAlbumSize, true);
@@ -554,6 +554,9 @@
                 gsap.to(scene.fog.color, {g:0.48, duration:3});
                 gsap.to(scene.fog.color, {b:0.19, duration:3});
 
+                gsap.to(hlight, {intensity:1 , duration:3});
+
+
 
 
 
@@ -611,6 +614,9 @@
                 gsap.to(scene.fog.color, {r:0.38, duration:3});
                 gsap.to(scene.fog.color, {g:0.44, duration:3});
                 gsap.to(scene.fog.color, {b:0.73, duration:3});
+
+                gsap.to(hlight, {intensity:0.8 , duration:3});
+
 
 
 
@@ -1621,9 +1627,11 @@
 
                 ///////////////  DINOS
 
-                /*
+                
 
                 ////////////WIREFRAME
+
+                /*
 
 
                 var wireframemtl = new THREE.MeshLambertMaterial({
@@ -1648,7 +1656,10 @@
 
                 */
 
+                
+               
 
+                
 
 
                 mtlLoader = new THREE.MTLLoader()
@@ -1764,6 +1775,8 @@
                         } );
 
                 } );
+
+                
 
 
 
