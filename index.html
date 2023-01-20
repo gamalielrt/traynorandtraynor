@@ -537,6 +537,10 @@
 
             var orbit1Group = new THREE.Group();
             var orbit2Group = new THREE.Group();
+            var orbit3Group = new THREE.Group();
+            var orbit4Group = new THREE.Group();
+
+
 
 
             function THREEgoToMusic () {
@@ -1839,13 +1843,20 @@
 
                 } );
 
-                /*
 
 
+                scene.add(orbit1Group);
+                scene.add(orbit2Group);
+                scene.add(orbit3Group);
+                scene.add(orbit4Group);
+
+                
+
+                
 
 
                 mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/newdesertassets/' )
+                .setPath( 'assets/newdesertassets/orbits/' )
                 .load( 'orbit1.mtl', function ( materials ) {
 
                     materials.preload();
@@ -1853,89 +1864,71 @@
                     objLoader = new THREE.OBJLoader()
                     
                         objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.setPath( 'assets/newdesertassets/orbits/' )
                         objLoader.load( 'orbit1.obj', function ( orbit1 ) {
 
                             orbit1.position.y = 200;
-                            scene.add( orbit1 );
+                            orbit1Group.add( orbit1 );
 
                         } );
 
                 } );
                 mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/newdesertassets/' )
-                .load( 'orbit1.mtl', function ( materials ) {
+                .setPath( 'assets/newdesertassets/orbits/' )
+                .load( 'orbit2.mtl', function ( materials ) {
 
                     materials.preload();
 
                     objLoader = new THREE.OBJLoader()
                     
                         objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.setPath( 'assets/newdesertassets/orbits/' )
                         objLoader.load( 'orbit2.obj', function ( orbit2 ) {
 
                             orbit2.position.y = 200;
-                            scene.add( orbit2 );
+                            orbit2Group.add( orbit2 );
 
                         } );
 
                 } );
                 mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/newdesertassets/' )
-                .load( 'orbit1.mtl', function ( materials ) {
+                .setPath( 'assets/newdesertassets/orbits/' )
+                .load( 'orbit3.mtl', function ( materials ) {
 
                     materials.preload();
 
                     objLoader = new THREE.OBJLoader()
                     
                         objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.setPath( 'assets/newdesertassets/orbits/' )
                         objLoader.load( 'orbit3.obj', function ( orbit3 ) {
 
                             orbit3.position.y = 200;
-                            scene.add( orbit3 );
+                            orbit3Group.add( orbit3 );
 
                         } );
 
                 } );
                 mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/newdesertassets/' )
-                .load( 'orbit1.mtl', function ( materials ) {
+                .setPath( 'assets/newdesertassets/orbits/' )
+                .load( 'orbit4.mtl', function ( materials ) {
 
                     materials.preload();
 
                     objLoader = new THREE.OBJLoader()
                     
                         objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.setPath( 'assets/newdesertassets/orbits/' )
                         objLoader.load( 'orbit4.obj', function ( orbit4 ) {
 
                             orbit4.position.y = 200;
-                            scene.add( orbit4 );
-
-                        } );
-
-                } );
-                mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/newdesertassets/' )
-                .load( 'orbit1.mtl', function ( materials ) {
-
-                    materials.preload();
-
-                    objLoader = new THREE.OBJLoader()
-                    
-                        objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/newdesertassets/' )
-                        objLoader.load( 'orbit5.obj', function ( orbit5 ) {
-
-                            orbit5.position.y = 200;
-                            scene.add( orbit5 );
+                            orbit4Group.add( orbit4 );
 
                         } );
 
                 } );
 
-                */
+                
 
 
 
@@ -2266,80 +2259,12 @@
 
 
 
-                
-                /*
-
-                mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/dinoassets/' )
-                .load( 'danteLo1.mtl', function ( materials ) {
-
-                    materials.preload();
-
-                    objLoader = new THREE.OBJLoader()
-                    
-                        objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/dinoassets/' )
-                        objLoader.load( 'danteLo1.obj', function ( dante ) {
-
-                            dante.position.y = 200;
-                            scene.add( dante );
-
-                        } );
-
-                } );
-
-                
-
-                
-
-                mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/dinoassets/' )
-                .load( 'dinosLo1.mtl', function ( materials ) {
-
-                    materials.preload();
-
-                    objLoader = new THREE.OBJLoader()
-                    
-                        objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/dinoassets/' )
-                        objLoader.load( 'dinosLo1.obj', function ( dinos ) {
-
-                            dinos.position.y = 200;
-                            scene.add( dinos );
-
-                        } );
-
-                } );
-
-                */
 
                 
 
                 
 
                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2397,6 +2322,12 @@
                 requestAnimationFrame(animate);
                 controls.update();
                 updateCamera();
+
+                orbit1Group.rotation.y += 0.001;
+                orbit2Group.rotation.y -= 0.002;
+                orbit3Group.rotation.y += 0.001;
+                orbit4Group.rotation.y -= 0.002;
+
                 
 
             }
