@@ -521,15 +521,18 @@
             // THREE.js
 
 
+
             var scene, camera, renderer, composer;
+
+            const loadingManager = new THREE.LoadingManager();
+
+            resourcesLoaded = Boolean;
 
             var camPosition = new THREE.Vector3(1, 3000, 16000);
             var camTarget = new THREE.Vector3(-1000,500,0);
 
-            //var camTarget = new THREE.Vector3(-250,500,250);
 
             var cameraZoom = {var : 1};
-
             var cameraMaxD = {var : 17000};
             var cameraMinD = {var : 0};
 
@@ -539,6 +542,10 @@
             var orbit2Group = new THREE.Group();
             var orbit3Group = new THREE.Group();
             var orbit4Group = new THREE.Group();
+
+            
+
+
 
 
 
@@ -723,297 +730,265 @@
 
                 controls.update();
 
-                
-                
-                
+
+                loadingManager.onStart = function(url, item, total) {
+                    console.log('Started Loading');
+                }
+                loadingManager.onProgress = function(item, loaded, total) {
+                    console.log(item,loaded,total);
+                }
+                loadingManager.onLoad = function () {
+                    console.log("Loading Complete");
+                    resourcesLoaded = true;
+                    addLights ();
+                }
 
                 
-                /*scene.background = new THREE.CubeTextureLoader()
-                    .setPath('assets/centerassets/skybox/')
-                    .load( [
-                        'px.png',
-                        'nx.png',
-                        'py.png',
-                        'ny.png',
-                        'pz.png',
-                        'nz.png'
-
-                    ])*/
-
-
-
 
 
 
                 
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                    /////////////  DESERT LIGHTS
+                /////////////  DESERT LIGHTS
+
+                function addLights () {
+
+                    hlight = new THREE.AmbientLight (0xffffff,2);
+                    scene.add(hlight);
+
+
+                    var light1 = new THREE.PointLight(0xeb8334, 2);
+                    light1.position.set(0,10000,30);
+                    //scene.add(light1);
+
+                    var light2 = new THREE.PointLight(0xffffff, 1);
+                    light2.position.set(0,1000,500);
+                    //scene.add(light2);
+
+                    var light3 = new THREE.PointLight(0x66ffcc,2,  0,  1);
+                    light3.position.set(0,380,300);
+                    //scene.add(light3);
+
+                    var light3Helper = new THREE.PointLightHelper( light3, 9 );
+                    //scene.add( light3Helper );
+
+
+                    //////////////  CLUB LIGHTS
+
+                    var lightColour = 0xD98400; //D98400
+                    var lightDistance = 10//10; //3
+                    var lightDecay = 700; //280
+                    var StageLightColour = 0x3333ff;
+                    var StageLightIntensity = 5; //0 /////////////////////////////  LONG VIDEO /////9
+                    var StageLightDecay = 450; //350
+                    var spotLightintensity = 2;
+                    var spotLightangle = 0.3;
+                    var spotLightpenumbra = 0.5;
+                    var spotLightdistance = 0;
+                    var spotLightdecay = 0;
+
+                    
+
+
+                    //////////////// left light 1
+
+                    testLight = new THREE.PointLight(lightColour, lightDistance, lightDecay);//1, 750
+                    testLight.position.set(351,602,471);
+                    //testLight.castShadow = true;
+                    testLight.shadow.camera.near = 100;
+                    testLight.shadow.camera.far = 1000;
+
+                    scene.add(testLight);
+                    var sphereSize = 9;
+                    var pointLightHelper = new THREE.PointLightHelper( testLight, sphereSize );
+                    //scene.add( pointLightHelper );
+
+
+
+                    //////////////// left light 2
+
+                    testLight1 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
+                    testLight1.position.set(9,626,834);
+                    //testLight1.castShadow = true;
+                    testLight1.shadow.camera.near = 100;
+                    testLight1.shadow.camera.far = 1000;
+
+                    scene.add(testLight1);
+
+
+
+                    //////////////// left light 3
+
+                    testLight3 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
+                    testLight3.position.set(-414,618,884);
+                    //testLight3.castShadow = true;
+                    testLight3.shadow.camera.near = 100;
+                    testLight3.shadow.camera.far = 1000;
+
+                    scene.add(testLight3);
+                    var sphereSize = 40;
+                    var pointLightHelper = new THREE.PointLightHelper( testLight3, sphereSize );
+                    //scene.add( pointLightHelper );
+
+
+
+                    //////////////// left light 4
+
+                    testLight4 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
+                    testLight4.position.set(-821,625,601);
+                    //testLight4.castShadow = true;
+                    testLight4.shadow.camera.near = 100;
+                    testLight4.shadow.camera.far = 1000;
+
+                    scene.add(testLight4);
+                    var sphereSize = 40;
+                    var pointLightHelper = new THREE.PointLightHelper( testLight4, sphereSize );
+                    //scene.add( pointLightHelper );
+
+
+
+                    //////////////// right light 1
+
+                    testLight5 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
+                    testLight5.position.set(127,522,-297);
+                    //testLight5.castShadow = true;
+                    testLight5.shadow.camera.near = 100;
+                    testLight5.shadow.camera.far = 1000;
+
+                    scene.add(testLight5);
+                    var sphereSize = 40;
+                    var pointLightHelper = new THREE.PointLightHelper( testLight5, sphereSize );
+
+
+                    ////////////////// bar light
+
+                    testLight2 = new THREE.PointLight(lightColour,3, lightDecay);//750
+                    testLight2.position.set(-747,531,-211);
+                    testLight2.shadow.camera.near = 100;
+                    testLight2.shadow.camera.far = 1000;
+
+                    scene.add(testLight2);
+                    var sphereSize = 300;
+                    var pointLightHelper = new THREE.PointLightHelper( testLight2, sphereSize );
+
+
+
+
+                    //////////////// stage light 1
+
+                    testLight6 = new THREE.PointLight("rgb(26%, 26%, 225%)", StageLightIntensity, StageLightDecay);//750
+                    testLight6.position.set(-116,737,202);
+
+                    scene.add(testLight6);
+
+
+
+                    //////////////// stage light 2
+
+                    testLight7 = new THREE.PointLight("rgb(26%, 26%, 225%)", StageLightIntensity, StageLightDecay);//750
+                    testLight7.position.set(-378,737,138);
+
+                    scene.add(testLight7);
+
+
+
+                    //////////////// stage light 3
+
+                    testLight8 = new THREE.PointLight("rgb(26%, 26%, 225%)", StageLightIntensity, StageLightDecay);//750
+                    testLight8.position.set(-227,737,367);
+
+                    scene.add(testLight8);
+
+
+
+                    ////////////////// stage spot 1
+
+                    stageSpot = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
+                    stageSpot.intensity = 0;
+                    stageSpot.angle = 0.5;
+                    stageSpot.penumbra = 1;
+                    stageSpot.distance = 1;
+                    stageSpot.decay = 1;
+                    stageSpot.position.set(-86,529,10);
+                    stageSpot.target.position.set(-704, 300, 682)//-704, 300, 682);
+                    //spotlight.target.position.set(200,-130,400);
+                    scene.add(stageSpot);
+                    scene.add(stageSpot.target);
+                    //lightHelper = new THREE.SpotLightHelper( stageSpot );
+                    //scene.add( lightHelper );
+
+                    ////////////////// stage spot 2
+
+                    stageSpot1 = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
+                    stageSpot1.intensity = 0;
+                    stageSpot1.angle = 0.5;
+                    stageSpot1.penumbra = 1;
+                    stageSpot1.distance = 1;
+                    stageSpot1.decay = 1;
+                    stageSpot1.position.set(-452,527,-1);
+                    stageSpot1.target.position.set(130, 300, 748);
+                    //spotlight.target.position.set(200,-130,400);
+                    scene.add(stageSpot1);
+                    scene.add(stageSpot1.target);
+                    //lightHelper = new THREE.SpotLightHelper( stageSpot );
+                    //scene.add( lightHelper );
+
+
+                    ////////////////// stage spot 3
+
+                    stageSpot2 = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
+                    stageSpot2.intensity = 0;
+                    stageSpot2.angle = 0.5;
+                    stageSpot2.penumbra = 1;
+                    stageSpot2.distance = 1;
+                    stageSpot2.decay = 1;
+                    stageSpot2.position.set(-326,527,501);
+                    stageSpot2.target.position.set(148, 300, -286);
+                    //spotlight.target.position.set(200,-130,400);
+                    scene.add(stageSpot2);
+                    scene.add(stageSpot2.target);
+                    //lightHelper = new THREE.SpotLightHelper( stageSpot );
+                    //scene.add( lightHelper );
+
+                    
+                    ////////////////// stage spot 4
+
+                    stageSpot3 = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
+                    //stageSpot3.intensity = 0;
+                    stageSpot3.angle = 0.5;
+                    stageSpot3.penumbra = 1;
+                    stageSpot3.distance = 1;
+                    stageSpot3.decay = 1;
+                    stageSpot3.position.set(-49,528,388);
+                    stageSpot3.target.position.set(-766, 300, -409);
+                    //spotlight.target.position.set(200,-130,400);
+                    scene.add(stageSpot3);
+                    scene.add(stageSpot3.target);
+                    //lightHelper = new THREE.SpotLightHelper( stageSpot );
+                    //scene.add( lightHelper );
+                    
+                    var spotLight = new THREE.SpotLight(0x3333ff);
+                    spotLight.intensity = 1;
+                    spotLight.angle = 0.3;
+                    spotLight.penumbra = 0.5;
+                    spotLight.distance = 1;
+                    spotLight.decay = 0;
+                    spotLight.position.set(0,700,0);
+                    spotLight.target.position.set(-900, 0, 900);
+                    //spotlight.target.position.set(200,-130,400);
+                    //scene.add(spotLight);
+                    scene.add(spotLight.target);
+                    lightHelper = new THREE.SpotLightHelper( spotLight );
+                    //scene.add( lightHelper );
+
+
+                }
 
 
                 
 
                 
 
-                hlight = new THREE.AmbientLight (0xffffff,2);
-                scene.add(hlight);
-
-
-                var light1 = new THREE.PointLight(0xeb8334, 2);
-                light1.position.set(0,10000,30);
-                //scene.add(light1);
-
-                var light2 = new THREE.PointLight(0xffffff, 1);
-                light2.position.set(0,1000,500);
-                //scene.add(light2);
-
-                var light3 = new THREE.PointLight(0x66ffcc,2,  0,  1);
-                light3.position.set(0,380,300);
-                //scene.add(light3);
-
-                var light3Helper = new THREE.PointLightHelper( light3, 9 );
-                //scene.add( light3Helper );
-
-
-                //////////////  CLUB LIGHTS
-
-                var lightColour = 0xD98400; //D98400
-                var lightDistance = 10//10; //3
-                var lightDecay = 700; //280
-                var StageLightColour = 0x3333ff;
-                var StageLightIntensity = 5; //0 /////////////////////////////  LONG VIDEO /////9
-                var StageLightDecay = 450; //350
-                var spotLightintensity = 2;
-                var spotLightangle = 0.3;
-                var spotLightpenumbra = 0.5;
-                var spotLightdistance = 0;
-                var spotLightdecay = 0;
-
-                
-
-
-                //////////////// left light 1
-
-                testLight = new THREE.PointLight(lightColour, lightDistance, lightDecay);//1, 750
-                testLight.position.set(351,602,471);
-                //testLight.castShadow = true;
-                testLight.shadow.camera.near = 100;
-                testLight.shadow.camera.far = 1000;
-
-                scene.add(testLight);
-                var sphereSize = 9;
-                var pointLightHelper = new THREE.PointLightHelper( testLight, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-
-                //////////////// left light 2
-
-                testLight1 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
-                testLight1.position.set(9,626,834);
-                //testLight1.castShadow = true;
-                testLight1.shadow.camera.near = 100;
-                testLight1.shadow.camera.far = 1000;
-
-                scene.add(testLight1);
-
-
-
-                //////////////// left light 3
-
-                testLight3 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
-                testLight3.position.set(-414,618,884);
-                //testLight3.castShadow = true;
-                testLight3.shadow.camera.near = 100;
-                testLight3.shadow.camera.far = 1000;
-
-                scene.add(testLight3);
-                var sphereSize = 40;
-                var pointLightHelper = new THREE.PointLightHelper( testLight3, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-
-                //////////////// left light 4
-
-                testLight4 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
-                testLight4.position.set(-821,625,601);
-                //testLight4.castShadow = true;
-                testLight4.shadow.camera.near = 100;
-                testLight4.shadow.camera.far = 1000;
-
-                scene.add(testLight4);
-                var sphereSize = 40;
-                var pointLightHelper = new THREE.PointLightHelper( testLight4, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-
-                //////////////// right light 1
-
-                testLight5 = new THREE.PointLight(lightColour, lightDistance, lightDecay);//750
-                testLight5.position.set(127,522,-297);
-                //testLight5.castShadow = true;
-                testLight5.shadow.camera.near = 100;
-                testLight5.shadow.camera.far = 1000;
-
-                scene.add(testLight5);
-                var sphereSize = 40;
-                var pointLightHelper = new THREE.PointLightHelper( testLight5, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-                ////////////////// bar light
-
-                testLight2 = new THREE.PointLight(lightColour,3, lightDecay);//750
-                testLight2.position.set(-747,531,-211);
-                //testLight5.castShadow = true;
-                testLight2.shadow.camera.near = 100;
-                testLight2.shadow.camera.far = 1000;
-
-                scene.add(testLight2);
-                var sphereSize = 300;
-                var pointLightHelper = new THREE.PointLightHelper( testLight2, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-
-
-                //////////////// stage light 1
-
-                testLight6 = new THREE.PointLight("rgb(26%, 26%, 225%)", StageLightIntensity, StageLightDecay);//750
-                testLight6.position.set(-116,737,202);
-                //testLight6.castShadow = true;
-                //testLight6.shadow.camera.near = 100;
-                //testLight6.shadow.camera.far = 1000;
-
-                scene.add(testLight6);
-                //var sphereSize = 40;
-                //var pointLightHelper = new THREE.PointLightHelper( testLight6, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-
-                //////////////// stage light 2
-
-                testLight7 = new THREE.PointLight("rgb(26%, 26%, 225%)", StageLightIntensity, StageLightDecay);//750
-                testLight7.position.set(-378,737,138);
-                //testLight6.castShadow = true;
-                //testLight7.shadow.camera.near = 100;
-                //testLight7.shadow.camera.far = 1000;
-
-                scene.add(testLight7);
-                //var sphereSize = 40;
-                //var pointLightHelper = new THREE.PointLightHelper( testLight7, sphereSize );
-                //scene.add( pointLightHelper );
-
-
-
-                //////////////// stage light 3
-
-                testLight8 = new THREE.PointLight("rgb(26%, 26%, 225%)", StageLightIntensity, StageLightDecay);//750
-                testLight8.position.set(-227,737,367);
-                //testLight6.castShadow = true;
-                //testLight8.shadow.camera.near = 100;
-                //testLight8.shadow.camera.far = 1000;
-
-                scene.add(testLight8);
-
-
-
-                ////////////////// stage spot 1
-
-                stageSpot = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
-                stageSpot.intensity = 0;
-                stageSpot.angle = 0.5;
-                stageSpot.penumbra = 1;
-                stageSpot.distance = 1;
-                stageSpot.decay = 1;
-                stageSpot.position.set(-86,529,10);
-                stageSpot.target.position.set(-704, 300, 682)//-704, 300, 682);
-                //spotlight.target.position.set(200,-130,400);
-                scene.add(stageSpot);
-                scene.add(stageSpot.target);
-                //lightHelper = new THREE.SpotLightHelper( stageSpot );
-                //scene.add( lightHelper );
-
-                ////////////////// stage spot 2
-
-                stageSpot1 = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
-                stageSpot1.intensity = 0;
-                stageSpot1.angle = 0.5;
-                stageSpot1.penumbra = 1;
-                stageSpot1.distance = 1;
-                stageSpot1.decay = 1;
-                stageSpot1.position.set(-452,527,-1);
-                stageSpot1.target.position.set(130, 300, 748);
-                //spotlight.target.position.set(200,-130,400);
-                scene.add(stageSpot1);
-                scene.add(stageSpot1.target);
-                //lightHelper = new THREE.SpotLightHelper( stageSpot );
-                //scene.add( lightHelper );
-
-
-                ////////////////// stage spot 3
-
-                stageSpot2 = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
-                stageSpot2.intensity = 0;
-                stageSpot2.angle = 0.5;
-                stageSpot2.penumbra = 1;
-                stageSpot2.distance = 1;
-                stageSpot2.decay = 1;
-                stageSpot2.position.set(-326,527,501);
-                stageSpot2.target.position.set(148, 300, -286);
-                //spotlight.target.position.set(200,-130,400);
-                scene.add(stageSpot2);
-                scene.add(stageSpot2.target);
-                //lightHelper = new THREE.SpotLightHelper( stageSpot );
-                //scene.add( lightHelper );
-
-                
-                ////////////////// stage spot 4
-
-                stageSpot3 = new THREE.SpotLight("rgb(255%, 255%, 255%)",0);
-                //stageSpot3.intensity = 0;
-                stageSpot3.angle = 0.5;
-                stageSpot3.penumbra = 1;
-                stageSpot3.distance = 1;
-                stageSpot3.decay = 1;
-                stageSpot3.position.set(-49,528,388);
-                stageSpot3.target.position.set(-766, 300, -409);
-                //spotlight.target.position.set(200,-130,400);
-                scene.add(stageSpot3);
-                scene.add(stageSpot3.target);
-                //lightHelper = new THREE.SpotLightHelper( stageSpot );
-                //scene.add( lightHelper );
-                
-                var spotLight = new THREE.SpotLight(0x3333ff);
-                spotLight.intensity = 1;
-                spotLight.angle = 0.3;
-                spotLight.penumbra = 0.5;
-                spotLight.distance = 1;
-                spotLight.decay = 0;
-                spotLight.position.set(0,700,0);
-                spotLight.target.position.set(-900, 0, 900);
-                //spotlight.target.position.set(200,-130,400);
-                //scene.add(spotLight);
-                scene.add(spotLight.target);
-                lightHelper = new THREE.SpotLightHelper( spotLight );
-                //scene.add( lightHelper );
 
 
 
@@ -1038,6 +1013,7 @@
                 ///////////////////  TEXTURES
 
                 
+                loader = new THREE.OBJLoader(loadingManager);
 
 
                 mtlLoader = new THREE.MTLLoader();
@@ -1096,7 +1072,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newfloorsmall.obj', function ( floormesh ) {
                                 
 
@@ -1123,7 +1098,6 @@
                     //normalMap: curtainnormaltex,
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newwalls1.obj', function ( wallscentremesh ) {
                                 
 
@@ -1151,7 +1125,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newcenter.obj', function ( centremesh ) {
                                 
 
@@ -1180,7 +1153,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newstoolstables1.obj', function ( stoolstablesmesh ) {
                                 
 
@@ -1212,7 +1184,6 @@
 
 
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newchairtops.obj', function ( chairtopmesh ) {
                                 
 
@@ -1241,7 +1212,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newbar1.obj', function ( barmesh ) {
                                 
 
@@ -1265,7 +1235,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newmetal1small.obj', function ( metalmesh ) {
                                 
 
@@ -1289,7 +1258,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newspeakers.obj', function ( speakersmesh ) {
                                 
 
@@ -1315,7 +1283,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newtvlightmetal4.obj', function ( tvlightsmesh ) {
                                 
 
@@ -1343,7 +1310,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newlighttops1.obj', function ( lighttopsmesh ) {
                                 
 
@@ -1372,7 +1338,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newtvscreens.obj', function ( tvscreensmesh ) {
                                 
 
@@ -1396,7 +1361,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newcablessmall.obj', function ( cablesmesh ) {
                                 
 
@@ -1423,7 +1387,6 @@
 
                 });
 
-                loader = new THREE.OBJLoader();
                 loader.load( 'assets/clubassets/newstagesurface.obj', function ( stagesurfacemesh ) {
                                 
 
@@ -1446,27 +1409,7 @@
                 //////////////// DESERT
 
 
-
-                /*
-                mtlLoader = new THREE.MTLLoader()
-                .setPath( 'assets/desertassets/' )
-                .load( 'domeLo2.mtl', function ( materials ) {
-
-                    materials.preload();
-
-                    objLoader = new THREE.OBJLoader()
-                    
-                        objLoader.setMaterials( materials )
-                        objLoader.setPath( 'assets/desertassets/' )
-                        objLoader.load( 'domeLo2.obj', function ( dome ) {
-
-                            dome.position.y = 200;
-                            scene.add( dome );
-
-                        } );
-
-                } );
-                */
+                
 
                 mtlLoader = new THREE.MTLLoader()
                 .setPath( 'assets/newdesertassets/' )
@@ -1474,7 +1417,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1492,7 +1435,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1513,7 +1456,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1531,7 +1474,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1549,7 +1492,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1567,7 +1510,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1585,7 +1528,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1614,7 +1557,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1632,7 +1575,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1650,7 +1593,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1668,7 +1611,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1686,7 +1629,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1704,7 +1647,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1722,7 +1665,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1740,7 +1683,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1758,7 +1701,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1776,7 +1719,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1794,7 +1737,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1812,7 +1755,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1830,7 +1773,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/' )
@@ -1861,7 +1804,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/orbits/' )
@@ -1879,7 +1822,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/orbits/' )
@@ -1897,7 +1840,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/orbits/' )
@@ -1915,7 +1858,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdesertassets/orbits/' )
@@ -2144,7 +2087,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdinoassets/' )
@@ -2163,7 +2106,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdinoassets/' )
@@ -2182,7 +2125,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdinoassets/' )
@@ -2201,7 +2144,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdinoassets/' )
@@ -2220,7 +2163,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdinoassets/' )
@@ -2239,7 +2182,7 @@
 
                     materials.preload();
 
-                    objLoader = new THREE.OBJLoader()
+                    objLoader = new THREE.OBJLoader(loadingManager)
                     
                         objLoader.setMaterials( materials )
                         objLoader.setPath( 'assets/newdinoassets/' )
