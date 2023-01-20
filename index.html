@@ -30,7 +30,6 @@
             <img id="aboutbutton" src="assets/symbol3.png" height="80" width="80" onClick="navigateToPage(3)">
             <img id="titlegif" src="assets/chromegif.png" height="100" width="100">
 
-            
         </div>
 
 
@@ -89,9 +88,9 @@
 
                     case (1) :
 
-                        displayMusic();
-                        calcAlbumSize();
-                        albumHover();
+                        //displayMusic();
+                        //calcAlbumSize();
+                        //albumHover();
                         window.addEventListener('resize', calcAlbumSize, true);
 
                         document.getElementById("contenttablemiddle").style.left = '-4%';
@@ -113,7 +112,7 @@
                     case (2) :
 
 
-                        displayVisualPosts();
+                        //displayVisualPosts();
 
 
                         window.removeEventListener('resize', calcAlbumSize, true);
@@ -242,9 +241,13 @@
 
                         document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'"></div>';
 
-                        document.getElementById('vpcontdiv'+i).style.width = '100%';
+                        document.getElementById('vpcontdiv'+i).style.width = '80%';
+                        //document.getElementById('vpcontdiv'+i).style.maxWidth = '500px';
+
                         document.getElementById('vpcontdiv'+i).style.paddingTop = '56.25%';
                         document.getElementById('vpcontdiv'+i).style.position = 'relative';
+                        document.getElementById('vpcontdiv'+i).style.margin = '0 auto';
+
 
                         document.getElementById('vpcontdiv'+i).innerHTML += '<iframe  src="' + visualPostList.visualPosts[i].content +'"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
 
@@ -254,8 +257,12 @@
 
 
                         document.getElementById('vpcontdiv'+i).style.width = '100%';
+                        //document.getElementById('vpcontdiv'+i).style.maxWidth = '500px';
+
                         document.getElementById('vpcontdiv'+i).style.paddingTop = '100%';
                         document.getElementById('vpcontdiv'+i).style.position = 'relative';
+                        document.getElementById('vpcontdiv'+i).style.margin = '0 auto';
+
 
                         document.getElementById('vpcontdiv'+i).style.float = 'left';
 
@@ -640,33 +647,6 @@
 
                     camera.updateProjectionMatrix();
 
-            }
-
-            function isCameraActiveX () {
-                cameraActive.x = false;
-
-                if (cameraActive.x == false && cameraActive.y == false && cameraActive.z == false) {
-                    cameraMoving = false;
-                    console.log("camera moving is", cameraMoving);
-                }
-            }
-
-            function isCameraActiveY () {
-                cameraActive.y = false;
-
-                if (cameraActive.x == false && cameraActive.y == false && cameraActive.z == false) {
-                    cameraMoving = false;
-                    console.log("camera moving is", cameraMoving);
-                }
-            }
-
-            function isCameraActiveZ () {
-                cameraActive.z = false;
-
-                if (cameraActive.x == false && cameraActive.y == false && cameraActive.z == false) {
-                    cameraMoving = false;
-                    console.log("camera moving is", cameraMoving);
-                }
             }
             
 
@@ -1462,6 +1442,8 @@
                 //////////////// DESERT
 
 
+
+                /*
                 mtlLoader = new THREE.MTLLoader()
                 .setPath( 'assets/desertassets/' )
                 .load( 'domeLo2.mtl', function ( materials ) {
@@ -1480,6 +1462,504 @@
                         } );
 
                 } );
+                */
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'domenew1_1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'domenew1_1.obj', function ( domenew1_1 ) {
+
+                            domenew1_1.position.y = 200;
+                            scene.add( domenew1_1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'domenew1_2.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'domenew1_2.obj', function ( domenew1_2 ) {
+
+                            domenew1_2.position.y = 200;
+                            scene.add( domenew1_2 );
+
+                        } );
+
+                } );
+
+
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'ladder1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'ladder1.obj', function ( ladder1 ) {
+
+                            ladder1.position.y = 200;
+                            scene.add( ladder1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'wall1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'wall1.obj', function ( wall1 ) {
+
+                            wall1.position.y = 200;
+                            scene.add( wall1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'wallextra1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'wallextra1.obj', function ( wallextra1 ) {
+
+                            wallextra1.position.y = 200;
+                            scene.add( wallextra1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'rocks.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'rocks2.obj', function ( rocks ) {
+
+                            rocks.position.y = 200;
+                            scene.add( rocks );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'door1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'door1.obj', function ( door1 ) {
+
+                            door1.position.y = 200;
+                            scene.add( door1 );
+
+                        } );
+
+                } );
+
+
+
+
+
+
+
+
+
+
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_0.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_0.obj', function ( LL_0 ) {
+
+                            LL_0.position.y = 200;
+                            scene.add( LL_0 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_1.obj', function ( LL_1 ) {
+
+                            LL_1.position.y = 200;
+                            scene.add( LL_1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_2.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_2.obj', function ( LL_2 ) {
+
+                            LL_2.position.y = 200;
+                            scene.add( LL_2 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_3.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_3.obj', function ( LL_3 ) {
+
+                            LL_3.position.y = 200;
+                            scene.add( LL_3 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_4.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_4.obj', function ( LL_4 ) {
+
+                            LL_4.position.y = 200;
+                            scene.add( LL_4 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_5.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_5.obj', function ( LL_5 ) {
+
+                            LL_5.position.y = 200;
+                            scene.add( LL_5 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'LL_6.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'LL_6.obj', function ( LL_6 ) {
+
+                            LL_6.position.y = 200;
+                            scene.add( LL_6 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'RL_0.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'RL_0.obj', function ( RL_0 ) {
+
+                            RL_0.position.y = 200;
+                            scene.add( RL_0 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'RL_1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'RL_1.obj', function ( RL_1 ) {
+
+                            RL_1.position.y = 200;
+                            scene.add( RL_1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'RL_2.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'RL_2.obj', function ( RL_2 ) {
+
+                            RL_2.position.y = 200;
+                            scene.add( RL_2 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'ML_0.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'ML_0.obj', function ( ML_0 ) {
+
+                            ML_0.position.y = 200;
+                            scene.add( ML_0 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'ML_1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'ML_1.obj', function ( ML_1 ) {
+
+                            ML_1.position.y = 200;
+                            scene.add( ML_1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'ML_2.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'ML_2.obj', function ( ML_2 ) {
+
+                            ML_2.position.y = 200;
+                            scene.add( ML_2 );
+
+                        } );
+
+                } );
+
+                /*
+
+
+
+
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'orbit1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'orbit1.obj', function ( orbit1 ) {
+
+                            orbit1.position.y = 200;
+                            scene.add( orbit1 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'orbit1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'orbit2.obj', function ( orbit2 ) {
+
+                            orbit2.position.y = 200;
+                            scene.add( orbit2 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'orbit1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'orbit3.obj', function ( orbit3 ) {
+
+                            orbit3.position.y = 200;
+                            scene.add( orbit3 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'orbit1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'orbit4.obj', function ( orbit4 ) {
+
+                            orbit4.position.y = 200;
+                            scene.add( orbit4 );
+
+                        } );
+
+                } );
+                mtlLoader = new THREE.MTLLoader()
+                .setPath( 'assets/newdesertassets/' )
+                .load( 'orbit1.mtl', function ( materials ) {
+
+                    materials.preload();
+
+                    objLoader = new THREE.OBJLoader()
+                    
+                        objLoader.setMaterials( materials )
+                        objLoader.setPath( 'assets/newdesertassets/' )
+                        objLoader.load( 'orbit5.obj', function ( orbit5 ) {
+
+                            orbit5.position.y = 200;
+                            scene.add( orbit5 );
+
+                        } );
+
+                } );
+
+                */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /*
 
                 mtlLoader = new THREE.MTLLoader()
                 .setPath( 'assets/desertassets/' )
@@ -1537,6 +2017,9 @@
                         } );
 
                 } );
+
+
+                */
 
 
                 ///////////////////  ORBITS
