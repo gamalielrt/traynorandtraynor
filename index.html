@@ -32,6 +32,8 @@
 
         </div>
 
+        <div id="loadingbox">Loading</div>
+
 
 
        <!-- <div id="menubutton" onClick="activateMenu()">
@@ -48,11 +50,6 @@
         <div id="contentcanvas">
             <div id = contenttablemiddle >
                 <div id = "pagecontent" >
-
-                    <!--<div id="iframediv">
-                        <iframe  src="https://www.youtube.com/embed/4_QK8IxhZRg"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-
-                    </div>-->
                 </div>
             </div> 
         </div>
@@ -659,6 +656,12 @@
                     camera.updateProjectionMatrix();
 
             }
+
+            function removeEntity(object) {
+                var selectedObject = scene.getObjectByName(object);
+                scene.remove( selectedObject );
+                animate();
+            }
             
 
 
@@ -670,15 +673,18 @@
 
                 scene = new THREE.Scene();
 
-                //scene.background = new THREE.Color(0xeb8334);
 
                 
                 bgcolour = new THREE.Color(0.90, 0.48, 0.19);
-
-                // blue // 97 112 185  // 0.38 0.44 0.73 // 0x6170B9
-                // orange //           // 0.90 0.48 0.19 //
+                black = new THREE.Color(0,0,0);
 
                 scene.background = bgcolour;
+
+
+                // blue // 97 112 185  // 0.38 0.44 0.73 // 0x6170B9
+                // orange // 230, 122, 48  // 0.90 0.48 0.19 //
+                // green // 0x0D4900
+
 
 
 
@@ -733,6 +739,7 @@
 
                 loadingManager.onStart = function(url, item, total) {
                     console.log('Started Loading');
+                    document.getElementById("loadingbox").style.display = "block";
                 }
                 loadingManager.onProgress = function(item, loaded, total) {
                     console.log(item,loaded,total);
@@ -741,6 +748,23 @@
                     console.log("Loading Complete");
                     resourcesLoaded = true;
                     addLights ();
+                    document.getElementById("loadingbox").style.display = "none";
+                    //removeEntity("desertwire");
+                    //scene.background = bgcolour;
+                    //scene.fog.color = bgcolour;
+
+                    //gsap.to(scene.background, {r:0.90, duration:3});
+                    //gsap.to(scene.background, {g:0.48, duration:3});
+                    //gsap.to(scene.background, {b:0.19, duration:3});
+
+                    //gsap.to(scene.fog.color, {r:0.90, duration:3});
+                    //gsap.to(scene.fog.color, {g:0.48, duration:3});
+                    //gsap.to(scene.fog.color, {b:0.19, duration:3});
+
+
+
+
+
                 }
 
                 
@@ -1059,6 +1083,34 @@
                 floortex.wrapS = THREE.RepeatWrapping;
                 floortex.wrapT = THREE.RepeatWrapping;
                 floortex.repeat.set(5,5);
+
+                ////////////////  WIREFRAME
+
+                
+
+                    var wiremtl = new THREE.MeshBasicMaterial({
+
+                    color: 0x2EFF00,
+
+                    wireframe: true
+
+                });
+
+                loader.load( 'assets/wireframeassets/desertwire.obj', function ( desertwire ) {
+                                
+
+                    desertwire.traverse( function ( node ) {
+
+                        if ( node.isMesh ) node.material = wiremtl;             
+                    } );
+
+                    desertwire.position.y = 300;
+                    desertwire.name = "desertwire";
+                    //scene.add( desertwire );
+                });
+
+
+
 
 
 

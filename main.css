@@ -13,6 +13,16 @@ body {
 
 }
 
+#loadingbox {
+
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+    display: none;
+}
+
 #contentcanvas {
 
     margin: auto;
