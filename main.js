@@ -162,6 +162,8 @@ function init() {
 
     
     bgcolour = new THREE.Color(0.90, 0.48, 0.19);
+    //bgcolour = new THREE.Color(0.69, 0.15, 0.15);
+
     black = new THREE.Color(0,0,0);
 
     scene.background = bgcolour;
@@ -170,6 +172,7 @@ function init() {
     // blue // 97 112 185  // 0.38 0.44 0.73 // 0x6170B9
     // orange // 230, 122, 48  // 0.90 0.48 0.19 //
     // green // 0x0D4900
+    // pink // 0.69 0.15 0.15
 
 
 

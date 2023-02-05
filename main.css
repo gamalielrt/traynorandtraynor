@@ -6,7 +6,7 @@ body {
     line-height: 1;
     font-size: 10px;
     overflow: hidden;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(230, 122, 48);
 
 
 
@@ -92,13 +92,15 @@ body {
 
 
 #buttons {
-    z-index: 3;
+    z-index: 5;
     position: absolute;
     text-align: justify;
     display: flex;
-    width: 100%;
+    width: 98%;
     align-items: center;
     justify-content: space-between;
+    right: 0;
+    margin: auto;
 }
 
 .musicbutton, .visualbutton, .aboutbutton, .titlegif {
@@ -120,6 +122,73 @@ body {
 
 
 }
+
+
+
+
+
+/*  VISUAL POSTS */
+
+/*
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-color: blue;
+
+}
+*/
+
+
+
+
+
+
+
+#visualcontent{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    transition: 0.5s;
+    will-change: transform;
+    z-index: 3;
+
+    /*background-color: blue;*/
+
+}
+
+section {
+    position: relative;
+    height: var(--app-height);
+    /*background-color: red;*/
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 4;
+
+}
+
+.vpost {
+    position:absolute;
+    left: 20%;
+    top:20%;
+    width: 60%;
+    height: 60%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1);
+    transition: .5s;
+    filter: grayscale(50%);
+    /*background-color: red;*/
+    cursor: pointer;
+    opacity: 80%;
+}
+
+
 
 
 
