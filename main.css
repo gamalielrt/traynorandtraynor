@@ -154,6 +154,10 @@ main {
     left:0;
     width:100%;
     transition: 0.5s;
+
+    transition-timing-function: ease-in;
+    transition-timing-function: ease-out;
+
     will-change: transform;
     z-index: 3;
 
