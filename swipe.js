@@ -14,7 +14,7 @@ let current = 0;
 //store current slide number
 let slide = 0;
 
-//set app height to be window.innerheight as vh doesnt work the same on moblie
+//set app height to be window.innerheight as vh doesnt work the same on mobile
 const doc = document.documentElement;
 const appHeight = () => {
     doc.style.setProperty('--app-height', `${window.innerHeight}px`);
@@ -28,7 +28,7 @@ window.addEventListener('touchstart', startTouch, {passive: false});
 window.addEventListener('touchend', endTouch, {passive: false});
 window.addEventListener('touchmove', moveTouch, {passive: false});
 
-window.addEventListener('m//ousedown', startMouseDown);
+window.addEventListener('mousedown', startMouseDown);
 window.addEventListener('mouseup', startMouseUp);
 window.addEventListener('wheel', wheelFunc, {passive: false});
 
