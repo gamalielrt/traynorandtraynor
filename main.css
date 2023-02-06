@@ -165,7 +165,7 @@ section {
     position: relative;
     height: var(--app-height);
     /*background-color: red;*/
-    height: 100vh;
+    /*height: 100vh;*/
     width: 100%;
     overflow: hidden;
     z-index: 4;
