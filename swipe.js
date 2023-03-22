@@ -14,6 +14,9 @@ let current = 0;
 //store current slide number
 let slide = 0;
 
+//Spacing
+let itemSpacing = (window.innerHeight*0.6)
+
 //set app height to be window.innerheight as vh doesnt work the same on mobile
 const doc = document.documentElement;
 const appHeight = () => {
@@ -40,9 +43,9 @@ function wheelFunc (e) {
     //console.log(e.deltaY);
     if (canSwipe) {
         //swipeup
-        if (e.deltaY > 60 && current !== -(window.innerHeight * 5)) {
+        if (e.deltaY > 60 && current !== -(itemSpacing * 5)) {
             canSwipe = false;
-            current -= window.innerHeight;
+            current -= itemSpacing;
             slide++;
             
             //console.log('swipe', current, window.innerHeight);
@@ -59,7 +62,7 @@ function wheelFunc (e) {
         //swipe down
         if (e.deltaY < -60 && current !== 0) {
             canSwipe = false;
-            current += window.innerHeight;
+            current += itemSpacing;
             slide--;
 
             visualContent.style.transform = `translateY(${current}px)`;
@@ -115,13 +118,13 @@ function swipe() {
     console.log("swipe",endY, initialY);
     //drag/swipe up
     if (endY - initialY < -50) {
-        if (current !== -(window.innerHeight * 5)) {
-            current -= window.innerHeight;
+        if (current !== -(itemSpacing * 5)) {
+            current -= itemSpacing;
             slide++;
         }
     } else if (endY - initialY >50) {
         if (current !==0) {
-            current += window.innerHeight;
+            current += itemSpacing;
             slide--;
         }
     }

@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="main.css">
         <title>Traynor & Traynor V1</title>
     </head>
@@ -17,6 +21,8 @@
         <script src="js/OrbitControls.js"></script>
         <script src="js/postprocessing.js"></script>
         <script src="js/TweenMax.min.js"></script>
+
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 
@@ -255,6 +261,11 @@
             visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Fat Dog Press Shot - CGI', 'image');
             visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Fat Dog Press Shot - CGI', 'image');
             visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('4', '16/11/22', 'fatdogposter.png', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Fat Dog Press Shot - CGI', 'image');
+
 
 
             //visualPostList.newVisualPost('3', '16/11/22', 'https://www.youtube.com/embed/pwZFlYmLuRw', 'Waterbaby - Thin Air Visualiser', 'video');
@@ -278,78 +289,6 @@
 
 
                 }
-
-
-
-                /*
-                document.getElementById("pagecontent").innerHTML = '';
-
-                document.getElementById("pagecontent").innerHTML += '<br>';
-                document.getElementById("pagecontent").innerHTML += '<br>';
-                document.getElementById("pagecontent").innerHTML += '<br>';
-
-
-                for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
-
-                    if (visualPostList.visualPosts[i].type == 'video') {
-
-                        document.getElementById("pagecontent").innerHTML += '<div id = "vpcontdiv'+ i +'"></div>';
-
-                        document.getElementById('vpcontdiv'+i).style.width = '60%';
-
-                        document.getElementById('vpcontdiv'+i).style.paddingTop = '56.25%';
-                        document.getElementById('vpcontdiv'+i).style.position = 'relative';
-                        document.getElementById('vpcontdiv'+i).style.margin = '0 auto';
-
-
-                        document.getElementById('vpcontdiv'+i).innerHTML += '<iframe  src="' + visualPostList.visualPosts[i].content +'"  frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>';
-
-                    } else if (visualPostList.visualPosts[i].type == 'image') {
-
-                        document.getElementById("pagecontent").innerHTML += '<div class = vpost id = "vpcontdiv'+ i +'"></div>';
-
-
-                        document.getElementById('vpcontdiv'+i).style.width = '50%';
-
-                        document.getElementById('vpcontdiv'+i).style.paddingTop = '100%';
-                        document.getElementById('vpcontdiv'+i).style.position = 'relative';
-                        document.getElementById('vpcontdiv'+i).style.margin = '0 auto';
-                        
-
-
-                        //document.getElementById('vpcontdiv'+i).style.float = 'left';
-
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-
-                        document.getElementById('vpcontdiv'+i).innerHTML = '<img src="assets/visualImages/' + visualPostList.visualPosts[i].content + '"style="position:absolute;top:0;left:0;width:100%;">';
-                        
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-
-
-
-                    }
-
-                    document.getElementById("pagecontent").innerHTML += '<br>';
-                    document.getElementById("pagecontent").innerHTML += '<br>';
-                    document.getElementById("pagecontent").innerHTML += '<br>';
-
-                    //document.getElementById("pagecontent").innerHTML += '<div id = "vpcapdiv'+ i +'">' + visualPostList.visualPosts[i].caption +'</div>';
-
-                    document.getElementById("pagecontent").innerHTML += '<br>';
-                    document.getElementById("pagecontent").innerHTML += '<br>';
-                    document.getElementById("pagecontent").innerHTML += '<br>';
-
-
-
-
-
-                }
-
-                */
 
 
 
