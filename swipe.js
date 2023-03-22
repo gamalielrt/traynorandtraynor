@@ -21,7 +21,7 @@ let itemSpacing = (window.innerHeight*0.6)
 const doc = document.documentElement;
 const appHeight = () => {
     doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-    current = -slide * window.innerHeight;
+    current = -slide * itemSpacing;
     visualContent.style.transform = `translateY(${current}px)`;
 }
 window.addEventListener('resize',appHeight)
