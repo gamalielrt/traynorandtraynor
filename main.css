@@ -175,13 +175,13 @@ section {
     /*height: 100vh;*/
     width: 100%;
     overflow: hidden;
-    z-index: 4;
     /*will-change: transform, opacity;*/
 
 
 }
 
 .vpost {
+    z-index: 5;
     position:absolute;
     left: 20%;
     top:20%;
@@ -194,7 +194,7 @@ section {
     filter: grayscale(50%);
     /*background-color: red;*/
     cursor: pointer;
-    opacity: 80%;
+    opacity: 10%;
     will-change: transform, opacity;
 
 }

@@ -54,13 +54,8 @@
         </div>-->
 
         <div id="contentcanvas">
-            <main>
-            <div id="visualcontent"  hidden> 
-                <!--<section>
-                    <div class="vpost" style="background-image: url('./assets/visualImages/fatdogposter.png');"> HJHJLJL</div>
-                </section>    -->               
-            </div>
-        </main>
+
+            <div id="visualcontent" hidden></div>
 
 
             <div id = contenttablemiddle >
@@ -258,13 +253,15 @@
             //visualPostList.newVisualPost('0', '11/11/22', 'https://www.youtube.com/embed/4_QK8IxhZRg', 'Regressive Left - World on Fire Music Video', 'video');
             //visualPostList.newVisualPost('1', '16/11/22', 'https://www.youtube.com/embed/n27fAUG7Bok', 'Sweat - Be Complete Video', 'video');
             visualPostList.newVisualPost('4', '16/11/22', 'fatdogposter.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Be Complete - Video', 'image');
+            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Regressive Left - Video', 'image');
+            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Thin Air - Visualiser', 'image');
             visualPostList.newVisualPost('4', '16/11/22', 'fatdogposter.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Be Complete - Video', 'image');
+            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Regressive Left - Video', 'image');
+            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Thin Air - Visualiser', 'image');
+
+        
 
 
 
@@ -283,16 +280,37 @@
                 document.getElementById("pagecontent").innerHTML = '';
 
                 visualContent.style.display = 'block';
+                visualContent.innerHTML = '';
+
 
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
-                    visualContent.innerHTML += '<section><div class = vpost id = "vpcontdiv'+ i +'" style="background-image: url(./assets/visualImages/'+ visualPostList.visualPosts[i].content +');"></div></section>';
+                    
+                    visualContent.innerHTML += '<section ><div onClick = "clickVisual('+i+')" class = vpost id = "vpcontdiv'+ i +'"  style="background-image: url(./assets/visualImages/'+ visualPostList.visualPosts[i].content +');"></div></section>';
+
 
 
                 }
+                document.getElementById("vpcontdiv0").style.opacity = '80%'
+
+
 
 
 
             }
+
+            var clubLightsOn = true;
+
+            function clickVisual(value) {
+                console.log('Caption:', visualPostList.visualPosts[value].caption);
+                if (clubLightsOn) {
+                    clubLightsDown();
+                    clubLightsOn = false;
+                } else {
+                    clubLightsUp();
+                    clubLightsOn = true;
+                }
+            }
+
 
 
             ///////////     ALBUMS
@@ -378,7 +396,7 @@
 
 
                 for (let i=0; i<albumList.numberOfAlbums; i++ ) {
-                    document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "getAlbumDetails('+ i + ')" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
+                    document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "clickAlbum('+ i + ')" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
 
                     document.getElementById("aldiv" + i).style.display = 'inline-block';
                     //document.getElementById("aldiv" + i).style.border = '1px solid black';
@@ -540,7 +558,7 @@
 
             //When album clicked
 
-            function getAlbumDetails(value) {
+            function clickAlbum(value) {
                 console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
             }
 

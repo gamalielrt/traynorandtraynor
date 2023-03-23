@@ -88,6 +88,9 @@ function THREEgoToVisual () {
     gsap.to(scene.fog.color, {g:0.48, duration:3});
     gsap.to(scene.fog.color, {b:0.19, duration:3});
 
+    gsap.to(hlight, {intensity:0 , duration:10});
+
+
 
 }
 
@@ -119,17 +122,30 @@ function THREEgoToAbout () {
     gsap.to(hlight, {intensity:0.8 , duration:3});
 
 
+}
 
+function clubLightsDown () {
+    gsap.to(testLight, {intensity:0 , duration:3});
+    gsap.to(testLight1, {intensity:0 , duration:3});
+    gsap.to(testLight2, {intensity:0 , duration:3});
+    gsap.to(testLight3, {intensity:0 , duration:3});
+    gsap.to(testLight4, {intensity:0 , duration:3});
+    gsap.to(testLight5, {intensity:0 , duration:3});
 
+}
 
+function clubLightsUp () {
 
-
-
-
-
+    gsap.to(testLight, {intensity:10 , duration:3});
+    gsap.to(testLight1, {intensity:10 , duration:3});
+    gsap.to(testLight2, {intensity:10 , duration:3});
+    gsap.to(testLight3, {intensity:10 , duration:3});
+    gsap.to(testLight4, {intensity:10 , duration:3});
+    gsap.to(testLight5, {intensity:10 , duration:3});
 
 
 }
+
 
 
 
@@ -1824,4 +1840,4 @@ function animate() {
 
 
 
-//init();
+init();
