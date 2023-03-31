@@ -36,7 +36,7 @@ var orbit4Group = new THREE.Group();
 function THREEgoToMusic () {
 
     gsap.to(camTarget, {x:-1000, duration:3})
-    gsap.to(camTarget, {y:500, duration:3})
+    gsap.to(camTarget, {y:-700, duration:3})
     gsap.to(camTarget, {z:0, duration:3})
 
 
@@ -45,7 +45,7 @@ function THREEgoToMusic () {
     gsap.to(cameraMaxD, {var:17000, duration:3})
     gsap.to(cameraMinD, {var:17000, duration:3})
 
-    gsap.to(camPosition, {y:500, duration:3});
+    gsap.to(camPosition, {y:-500, duration:3});
 
     gsap.to(scene.background, {r:0.90, duration:3});
     gsap.to(scene.background, {g:0.48, duration:3});
@@ -55,7 +55,7 @@ function THREEgoToMusic () {
     gsap.to(scene.fog.color, {g:0.48, duration:3});
     gsap.to(scene.fog.color, {b:0.19, duration:3});
 
-    gsap.to(hlight, {intensity:1 , duration:3});
+    //gsap.to(hlight, {intensity:1 , duration:3});
 
 
 
@@ -88,7 +88,7 @@ function THREEgoToVisual () {
     gsap.to(scene.fog.color, {g:0.48, duration:3});
     gsap.to(scene.fog.color, {b:0.19, duration:3});
 
-    gsap.to(hlight, {intensity:0 , duration:10});
+    //gsap.to(hlight, {intensity:0 , duration:10});
 
 
 

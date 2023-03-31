@@ -22,8 +22,13 @@
         <script src="js/postprocessing.js"></script>
         <script src="js/TweenMax.min.js"></script>
 
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 
+
+    
+    
 
         <div id="buttons" >
             <img id="musicbutton" src="assets/symbol1.png" height="80" width="80" onClick="navigateToPage(1)">
@@ -33,38 +38,29 @@
 
         </div>
 
-        <div id="loadingbox">Loading...</div>
+        <div id="loadingbox">Loading</div>
 
+
+
+       <!-- <div id="menubutton" onClick="activateMenu()">
+            <img id="menuicon" src="assets/plus.png" width="20" height="20">
+        </div>
+        
+        <div id="menu" hidden>
+            <p onClick="navigateToPage(1)">Music</p>
+            <p onClick="navigateToPage(2)">Visual</p>
+            <p onClick="navigateToPage(3)">About</p>
+
+        </div>-->
 
         <div id="contentcanvas">
 
             <div id="visualcontent" hidden></div>
 
+
             <div id = contenttablemiddle >
                 <div id = "pagecontent" >
-                    <div id = "contentbrowser" hidden>
-                        <div id = "contentbrowserAlbums">
-                            <div class= "albumcover" id = "aldiv1"><img class= "albumcoverImg" id="al1" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/FatWhiteFamily-SerfsUp!.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv2"><img class= "albumcoverImg" id="al2" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/DanLyons-Subsuburbia.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv3"><img class= "albumcoverImg" id="al3" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/JessicaWinter&S-Type-Psycho.png"> </div>
-                            <div class= "albumcover" id = "aldiv4"><img class= "albumcoverImg" id="al4" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/JazminBean-AcousticChurchSession.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv5"><img class= "albumcoverImg" id="al5" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/KaeTempest-TheLineIsACurve.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv6"><img class= "albumcoverImg" id="al6" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/KatieJPearson-Return.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv7"><img class= "albumcoverImg" id="al7" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Phobophobes-MiniatureWorld.png"> </div>
-                            <div class= "albumcover" id = "aldiv8"><img class= "albumcoverImg" id="al8" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Texas-Hi.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv9"><img class= "albumcoverImg" id="al9" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Tiña-PositiveMentalHealthMusic.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv10"><img class= "albumcoverImg" id="al10" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Pregoblin-Combustion.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv11"><img class= "albumcoverImg" id="al11" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/JessicaWinter-MoreSadMusic.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv12"><img class= "albumcoverImg" id="al12" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Sweat-SentimentalSunset.jpeg"> </div>
-                            <div class= "albumcover" id = "aldiv13"><img class= "albumcoverImg" id="al13" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/LunchMoneyLife-UnderTheMercies.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv14"><img class= "albumcoverImg" id="al14" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/MTHadley-ThereIsn'tAWindowIWon'tLookOutOf.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv15"><img class= "albumcoverImg" id="al15" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Kelora-Gloomerald.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv16"><img class= "albumcoverImg" id="al16" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/HoneyHahs-BlueSky.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv17"><img class= "albumcoverImg" id="aldiv17" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/BrianDestiny-Brian'sGotTalent.jpg"> </div>
-
-                        </div>
-                    </div>
-
+            
                 </div>
             </div> 
         </div>
@@ -120,13 +116,11 @@
 
 
                         visualContent.style.display = 'none';
-                        document.getElementById("contentbrowser").style.display = 'block';
 
-
-                        //displayMusic();
-                        //calcAlbumSize();
+                        displayMusic();
+                        calcAlbumSize();
                         //albumHover();
-                        //window.addEventListener('resize', calcAlbumSize, true);
+                        window.addEventListener('resize', calcAlbumSize, true);
 
                         document.getElementById("contenttablemiddle").style.left = '-4%';
                         document.getElementById("pagecontent").style.width = '100%';
@@ -147,20 +141,17 @@
                     case (2) :
 
 
-                        //displayVisualPosts();
+                        displayVisualPosts();
 
 
-                        //window.removeEventListener('resize', calcAlbumSize, true);
+                        window.removeEventListener('resize', calcAlbumSize, true);
 
-                        document.getElementById("contentbrowser").style = 'hidden';
-
-
-                        //document.getElementById("pagecontent").style.textAlign = 'center';
+                        document.getElementById("pagecontent").style.textAlign = 'center';
 
 
-                        //document.getElementById("contenttablemiddle").style.left = '0';
-                        //document.getElementById("pagecontent").style.width = '96%';
-                        //document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
+                        document.getElementById("contenttablemiddle").style.left = '0';
+                        document.getElementById("pagecontent").style.width = '96%';
+                        document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
 
                         THREEgoToVisual();
 
@@ -180,22 +171,22 @@
                     case (3) :
 
 
-                    document.getElementById("contentbrowser").style = 'hidden';
-                    //visualContent.style.display = 'none';
+                    document.getElementById("pagecontent").innerHTML = '';
+                    visualContent.style.display = 'none';
 
 
 
-                    //document.getElementById("pagecontent").innerHTML += '<br>';
-                    //document.getElementById("pagecontent").innerHTML += '<br>';
-                    //document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
+                    document.getElementById("pagecontent").innerHTML += '<br>';
 
 
-                    //document.getElementById("pagecontent").innerHTML += 'About';
-                    //window.removeEventListener('resize', calcAlbumSize, true);
+                    document.getElementById("pagecontent").innerHTML += 'About';
+                    window.removeEventListener('resize', calcAlbumSize, true);
 
-                    //document.getElementById("contenttablemiddle").style.left = '0';
-                    //document.getElementById("pagecontent").style.width = '96%';
-                    //document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
+                    document.getElementById("contenttablemiddle").style.left = '0';
+                    document.getElementById("pagecontent").style.width = '96%';
+                    document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
 
                     THREEgoToAbout();
 
@@ -395,7 +386,7 @@
 
                 } else if (display == 'phone') {
 
-                    document.getElementById("pagecontent").style.textAlign = 'bottom';
+                    document.getElementById("pagecontent").style.textAlign = 'center';
 
                 }
 
@@ -404,7 +395,7 @@
                 document.getElementById("pagecontent").innerHTML += '<br>';
 
 
-                /*for (let i=0; i<albumList.numberOfAlbums; i++ ) {
+                for (let i=0; i<albumList.numberOfAlbums; i++ ) {
                     document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "clickAlbum('+ i + ')" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
 
                     document.getElementById("aldiv" + i).style.display = 'inline-block';
@@ -420,7 +411,7 @@
                     }
 
 
-                }*/
+                }
             }
 
 

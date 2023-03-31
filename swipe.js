@@ -37,12 +37,12 @@ const appHeight = () => {
 window.addEventListener('resize',appHeight)
 appHeight();
 
-window.addEventListener('touchstart', startTouch, {passive: false});
-window.addEventListener('touchend', endTouch, {passive: false});
-window.addEventListener('touchmove', moveTouch, {passive: false});
-window.addEventListener('mousedown', startMouseDown);
-window.addEventListener('mouseup', startMouseUp);
-window.addEventListener('wheel', wheelFunc, {passive: false});
+//window.addEventListener('touchstart', startTouch, {passive: false});
+//window.addEventListener('touchend', endTouch, {passive: false});
+//window.addEventListener('touchmove', moveTouch, {passive: false});
+//window.addEventListener('mousedown', startMouseDown);
+//window.addEventListener('mouseup', startMouseUp);
+//window.addEventListener('wheel', wheelFunc, {passive: false});
 
 // Mouse grab / Mouse Wheel / track pads
 
