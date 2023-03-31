@@ -133,6 +133,7 @@ body {
     /*border: 2px solid red;*/
     width: 100%;
     overflow: scroll;
+    overflow-y:hidden;
     position: fixed;
     bottom: 5%;
 
