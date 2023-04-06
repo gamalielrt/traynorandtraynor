@@ -130,35 +130,35 @@ body {
 }
 
 #contentbrowser {
+    z-index: 5;
+
     /*border: 2px solid red;*/
-    width: 100%;
+    
     overflow: scroll;
-    overflow-y:hidden;
+    overflow-y: hidden;
     position: fixed;
     bottom: 5%;
+    height: auto;
+    width:100%;
+
+
 
 }
 
-#contentbrowserAlbums {
-    /*background-color: rgba(55, 0, 255, 0.486);*/
-
-
-    display: inline-block;
-
-    height: 120px;
-    width: 2090px;
-    overflow: hidden;
+#contentbrowserItems {
+    width: max-content;
 }
 
-.albumcover {
+.itemThumb {
     display: inline-block;
     
 }
 
 
-.albumcoverImg {
+.itemThumbImg {
     height: 120px;
     width: 120px;
+    opacity: 75%;
     
 }
 

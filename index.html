@@ -33,6 +33,12 @@
 
         </div>
 
+        <div id = "contentbrowser" hidden>
+            <div id = "contentbrowserItems">
+            </div>
+        </div>
+
+
         <div id="loadingbox">Loading...</div>
 
 
@@ -42,28 +48,6 @@
 
             <div id = contenttablemiddle >
                 <div id = "pagecontent" >
-                    <div id = "contentbrowser" hidden>
-                        <div id = "contentbrowserAlbums">
-                            <div class= "albumcover" id = "aldiv1"><img class= "albumcoverImg" id="al1" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/FatWhiteFamily-SerfsUp!.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv2"><img class= "albumcoverImg" id="al2" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/DanLyons-Subsuburbia.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv3"><img class= "albumcoverImg" id="al3" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/JessicaWinter&S-Type-Psycho.png"> </div>
-                            <div class= "albumcover" id = "aldiv4"><img class= "albumcoverImg" id="al4" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/JazminBean-AcousticChurchSession.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv5"><img class= "albumcoverImg" id="al5" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/KaeTempest-TheLineIsACurve.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv6"><img class= "albumcoverImg" id="al6" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/KatieJPearson-Return.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv7"><img class= "albumcoverImg" id="al7" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Phobophobes-MiniatureWorld.png"> </div>
-                            <div class= "albumcover" id = "aldiv8"><img class= "albumcoverImg" id="al8" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Texas-Hi.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv9"><img class= "albumcoverImg" id="al9" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Tina-PositiveMentalHealthMusic.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv10"><img class= "albumcoverImg" id="al10" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Pregoblin-Combustion.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv11"><img class= "albumcoverImg" id="al11" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/JessicaWinter-MoreSadMusic.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv12"><img class= "albumcoverImg" id="al12" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Sweat-SentimentalSunset.jpeg"> </div>
-                            <div class= "albumcover" id = "aldiv13"><img class= "albumcoverImg" id="al13" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/LunchMoneyLife-UnderTheMercies.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv14"><img class= "albumcoverImg" id="al14" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/MTHadley-ThereIsn'tAWindowIWon'tLookOutOf.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv15"><img class= "albumcoverImg" id="al15" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/Kelora-Gloomerald.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv16"><img class= "albumcoverImg" id="al16" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/HoneyHahs-BlueSky.jpg"> </div>
-                            <div class= "albumcover" id = "aldiv17"><img class= "albumcoverImg" id="aldiv17" onClick= "clickAlbum(1)" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/BrianDestiny-Brian'sGotTalent.jpg"> </div>
-
-                        </div>
-                    </div>
 
                 </div>
             </div> 
@@ -119,18 +103,19 @@
                     case (1) :
 
 
-                        visualContent.style.display = 'none';
+                        //visualContent.style.display = 'none';
                         document.getElementById("contentbrowser").style.display = 'block';
+                        
 
 
-                        //displayMusic();
+                        displayMusic();
                         //calcAlbumSize();
                         //albumHover();
                         //window.addEventListener('resize', calcAlbumSize, true);
 
-                        document.getElementById("contenttablemiddle").style.left = '-4%';
-                        document.getElementById("pagecontent").style.width = '100%';
-                        document.getElementById("contenttablemiddle").style.paddingLeft = '3%';
+                        //document.getElementById("contenttablemiddle").style.left = '-4%';
+                        //document.getElementById("pagecontent").style.width = '100%';
+                        //document.getElementById("contenttablemiddle").style.paddingLeft = '3%';
 
                         //console.log(document.getElementById("contenttablemiddle").style.left, document.getElementById("pagecontent").style.width,document.getElementById("contenttablemiddle").style.paddingLeft)
 
@@ -147,12 +132,14 @@
                     case (2) :
 
 
-                        //displayVisualPosts();
+                        displayVisualPosts();
+                        document.getElementById("contentbrowser").style.display = 'block';
+
 
 
                         //window.removeEventListener('resize', calcAlbumSize, true);
 
-                        document.getElementById("contentbrowser").style = 'hidden';
+                        //document.getElementById("contentbrowser").style = 'hidden';
 
 
                         //document.getElementById("pagecontent").style.textAlign = 'center';
@@ -261,14 +248,11 @@
 
             //visualPostList.newVisualPost('0', '11/11/22', 'https://www.youtube.com/embed/4_QK8IxhZRg', 'Regressive Left - World on Fire Music Video', 'video');
             //visualPostList.newVisualPost('1', '16/11/22', 'https://www.youtube.com/embed/n27fAUG7Bok', 'Sweat - Be Complete Video', 'video');
-            visualPostList.newVisualPost('4', '16/11/22', 'fatdogposter.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Be Complete - Video', 'image');
-            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Regressive Left - Video', 'image');
-            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Thin Air - Visualiser', 'image');
-            visualPostList.newVisualPost('4', '16/11/22', 'fatdogposter.png', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('5', '16/11/22', 'becomplete.png', 'Be Complete - Video', 'image');
-            visualPostList.newVisualPost('6', '16/11/22', 'regressiveleft.png', 'Regressive Left - Video', 'image');
-            visualPostList.newVisualPost('7', '16/11/22', 'thinair.png', 'Thin Air - Visualiser', 'image');
+            visualPostList.newVisualPost('4', '16/11/22', 'directorartwork.jpg', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('5', '16/11/22', 'gandgartwork.jpg', 'Be Complete - Video', 'image');
+            visualPostList.newVisualPost('6', '16/11/22', 'sentimentalsunsetartwork.jpg', 'Regressive Left - Video', 'image');
+            visualPostList.newVisualPost('7', '16/11/22', 'wmwartwork.jpg', 'Thin Air - Visualiser', 'image');
+            visualPostList.newVisualPost('4', '16/11/22', 'wmwLJremixartwork.jpg', 'Fat Dog Press Shot - CGI', 'image');
 
         
 
@@ -285,21 +269,18 @@
 
             function displayVisualPosts () {
 
+                document.getElementById("contentbrowserItems").innerHTML = '';
 
-                document.getElementById("pagecontent").innerHTML = '';
-
-                visualContent.style.display = 'block';
-                visualContent.innerHTML = '';
-
+                //console.log(visualPostList.visualPosts[0].content)
 
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
-                    
-                    visualContent.innerHTML += '<section ><div onClick = "clickVisual('+i+')" class = vpost id = "vpcontdiv'+ i +'"  style="background-image: url(./assets/visualImages/'+ visualPostList.visualPosts[i].content +');"></div></section>';
+
+                    document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img class= "itemThumbImg" id="al'+ i +'" onClick= "clickVisual('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/visualImages/'+ visualPostList.visualPosts[i].content +'"> </div>';
+
 
 
 
                 }
-                document.getElementById("vpcontdiv0").style.opacity = '80%'
 
 
 
@@ -370,78 +351,41 @@
 
             albumList = new Albums();
 
-            albumList.newAlbum('The Beatles', 'Abbey Road', 'Somthing, Oh! Darling', 'Mix', 'abbeyroad.jpeg');
-            albumList.newAlbum('Bob Dylan', 'Blonde on Blonde','Pledging My Time', 'Production', 'blondeonblonde.jpeg');
-            albumList.newAlbum('Rod Stewart', 'Camoflage', 'Trouble', 'Drums', 'camoflage.jpeg');
-            albumList.newAlbum('Limp Bizkit', 'Chocolate Starfish and the Hotdog Flavoured Water', 'Rollin', 'Cello', 'chocolatestarfish.jpeg');
-            albumList.newAlbum('Brittney Spears', 'In the Zone', 'Breathe on Me', 'Mix', 'inthezone.jpeg');
-            albumList.newAlbum('Prince', 'Purple Rain', 'Purple Rain', 'Backing Vocals', 'purplerain.jpeg');
-            albumList.newAlbum('Primal Scream', 'Screamadelica', 'Loaded', 'Violin', 'screamadelica.png');
-            albumList.newAlbum('James Brown', 'Sex Machine', 'Bewildered', 'Additional Production', 'sexmachine.jpeg');
-            albumList.newAlbum('Michael Jackson', 'Thriller', 'PYT', 'Mix', 'thriller.jpeg');
-            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'tonightsthenight.jpeg');
+            albumList.newAlbum('The Beatles', 'Abbey Road', 'Somthing, Oh! Darling', 'Mix', 'FatWhiteFamily-SerfsUp!.jpg');
+            albumList.newAlbum('Bob Dylan', 'Blonde on Blonde','Pledging My Time', 'Production', 'DanLyons-Subsuburbia.jpg');
+            albumList.newAlbum('Rod Stewart', 'Camoflage', 'Trouble', 'Drums', 'JessicaWinter&S-Type-Psycho.png');
+            albumList.newAlbum('Limp Bizkit', 'Chocolate Starfish and the Hotdog Flavoured Water', 'Rollin', 'Cello', 'JazminBean-AcousticChurchSession.jpg');
+            albumList.newAlbum('Brittney Spears', 'In the Zone', 'Breathe on Me', 'Mix', 'KaeTempest-TheLineIsACurve.jpg');
+            albumList.newAlbum('Prince', 'Purple Rain', 'Purple Rain', 'Backing Vocals', 'KatieJPearson-Return.jpg');
+            albumList.newAlbum('Primal Scream', 'Screamadelica', 'Loaded', 'Violin', 'Phobophobes-MiniatureWorld.png');
+            albumList.newAlbum('James Brown', 'Sex Machine', 'Bewildered', 'Additional Production', 'Texas-Hi.jpg');
+            albumList.newAlbum('Michael Jackson', 'Thriller', 'PYT', 'Mix', 'Tina-PositiveMentalHealthMusic.jpg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'JessicaWinter-MoreSadMusic.jpg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'Sweat-SentimentalSunset.jpeg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'LunchMoneyLife-UnderTheMercies.jpg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'MTHadley-ThereIsntAWindowIWontLookOutOf.jpg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'Kelora-Gloomerald.jpg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'HoneyHahs-BlueSky.jpg');
+            albumList.newAlbum('Neil Young', 'Tonights the Night', 'Tonights the Night', 'Production', 'BrianDestiny-BriansGotTalent.jpg');
+
 
 
             // Display albums
 
-            const albumOpacity = '75%';
+            const itemOpacity = '75%';
 
 
             function displayMusic() {
 
-                if (display == 'computer') {
+                document.getElementById("contentbrowserItems").innerHTML = '';
 
-                    document.getElementById("pagecontent").style.textAlign = 'left';
-
-                } else if (display == 'phone') {
-
-                    document.getElementById("pagecontent").style.textAlign = 'bottom';
+                for (let i=0; i<albumList.numberOfAlbums; i++ ) {
+                    document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img class= "itemThumbImg" id="al'+ i +'" onClick= "clickAlbum('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/'+ albumList.albums[i].image +'"> </div>';
 
                 }
-
-                document.getElementById("pagecontent").innerHTML = '';
-
-                document.getElementById("pagecontent").innerHTML += '<br>';
-
-
-                /*for (let i=0; i<albumList.numberOfAlbums; i++ ) {
-                    document.getElementById("pagecontent").innerHTML += '<div id = "aldiv'+ i +'"><img id="al'+ i +'" onClick= "clickAlbum('+ i + ')" onMouseOver="albumMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/albumcovers/'+ albumList.albums[i].image +'"> </div>';
-
-                    document.getElementById("aldiv" + i).style.display = 'inline-block';
-                    //document.getElementById("aldiv" + i).style.border = '1px solid black';
-
-                    document.getElementById("al" + i).style.position = 'relative';
-                    document.getElementById("al" + i).style.opacity = albumOpacity;
-
-                    if (display == 'computer') {
-
-                        document.getElementById("pagecontent").innerHTML += '<br>';
-
-                    }
-
-
-                }*/
             }
 
 
-            // Calculate random album placement
-
-            /*
-
-
-            const randomNumberL = [];
-            const randomNumberT = [];
-
-            for (let i=0; i<albumList.numberOfAlbums; i++) {
-
-                randomNumberL.push(Math.floor(Math.random()*10));
-                randomNumberT.push(Math.floor(Math.random()*10));
-
-                //console.log(randomNumberT[i]);
-
-            }
-
-            */
 
             /*
 
@@ -571,13 +515,15 @@
                 console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
             }
 
+            //console.log(albumList.albums[1].artist)
+
             //When Mouse over Album
 
-            function albumMouseOver (x) {
+            function itemMouseOver (x) {
                 x.style.opacity = '100%';
             }
             function albumMouseOut (x) {
-                x.style.opacity = albumOpacity;
+                x.style.opacity = itemOpacity;
             }
 
 
