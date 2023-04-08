@@ -308,11 +308,11 @@
             function clickVisual(value) {
                 console.log('Caption:', visualPostList.visualPosts[value].caption);
                 if (clubLightsOn) {
-                    //clubLightsDown();
+                    clubLightsDown();
                     clubLightsOn = false;
                     document.getElementById("slider").style.display = "block";
                 } else {
-                    //clubLightsUp();
+                    clubLightsUp();
                     clubLightsOn = true;
                     document.getElementById("slider").style.display = "none";
 
