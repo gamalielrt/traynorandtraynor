@@ -16,6 +16,24 @@ _C.style.setProperty("--n", N);
 let x0 = null;
 let locked = false;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function lock(e) {
   x0 = unify(e).clientX;
   // remove .smooth class
@@ -34,6 +52,33 @@ let w; //image width
 function size() {
   w = window.innerWidth;
 }
+
+
+
+
+
+
+
+function startOnImage() {
+  //_C.style.setProperty("--tx", `${w}px`);
+  document.getElementById("slider").style.display = "block";
+  console.log(document.getElementById("slider").offsetHeight);
+
+  let imageWidth = document.getElementById("slider").offsetHeight;
+
+  _C.style.setProperty("--tx", `${-imageWidth}px`);
+
+
+
+}
+
+//startOnImage();
+
+
+
+
+
+
 
 function move(e) {
   if (locked) {
@@ -54,6 +99,12 @@ function move(e) {
     _C.style.setProperty("--tx", "0px");
     _C.style.setProperty("--f", f);
     _C.classList.toggle("smooth", !(locked = false));
+
+
+    console.log("Image",i," of ", N);
+    displayCaption(i);
+
+
     x0 = null;
   }
 }

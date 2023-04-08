@@ -49,14 +49,25 @@
 
                     <div class="slider-wrapper">
             
-                        <div class="slider-container">
+                        <div class="slider-container" id = "slider-container">
                           <img src="assets/visualImages/directorartwork.jpg">
+                          <img src="assets/visualImages/gandgartwork.jpg">
                           <img src="assets/visualImages/sentimentalsunsetartwork.jpg">
                           <img src="assets/visualImages/wmwartwork.jpg">
-                          <img src="assets/visualImages/gandgartwork.jpg">
                           <img src="assets/visualImages/wmwLJremixartwork.jpg">
+
                         </div>
+
                   </div>
+
+                  <div id="caption">
+
+                    Caption - Credit
+
+
+
+                  </div>
+
             
 
             </div>
@@ -263,11 +274,11 @@
 
             //visualPostList.newVisualPost('0', '11/11/22', 'https://www.youtube.com/embed/4_QK8IxhZRg', 'Regressive Left - World on Fire Music Video', 'video');
             //visualPostList.newVisualPost('1', '16/11/22', 'https://www.youtube.com/embed/n27fAUG7Bok', 'Sweat - Be Complete Video', 'video');
-            visualPostList.newVisualPost('4', '16/11/22', 'directorartwork.jpg', 'Fat Dog Press Shot - CGI', 'image');
-            visualPostList.newVisualPost('5', '16/11/22', 'gandgartwork.jpg', 'Be Complete - Video', 'image');
-            visualPostList.newVisualPost('6', '16/11/22', 'sentimentalsunsetartwork.jpg', 'Regressive Left - Video', 'image');
-            visualPostList.newVisualPost('7', '16/11/22', 'wmwartwork.jpg', 'Thin Air - Visualiser', 'image');
-            visualPostList.newVisualPost('4', '16/11/22', 'wmwLJremixartwork.jpg', 'Fat Dog Press Shot - CGI', 'image');
+            visualPostList.newVisualPost('4', '16/11/22', 'directorartwork.jpg', 'Sweat - Director Single Artwork - CGI', 'image');
+            visualPostList.newVisualPost('5', '16/11/22', 'gandgartwork.jpg', 'Sweat - Gods & Goddesses Single Artwork - CGI', 'image');
+            visualPostList.newVisualPost('6', '16/11/22', 'sentimentalsunsetartwork.jpg', 'Sweat - Sentimental Sunset EP Artwork - CGI', 'image');
+            visualPostList.newVisualPost('7', '16/11/22', 'wmwartwork.jpg', 'Sweat - What Men Want Single Artwork - Image', 'image');
+            visualPostList.newVisualPost('4', '16/11/22', 'wmwLJremixartwork.jpg', 'Loraine James - What Men Want Remix Artwork - CGI', 'image');
 
         
 
@@ -308,9 +319,14 @@
             function clickVisual(value) {
                 console.log('Caption:', visualPostList.visualPosts[value].caption);
                 if (clubLightsOn) {
+
+                    //startOnImage();
+
+
                     clubLightsDown();
                     clubLightsOn = false;
                     document.getElementById("slider").style.display = "block";
+                    displayCaption(0);
                 } else {
                     clubLightsUp();
                     clubLightsOn = true;
@@ -318,6 +334,13 @@
 
                 }
             }
+
+            function displayCaption (x) {
+                document.getElementById("caption").innerHTML = visualPostList.visualPosts[x].caption;
+
+
+            }
+
 
 
 
