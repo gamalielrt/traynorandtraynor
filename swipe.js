@@ -1,199 +1,128 @@
-const mainEl = document.querySelector('main');
-//const visualContent = document.querySelector('visualcontent');
-const images = [...document.querySelectorAll('.vpost')];
+//  set --n (used for calc in CSS) via JS, after getting
+// .container and the number of child images it holds:
 
+const _C = document.querySelector(".slider-container"),
+  N = _C.children.length;
 
-images.forEach((image, idx) => {
-    image.style.color = 'red';
-    image.addEventListener('click', () => {
-        console.log('image clicked');
-    })
-})
+_C.style.setProperty("--n", N);
 
+// detect the direction of the motion between "touchstart" (or "mousedown") event
+// and the "touched" (or "mouseup") event
+// and then update --i (current slide) accordingly
+// and move the container so that the next image in the desired direction moves into the viewport
 
-//Measure content translate pixel amount
-let current = 0;
+// on "mousedown"/"touchstart", lock x-coordiate
+// and store it into an initial coordinate variable x0:
+let x0 = null;
+let locked = false;
 
-//store current slide number
-let slide = 0;
-
-//Spacing
-let itemSpacing = Math.round(window.innerHeight*0.6)
-
-//Number of items
-let itemsAmount = visualPostList.numberOfVisualPosts;
-
-//Item selected
-let itemNumber = 0;
-
-
-//set app height to be window.innerheight as vh doesnt work the same on mobile
-const doc = document.documentElement;
-const appHeight = () => {
-    doc.style.setProperty('--app-height', `${itemSpacing}px`);
-    current = -slide * itemSpacing;
-    visualContent.style.transform = `translateY(${current}px)`;
+function lock(e) {
+  x0 = unify(e).clientX;
+  // remove .smooth class
+  _C.classList.toggle("smooth", !(locked = true));
 }
-window.addEventListener('resize',appHeight)
-appHeight();
 
-//window.addEventListener('touchstart', startTouch, {passive: false});
-//window.addEventListener('touchend', endTouch, {passive: false});
-//window.addEventListener('touchmove', moveTouch, {passive: false});
-//window.addEventListener('mousedown', startMouseDown);
-//window.addEventListener('mouseup', startMouseUp);
-//window.addEventListener('wheel', wheelFunc, {passive: false});
+// next, make the images move when the user swipes:
+// was the lock action performed aka is x0 set?
+// if so, read current x coordiante and compare it to x0
+// from the difference between these two determine what to do next
 
-// Mouse grab / Mouse Wheel / track pads
+let i = 0; // counter
+let w; //image width
 
-let canSwipe = true;
+// update image width w on resive
+function size() {
+  w = window.innerWidth;
+}
 
-function wheelFunc (e) {
-    //console.log(e.deltaY);
-    if (canSwipe) {
-        //swipeup
-        if (e.deltaY > 60 && current !== -(itemSpacing * (itemsAmount-1))) {
-            canSwipe = false;
-            current -= itemSpacing;
-            slide++;
-            itemNumber++;
-            updateOpacity(itemNumber);
+function move(e) {
+  if (locked) {
+    // set threshold of 20% (if less, do not drag to the next image)
+    // dx = number of pixels the user dragged
+    let dx = unify(e).clientX - x0,
+      s = Math.sign(dx),
+      f = +(s * dx / w).toFixed(2);
 
-            
-            //console.log('swipe', current, window.innerHeight);
-            //console.log("Visual post", itemNumber);
+    // Math.sign(dx) returns 1 or -1
+    // depending on this, the slider goes backwards or forwards
 
-
-            visualContent.style.transform = `translateY(${current}px)`;
-
-            setTimeout(() => {
-                canSwipe = true;
-                //console.log('canswipe = ',canSwipe);
-            }, 600);
-
-        }
-        
-        //swipe down
-        if (e.deltaY < -60 && current !== 0) {
-            canSwipe = false;
-            current += itemSpacing;
-            slide--;
-            itemNumber--;
-            updateOpacity(itemNumber);
-
-
-
-            //console.log('swipe', current, window.innerHeight);
-            //console.log("Visual post", itemNumber);
-//
-
-            visualContent.style.transform = `translateY(${current}px)`;
-
-            setTimeout(() => {
-                canSwipe = true;
-            }, 600);
-        }
-
-
+    if ((i > 0 || s < 0) && (i < N - 1 || s > 0) && f > 0.2) {
+      _C.style.setProperty("--i", (i -= s));
+      f = 1 - f;
     }
+
+    _C.style.setProperty("--tx", "0px");
+    _C.style.setProperty("--f", f);
+    _C.classList.toggle("smooth", !(locked = false));
+    x0 = null;
+  }
 }
 
-let initialStart = 0;
-let initial = 0;
+size();
 
-let initialY = 0;
-let endY = 0;
+addEventListener("resize", size, false);
 
-function startMouseDown(e) {
-    initialStart = Date.now();
-    initialY = e.clientY;
+// ===============
+// drag-animation for the slider when it reaches the end
+// ===============
+
+function drag(e) {
+  e.preventDefault();
+
+  if (locked) {
+    _C.style.setProperty("--tx", `${Math.round(unify(e).clientX - x0)}px`);
+  }
 }
 
-function startMouseUp(e) {
-    initialEnd = Date.now();
-    endY = e.clientY;
+/* /////////
 
-    if (initialEnd - initialStart < 800) {
-        swipe();
-        //console.log(initialEnd-initialStart);
+// ===============
+// prev, next
+// ===============
+let prev = document.querySelector(".prev");
+let next = document.querySelector(".next");
 
-    }
-}
+prev.addEventListener("click", () => {
+  if (i == 0) {
+    console.log("start reached");
+  } else if (i > 0) {
+    // decrease i as long as it is bigger than the number of slides
+    _C.style.setProperty("--i", i--);
+  }
+});
 
-// Touch Screens
+next.addEventListener("click", () => {
+  if (i < N) {
+    // increase i as long as it's smaller than the number of slides
+    _C.style.setProperty("--i", i++);
+  }
+});
 
-function startTouch(e) {
-    initialStart = Date.now();
-    initialY = e.touches[0].clientY;
-}
+*/ ////////
 
-function endTouch(e) {
-    initialEnd = Date.now();
-    endY = e.changedTouches[0].clientY;
+// ===============
+// slider event listeners for mouse and touch (start, move, end)
+// ===============
 
-    if (initialEnd - initialStart < 800) {
-        swipe();
-    }
-}
+_C.addEventListener("mousemove", drag, false);
+_C.addEventListener("touchmove", drag, false);
 
-function swipe() {
-    //console.log("swipe",endY, initialY);
-    //drag/swipe up
-    if (endY - initialY < -50) {
-        if (current !== -(itemSpacing * itemsAmount)) {
-            current -= itemSpacing;
-            slide++;
-            itemNumber++;
-            updateOpacity(itemNumber);
+_C.addEventListener("mousedown", lock, false);
+_C.addEventListener("touchstart", lock, false);
 
+_C.addEventListener("mouseup", move, false);
+_C.addEventListener("touchend", move, false);
 
-            //console.log("Visual post", itemNumber);
-
-
-        }
-    } else if (endY - initialY >50) {
-        if (current !==0) {
-            current += itemSpacing;
-            slide--;
-            itemNumber--;
-            updateOpacity(itemNumber);
-
-
-            //console.log("Visual post", itemNumber);
-
-
-        }
-    }
-    visualContent.style.transform = `translateY(${current}px)`;
-}
-
-function moveTouch(e) {
+// override Edge swipe behaviour
+_C.addEventListener(
+  "touchmove",
+  e => {
     e.preventDefault();
+  },
+  false
+);
+
+// unify touch and click cases:
+function unify(e) {
+  return e.changedTouches ? e.changedTouches[0] : e;
 }
-
-function updateOpacity (x) {
-    let current = x;
-    document.getElementById("vpcontdiv"+ current).style.opacity = '80%';
-    if (x >= 1) {
-        //console.log(x);
-
-
-        let previous = x-1;
-        document.getElementById("vpcontdiv"+ previous).style.opacity = '10%';
-
-
-    }
-
-    if (x < itemsAmount-1) {
-        let next = x+1;
-        document.getElementById("vpcontdiv"+ next).style.opacity = '10%';
-    
-
-    }
-
-
-
-
-}
-
-

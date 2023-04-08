@@ -44,7 +44,22 @@
 
         <div id="contentcanvas">
 
-            <div id="visualcontent" hidden></div>
+            <div id="maincontent" >
+                <div id="slider" hidden>
+
+                    <div class="slider-wrapper">
+            
+                        <div class="slider-container">
+                          <img src="assets/visualImages/directorartwork.jpg">
+                          <img src="assets/visualImages/sentimentalsunsetartwork.jpg">
+                          <img src="assets/visualImages/wmwartwork.jpg">
+                          <img src="assets/visualImages/gandgartwork.jpg">
+                          <img src="assets/visualImages/wmwLJremixartwork.jpg">
+                        </div>
+                  </div>
+            
+
+            </div>
 
             <div id = contenttablemiddle >
                 <div id = "pagecontent" >
@@ -68,7 +83,7 @@
             isTouchDevice();
             console.log(display);
 
-            visualContent = document.getElementById("visualcontent");
+            maincontent = document.getElementById("maincontent");
 
 
 
@@ -103,7 +118,7 @@
                     case (1) :
 
 
-                        //visualContent.style.display = 'none';
+                        //maincontent.style.display = 'none';
                         document.getElementById("contentbrowser").style.display = 'block';
                         
 
@@ -168,7 +183,7 @@
 
 
                     document.getElementById("contentbrowser").style = 'hidden';
-                    //visualContent.style.display = 'none';
+                    //maincontent.style.display = 'none';
 
 
 
@@ -295,9 +310,12 @@
                 if (clubLightsOn) {
                     clubLightsDown();
                     clubLightsOn = false;
+                    document.getElementById("slider").style.display = "block";
                 } else {
                     clubLightsUp();
                     clubLightsOn = true;
+                    document.getElementById("slider").style.display = "none";
+
                 }
             }
 
@@ -539,6 +557,7 @@
 
         <script src="./main.js"></script>
         <script src="./swipe.js"></script>
+
 
     </body>
 
