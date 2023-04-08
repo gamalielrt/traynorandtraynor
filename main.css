@@ -63,33 +63,21 @@ body {
 
 }
 
-#pagecontent {
+#maincontent {
     z-index: 1;
     /*width: 100%;*/
+    margin-top: 95px;
+    
 
     /*background-color: rgba(55, 0, 255, 0.486);*/
 
-    height: 80%;
-    overflow: auto;
+    height:calc(95% - 220px);
     /*text-align: center;*/
     width: 100%;
 
+    justify-content: center;
 
-
-    /*-webkit-mask-image: linear-gradient(
-        to bottom,
-        rgba(64, 64, 64, 0) 0%,
-        rgba(64, 64, 64, 1) 5%,
-        rgba(64, 64, 64, 1) 95%,
-        rgba(64, 64, 64, 0) 100%
-    );*/
-   /* mask-image: linear-gradient(
-        to bottom,
-        rgba(64, 64, 64, 0) 0%,
-        rgba(64, 64, 64, 1) 5%,
-        rgba(64, 64, 64, 1) 95%,
-        rgba(64, 64, 64, 0) 100%
-    );*/
+    display: flex;
 
 
 }
@@ -166,9 +154,14 @@ body {
 
 #slider {
     margin: auto;
-    padding-top: 40%;
+    /*padding-top: 10%;
+    /*width:70%;*/
+    background-color: blueviolet;
+    /*max-height: calc(100%-120px);*/
+    overflow: hidden;
+    padding-top: auto;
+    max-width: 500px;
     width:95%;
-    /*background-color: blueviolet;*/
   }
   
   /* wraps entire slider */
