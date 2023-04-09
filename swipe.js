@@ -1,7 +1,7 @@
 //  set --n (used for calc in CSS) via JS, after getting
 // .container and the number of child images it holds:
 
-const _C = document.querySelector(".slider-container"),
+let _C = document.querySelector(".slider-container"),
   N = _C.children.length;
 
 _C.style.setProperty("--n", N);

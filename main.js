@@ -146,6 +146,38 @@ function clubLightsUp () {
 
 }
 
+function desertLightsDown () {
+    gsap.to(hlight, {intensity:0.2 , duration:3});
+
+    gsap.to(scene.fog.color, {r:0.47, duration:3});
+    gsap.to(scene.fog.color, {g:0.26, duration:3});
+    gsap.to(scene.fog.color, {b:0.13, duration:3});
+
+    gsap.to(scene.background, {r:0.47, duration:3});
+    gsap.to(scene.background, {g:0.26, duration:3});
+    gsap.to(scene.background, {b:0.13, duration:3});
+
+
+
+}
+
+function desertLightsUp () {
+
+    gsap.to(hlight, {intensity:0.8 , duration:3});
+
+    gsap.to(scene.fog.color, {r:0.90, duration:3});
+    gsap.to(scene.fog.color, {g:0.48, duration:3});
+    gsap.to(scene.fog.color, {b:0.19, duration:3});
+
+    
+    gsap.to(scene.background, {r:0.90, duration:3});
+    gsap.to(scene.background, {g:0.48, duration:3});
+    gsap.to(scene.background, {b:0.19, duration:3});
+
+
+}
+
+
 
 
 
