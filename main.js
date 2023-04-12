@@ -273,6 +273,9 @@ function init() {
 
     controls.update();
 
+    addLights();
+
+
 
     loadingManager.onStart = function(url, item, total) {
         console.log('Started Loading');
@@ -284,7 +287,7 @@ function init() {
     loadingManager.onLoad = function () {
         console.log("Loading Complete");
         resourcesLoaded = true;
-        addLights ();
+        //addLights();
         document.getElementById("loadingbox").style.display = "none";
         //removeEntity("desertwire");
         //scene.background = bgcolour;
