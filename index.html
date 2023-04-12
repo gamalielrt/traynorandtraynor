@@ -137,18 +137,19 @@
 
 
                         displayMusic();
-                        //calcAlbumSize();
-                        //albumHover();
-                        //window.addEventListener('resize', calcAlbumSize, true);
 
-                        //document.getElementById("contenttablemiddle").style.left = '-4%';
-                        //document.getElementById("pagecontent").style.width = '100%';
-                        //document.getElementById("contenttablemiddle").style.paddingLeft = '3%';
+                        //albumSelected = false;
 
-                        //console.log(document.getElementById("contenttablemiddle").style.left, document.getElementById("pagecontent").style.width,document.getElementById("contenttablemiddle").style.paddingLeft)
-
+                        document.getElementById("slider").style.display = "none";
 
                         THREEgoToMusic();
+
+                        desertLightsUp();
+                        clubLightsUp();
+
+
+
+
 
 
 
@@ -165,19 +166,22 @@
 
 
 
-                        //window.removeEventListener('resize', calcAlbumSize, true);
 
-                        //document.getElementById("contentbrowser").style = 'hidden';
-
-
-                        //document.getElementById("pagecontent").style.textAlign = 'center';
+                        document.getElementById("slider").style.display = "none";
 
 
-                        //document.getElementById("contenttablemiddle").style.left = '0';
-                        //document.getElementById("pagecontent").style.width = '96%';
-                        //document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
+                        //albumSelected = false;
 
                         THREEgoToVisual();
+
+                        desertLightsUp();
+                        clubLightsUp();
+
+
+
+
+
+
 
 
 
@@ -196,23 +200,21 @@
 
 
                     document.getElementById("contentbrowser").style = 'hidden';
-                    //maincontent.style.display = 'none';
 
 
-
-                    //document.getElementById("pagecontent").innerHTML += '<br>';
-                    //document.getElementById("pagecontent").innerHTML += '<br>';
-                    //document.getElementById("pagecontent").innerHTML += '<br>';
+                    //albumSelected = false;
 
 
-                    //document.getElementById("pagecontent").innerHTML += 'About';
-                    //window.removeEventListener('resize', calcAlbumSize, true);
-
-                    //document.getElementById("contenttablemiddle").style.left = '0';
-                    //document.getElementById("pagecontent").style.width = '96%';
-                    //document.getElementById("contenttablemiddle").style.paddingLeft = '2%';
+                    document.getElementById("slider").style.display = "none";
 
                     THREEgoToAbout();
+                    
+                    //desertLightsUp();
+                    clubLightsUp();
+
+
+
+
 
 
 
@@ -298,39 +300,21 @@
             function displayVisualPosts () {
 
                 onAlbums = false;
-
-
                 document.getElementById("contentbrowserItems").innerHTML = '';
-
                 //console.log(visualPostList.visualPosts[0].content)
 
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
 
                     document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img class= "itemThumbImg" id="al'+ i +'" onClick= "clickVisual('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/visualImages/'+ visualPostList.visualPosts[i].content +'"> </div>';
-
-
-
-
                 }
-
                 document.getElementById("slider-container").innerHTML = '';
-
 
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
 
                     document.getElementById("slider-container").innerHTML += '<img src="assets/visualImages/'+ visualPostList.visualPosts[i].content +'">';
-
-
                 }
                 N = _C.children.length;
-
                 _C.style.setProperty("--n", N);
-
-
-
-
-
-
 
             }
 
@@ -344,13 +328,14 @@
 
 
 
-                    //startOnImage();
 
+                    startOnImage(value+1);
 
                     clubLightsDown();
-                    visualSelected = false;
+                    //visualSelected = false;
                     document.getElementById("slider").style.display = "block";
                     displayCaption(0);
+
 
 
 
@@ -462,6 +447,7 @@
 
 
                 }
+                
                 N = _C.children.length;
 
                 _C.style.setProperty("--n", N);
@@ -482,10 +468,11 @@
 
                 if (!albumSelected) {
 
-                    albumSelected = true;
+                    //albumSelected = true;
 
                     document.getElementById("slider").style.display = "block";
 
+                    startOnImage(value+1);
 
                     displayCaption(i);
                     

@@ -59,14 +59,43 @@ function size() {
 
 
 
-function startOnImage() {
-  //_C.style.setProperty("--tx", `${w}px`);
-  document.getElementById("slider").style.display = "block";
-  console.log(document.getElementById("slider").offsetHeight);
+function startOnImage(imageIndex) {
 
-  let imageWidth = document.getElementById("slider").offsetHeight;
+  let imageWidth = document.getElementById("slider").offsetWidth;
+  console.log(imageWidth);
 
-  _C.style.setProperty("--tx", `${-imageWidth}px`);
+  //_C.style.setProperty("--tx", `${-imageWidth*(imageIndex-1)}px`);
+
+  i = imageIndex;
+
+
+  let dx = 500
+  s = Math.sign(dx),
+  f = +(s * dx / w).toFixed(2);
+
+  // Math.sign(dx) returns 1 or -1
+  // depending on this, the slider goes backwards or forwards
+
+  if ((i > 0 || s < 0) && (i < N - 1 || s > 0) && f > 0.2) {
+    _C.style.setProperty("--i", (i -= s));
+    f = 1 - f;
+  }
+
+  console.log("dx:"+ dx );
+  //console.log("0x:"+ x0);
+
+  console.log("s:"+ s );
+
+  console.log("f:" + f );
+  console.log("i:" + i );
+  console.log("N:" + N);
+  console.log("w:"+ w );
+
+
+  //_C.style.setProperty("--tx", "0px");
+  _C.style.setProperty("--f", f);
+  //_C.classList.toggle("smooth", !(locked = false));
+
 
 
 
@@ -102,7 +131,22 @@ function move(e) {
 
 
     console.log("Image",i," of ", N);
+
     displayCaption(i);
+
+    console.log("e:"+ e );
+    console.log("dx:"+ dx );
+    console.log("0x:"+ x0);
+
+    console.log("s:"+ s );
+
+    console.log("f:" + f );
+    console.log("i:" + i );
+    console.log("N:" + N);
+    console.log("w:"+ w );
+
+
+
 
 
     x0 = null;

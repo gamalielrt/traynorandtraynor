@@ -1,4 +1,4 @@
-
+window.scrollTo(0,0);
 
 
 ///////////THREE.js
@@ -788,7 +788,7 @@ function init() {
         //normalMap: curtainnormaltex,
     });
 
-    loader.load( 'assets/clubassets/newwalls1.obj', function ( wallscentremesh ) {
+    loader.load( 'assets/clubassets/newwallsLo.obj', function ( wallscentremesh ) {
                     
 
         wallscentremesh.traverse( function ( node ) {
@@ -815,7 +815,7 @@ function init() {
 
     });
 
-    loader.load( 'assets/clubassets/newcenter.obj', function ( centremesh ) {
+    loader.load( 'assets/clubassets/newcenterLo.obj', function ( centremesh ) {
                     
 
         centremesh.traverse( function ( node ) {
@@ -843,7 +843,7 @@ function init() {
 
     });
 
-    loader.load( 'assets/clubassets/newstoolstables1.obj', function ( stoolstablesmesh ) {
+    loader.load( 'assets/clubassets/newstoolstablesLo.obj', function ( stoolstablesmesh ) {
                     
 
         stoolstablesmesh.traverse( function ( node ) {
@@ -925,7 +925,7 @@ function init() {
 
     });
 
-    loader.load( 'assets/clubassets/newmetal1small.obj', function ( metalmesh ) {
+    loader.load( 'assets/clubassets/newmetal1smallLo.obj', function ( metalmesh ) {
                     
 
         metalmesh.traverse( function ( node ) {
@@ -973,7 +973,7 @@ function init() {
 
     });
 
-    loader.load( 'assets/clubassets/newtvlightmetal4.obj', function ( tvlightsmesh ) {
+    loader.load( 'assets/clubassets/newtvlightmetal4Lo.obj', function ( tvlightsmesh ) {
                     
 
         tvlightsmesh.traverse( function ( node ) {
@@ -1051,7 +1051,7 @@ function init() {
 
     });
 
-    loader.load( 'assets/clubassets/newcablessmall.obj', function ( cablesmesh ) {
+    loader.load( 'assets/clubassets/newcablessmallLo.obj', function ( cablesmesh ) {
                     
 
         cablesmesh.traverse( function ( node ) {
