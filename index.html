@@ -85,6 +85,8 @@
 
             let onAlbums = Boolean;
 
+            var contentbrowser = document.getElementById('contentbrowser');
+
             const isTouchDevice = () => {
                 try {
                     document.createEvent("TouchEvent");
@@ -147,6 +149,10 @@
                         desertLightsUp();
                         clubLightsUp();
 
+                        window.scrollTo(0,0);
+
+                        contentbrowser.scrollLeft = 0;
+
 
 
 
@@ -176,6 +182,11 @@
 
                         desertLightsUp();
                         clubLightsUp();
+
+                        window.scrollTo(0,0);
+
+                        contentbrowser.scrollLeft = 0;
+
 
 
 
@@ -211,6 +222,8 @@
                     
                     //desertLightsUp();
                     clubLightsUp();
+
+                    window.scrollTo(0,0);
 
 
 
@@ -321,6 +334,8 @@
             var visualSelected = true;
 
             function clickVisual(value) {
+
+                window.scrollTo(0,0)
                 console.log('Caption:', visualPostList.visualPosts[value].caption);
                 if (visualSelected) {
 
@@ -465,6 +480,8 @@
 
 
             function clickAlbum(value) {
+
+                window.scrollTo(0,0)
 
                 if (!albumSelected) {
 
