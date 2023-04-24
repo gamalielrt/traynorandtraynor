@@ -69,7 +69,7 @@ function startOnImage(imageIndex) {
   i = imageIndex;
 
 
-  let dx = 500
+  let dx = window.innerWidth/2;
   s = Math.sign(dx),
   f = +(s * dx / w).toFixed(2);
 
@@ -81,7 +81,7 @@ function startOnImage(imageIndex) {
     f = 1 - f;
   }
 
-  console.log("dx:"+ dx );
+  console.log("dx:"+ dx, window.innerWidth);
   //console.log("0x:"+ x0);
 
   console.log("s:"+ s );
