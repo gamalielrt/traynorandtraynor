@@ -45,38 +45,27 @@
         <div id="contentcanvas">
 
             <div id="maincontent" >
+                <div id="sliderarea">
                 <div id="slider" hidden>
-
-                    <div class="slider-wrapper">
-            
-                        <div class="slider-container" id = "slider-container">
-                          <!--<img src="assets/visualImages/directorartwork.jpg">
-                          <img src="assets/visualImages/gandgartwork.jpg">
-                          <img src="assets/visualImages/sentimentalsunsetartwork.jpg">
-                          <img src="assets/visualImages/wmwartwork.jpg">
-                          <img src="assets/visualImages/wmwLJremixartwork.jpg">-->
-
-                        </div>
-
-                  </div>
-
-                  <div id="caption">
-
-                    Caption - Credit
-
-
-
-                  </div>
-
-            
-
+                    <div class="slider-wrapper" >
+                        <div class="slider-container" id = "slider-container"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="captionarea">
+                <div id = "caption-wrapper" >
+                    <div id="caption"> </div>
+                </div>
             </div>
 
-            <div id = contenttablemiddle >
-                <div id = "pagecontent" >
 
-                </div>
+                
+
+                <!--<div id = contenttablemiddle ></div>-->
+
+                
             </div> 
+
         </div>
 
         <script>
@@ -124,6 +113,92 @@
                 }
             }
 
+            window.addEventListener( 'resize', landscapeLayout, false );
+
+
+            sliderArea = document.getElementById("sliderarea");
+            slider = document.getElementById("slider");
+
+
+
+
+            function landscapeLayout() {
+
+                console.log(document.getElementById("captionarea").offsetHeight);
+
+
+
+                if (window.innerWidth>window.innerHeight) {
+
+                    // LANDSCAPE
+
+                    console.log("landscape");
+
+
+
+                    document.getElementById("maincontent").style.display = "flex";
+
+                    document.getElementById("maincontent").style.paddingTop = "0";
+                    document.getElementById("sliderarea").style.width = "60%";
+                    document.getElementById("sliderarea").style.height = "90%";
+
+                    //console.log(document.getElementById("sliderarea").offsetWidth);
+
+                    document.getElementById("caption").style.position = "absolute";
+                    document.getElementById("caption").style.top = '40%';
+
+
+
+
+                    if (sliderArea.offsetWidth>sliderArea.offsetHeight) {
+
+                        //console.log("square sides are "+ sliderArea.offsetHeight);
+                        document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
+
+                        } else {
+
+                        //console.log("square sides are "+ sliderArea.offsetWidth);
+
+                    }
+
+
+                } else {
+
+                    // PORTRAIT
+
+                    console.log("portrait");
+
+                    document.getElementById("maincontent").style.display = "block";
+
+
+                    document.getElementById("maincontent").style.paddingTop = "5";
+                    document.getElementById("sliderarea").style.width = "85%";
+                    document.getElementById("sliderarea").style.height = "70%";
+
+                    document.getElementById("caption").style.position = "static";
+                    document.getElementById("caption").style.top = '0%';
+
+
+
+                    if (sliderArea.offsetWidth>sliderArea.offsetHeight) {
+
+                        console.log("square sides are "+ sliderArea.offsetHeight);
+                        document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
+
+                        } else {
+
+                        console.log("square sides are "+ sliderArea.offsetWidth);
+
+                    }
+
+
+                    
+
+                }
+
+            }
+
+
             function navigateToPage(page) {
 
                 switch (page) {
@@ -143,11 +218,12 @@
                         //albumSelected = false;
 
                         document.getElementById("slider").style.display = "none";
+                        document.getElementById("caption").innerHTML = '';
 
-                        THREEgoToMusic();
+                            THREEgoToMusic();
 
-                        desertLightsUp();
-                        clubLightsUp();
+                        //DISABLE/////////////////////////////////////      desertLightsUp();
+                        //DISABLE/////////////////////////////////////      clubLightsUp();
 
                         window.scrollTo(0,0);
 
@@ -174,14 +250,17 @@
 
 
                         document.getElementById("slider").style.display = "none";
+                        document.getElementById("caption").innerHTML = '';
+
+                        
 
 
                         //albumSelected = false;
 
-                        THREEgoToVisual();
+                            THREEgoToVisual();
 
-                        desertLightsUp();
-                        clubLightsUp();
+                        //DISABLE/////////////////////////////////////      desertLightsUp();
+                        //DISABLE/////////////////////////////////////      clubLightsUp();
 
                         window.scrollTo(0,0);
 
@@ -217,11 +296,12 @@
 
 
                     document.getElementById("slider").style.display = "none";
+                    document.getElementById("caption").innerHTML = '';
 
-                    THREEgoToAbout();
+
+                        THREEgoToAbout();
                     
-                    //desertLightsUp();
-                    clubLightsUp();
+                    //DISABLE/////////////////////////////////////      clubLightsUp();
 
                     window.scrollTo(0,0);
 
@@ -335,6 +415,8 @@
 
             function clickVisual(value) {
 
+                landscapeLayout();
+
                 window.scrollTo(0,0)
                 console.log('Caption:', visualPostList.visualPosts[value].caption);
                 if (visualSelected) {
@@ -346,16 +428,19 @@
 
                     startOnImage(value+1);
 
-                    clubLightsDown();
+                    //DISABLE/////////////////////////////////////      clubLightsDown();
+
+
+
                     //visualSelected = false;
                     document.getElementById("slider").style.display = "block";
-                    displayCaption(0);
+                    displayCaption(value);
 
 
 
 
                 } else {
-                    clubLightsUp();
+                       clubLightsUp();
                     visualSelected = true;
                     document.getElementById("slider").style.display = "none";
 
@@ -414,7 +499,7 @@
 
             albumList = new Albums();
 
-            albumList.newAlbum('Fat White Family', 'Serfs Up!', 'Feet, Bobbys Boyfriend', 'Writing/Additional Production', 'FatWhiteFamily-SerfsUp!.jpg');
+            albumList.newAlbum('Fat White Family', 'Serfs Up!<br>', 'Feet, Bobbys Boyfriend<br>', 'Writing/Additional Production <br>Tastes good with the Money ', 'FatWhiteFamily-SerfsUp!.jpg');
             albumList.newAlbum('Jessica Winter', 'Psycho', 'Psycho', 'Strings', 'JessicaWinter&S-Type-Psycho.png');
             albumList.newAlbum('Kelora', 'Gloomerald', 'All', 'Mix', 'Kelora-Gloomerald.jpg');
             albumList.newAlbum('Jazmin Bean', 'Acoustic Session', 'Yandere, Carnage, Little Lamb', 'Production/Mix', 'JazminBean-AcousticChurchSession.jpg');
@@ -481,6 +566,9 @@
 
             function clickAlbum(value) {
 
+                landscapeLayout();
+
+
                 window.scrollTo(0,0)
 
                 if (!albumSelected) {
@@ -495,7 +583,7 @@
                     
                     console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
 
-                    desertLightsDown();
+                       //DISABLE/////////////////////////////////////      desertLightsDown();
 
                 } else {
 
@@ -504,7 +592,7 @@
 
                     document.getElementById("slider").style.display = "none";
 
-                    desertLightsUp();
+                    //DISABLE/////////////////////////////////////      desertLightsUp();
 
 
 
@@ -532,7 +620,7 @@
             function displayCaption (x) {
 
                 if (onAlbums == true) {
-                    document.getElementById("caption").innerHTML = albumList.albums[x].artist + '   ' + albumList.albums[x].albumname + '   ' + albumList.albums[x].songs + '   ' + albumList.albums[x].credit ;
+                    document.getElementById("caption").innerHTML = '<b>' + albumList.albums[x].artist + '</b><br>' + '   ' + albumList.albums[x].albumname + '   ' + albumList.albums[x].songs + '   ' + albumList.albums[x].credit ;
 
                 } else {
 

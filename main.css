@@ -40,6 +40,38 @@ body {
     
 
 }
+#buttons {
+  z-index: 5;
+  position: absolute;
+  text-align: justify;
+  display: flex;
+  width: 98%;
+  align-items: center;
+  justify-content: space-between;
+  right: 0;
+  margin: auto;
+}
+
+.musicbutton, .visualbutton, .aboutbutton, .titlegif {
+  vertical-align: center;
+  display: inline-block;
+
+}
+
+#menubutton {
+  z-index: 5;
+  position: fixed;
+
+}
+
+#menu {
+  z-index: 5;
+  position: fixed;
+  bottom: 50%;
+
+
+}
+
 
 
 
@@ -68,18 +100,19 @@ body {
 #maincontent {
     z-index: 1;
     /*width: 100%;*/
-    margin-top: 95px;
+    margin-top: 95px; /*95*/
+    padding-top:5%;
     
 
-    /*background-color: rgba(55, 0, 255, 0.486);*/
+    background-color: rgba(55, 0, 255, 0.486);
 
-    height:calc(95% - 220px);
+    height:calc(97% - 210px);
     /*text-align: center;*/
     width: 100%;
 
     justify-content: center;
 
-    display: flex;
+    display: block;
 
 
 }
@@ -87,37 +120,6 @@ body {
 
 
 
-#buttons {
-    z-index: 5;
-    position: absolute;
-    text-align: justify;
-    display: flex;
-    width: 98%;
-    align-items: center;
-    justify-content: space-between;
-    right: 0;
-    margin: auto;
-}
-
-.musicbutton, .visualbutton, .aboutbutton, .titlegif {
-    vertical-align: center;
-    display: inline-block;
-
-}
-
-#menubutton {
-    z-index: 5;
-    position: fixed;
-
-}
-
-#menu {
-    z-index: 5;
-    position: fixed;
-    bottom: 50%;
-
-
-}
 
 #contentbrowser {
     z-index: 5;
@@ -127,7 +129,7 @@ body {
     overflow: scroll;
     overflow-y: hidden;
     position: fixed;
-    bottom: 5%;
+    bottom: 3%;
     height: auto;
     width:100%;
 
@@ -146,10 +148,34 @@ body {
 
 
 .itemThumbImg {
-    height: 120px;
-    width: 120px;
+    height: 110px; /*120*/
+    width: 110px;
     opacity: 75%;
     
+}
+
+#sliderarea {
+  background-color: blueviolet;
+  height:70%;
+  width: 85%;
+  margin:auto;
+}
+
+#captionarea {
+  background-color: cadetblue;
+  
+
+  flex-grow: 1;
+
+  /*padding :10%;*/
+  
+
+  
+  
+  /*position: absolute;
+  top: 70%;
+  width: 100%;*/
+
 }
 
 /*--------------------SLIDER------------------*/
@@ -157,14 +183,15 @@ body {
 #slider {
     z-index:3;
     margin: auto;
-    /*padding-top: 10%;
+    /*padding-top: 5%;*/
     /*width:70%;*/
-    /*background-color: blueviolet;*/
+    background-color: blueviolet;
     /*max-height: calc(100%-120px);*/
     overflow: hidden;
     padding-top: auto;
-    max-width: 500px;
-    width:85%;
+    /*max-width: 500px;
+    width:85%;*/
+    
   }
   
   /* wraps entire slider */
@@ -256,5 +283,36 @@ body {
     width: 100%; /* can't take this out either as it breaks Chrome */
     width: calc(100%/var(--n));
     /*pointer-events: none;*/
+  }
+
+  #caption-wrapper {
+    background-color:darkred;
+    height: 100%;
+
+
+
+
+  }
+
+
+  #caption {
+    background-color:darkolivegreen;
+
+    width:85%;
+    margin: auto;
+
+
+    /*position: absolute;
+    top:40%;*/
+    
+    
+
+    /*display:flex;
+    align-items: center;
+    justify-content: center;*/
+
+
+
+
   }
 

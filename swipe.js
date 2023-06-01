@@ -61,6 +61,8 @@ function size() {
 
 function startOnImage(imageIndex) {
 
+
+
   let imageWidth = document.getElementById("slider").offsetWidth;
   console.log(imageWidth);
 
@@ -110,6 +112,9 @@ function startOnImage(imageIndex) {
 
 
 function move(e) {
+
+  console.log("move");
+
   if (locked) {
     // set threshold of 20% (if less, do not drag to the next image)
     // dx = number of pixels the user dragged
@@ -162,6 +167,10 @@ addEventListener("resize", size, false);
 // ===============
 
 function drag(e) {
+
+  console.log("drag");
+
+
   e.preventDefault();
 
   if (locked) {
