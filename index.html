@@ -94,6 +94,7 @@
             var menuOpen = false;
 
             function activateMenu() {
+
                 switch (menuOpen) {
                     case false :
                         //console.log("menu is Open");
@@ -131,17 +132,25 @@
 
             sliderArea = document.getElementById("sliderarea");
             slider = document.getElementById("slider");
+            
 
 
 
 
             function landscapeLayout() {
 
-                console.log(document.getElementById("captionarea").offsetHeight);
+                //console.log(document.getElementById("captionarea").offsetHeight);
+
+                console.log(document.getElementById("slider").offsetWidth);
+
+                document.getElementById("slider").style.margin = "auto";
+
+
 
 
 
                 if (window.innerWidth>window.innerHeight) {
+
 
                     // LANDSCAPE
 
@@ -197,12 +206,18 @@
 
                         console.log("square sides are "+ sliderArea.offsetHeight);
                         document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
+                        document.getElementById("slider").style.margin = "auto";
+
 
                         } else {
 
                         console.log("square sides are "+ sliderArea.offsetWidth);
+                        document.getElementById("slider").style.margin = "auto";
+
 
                     }
+
+                    document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
 
 
                     
@@ -235,8 +250,10 @@
 
                             THREEgoToMusic();
 
-                        //DISABLE/////////////////////////////////////      desertLightsUp();
-                        //DISABLE/////////////////////////////////////      clubLightsUp();
+                        //DISABLE/////////////////////////////////////      
+                        desertLightsUp();
+                        //DISABLE/////////////////////////////////////      
+                        clubLightsUp();
 
                         window.scrollTo(0,0);
 
@@ -272,8 +289,10 @@
 
                             THREEgoToVisual();
 
-                        //DISABLE/////////////////////////////////////      desertLightsUp();
-                        //DISABLE/////////////////////////////////////      clubLightsUp();
+                        //DISABLE/////////////////////////////////////      
+                        desertLightsUp();
+                        //DISABLE/////////////////////////////////////      
+                        clubLightsUp();
 
                         window.scrollTo(0,0);
 
@@ -314,7 +333,8 @@
 
                         THREEgoToAbout();
                     
-                    //DISABLE/////////////////////////////////////      clubLightsUp();
+                    //DISABLE/////////////////////////////////////      
+                    clubLightsUp();
 
                     window.scrollTo(0,0);
 
@@ -441,7 +461,8 @@
 
                     startOnImage(value+1);
 
-                    //DISABLE/////////////////////////////////////      clubLightsDown();
+                    //DISABLE/////////////////////////////////////      
+                    clubLightsDown();
 
 
 
@@ -458,6 +479,9 @@
                     document.getElementById("slider").style.display = "none";
 
                 }
+
+                document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
+
             }
 
 
@@ -565,6 +589,8 @@
 
                 _C.style.setProperty("--n", N);
 
+
+
             }
 
 
@@ -596,7 +622,8 @@
                     
                     console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
 
-                       //DISABLE/////////////////////////////////////      desertLightsDown();
+                       //DISABLE/////////////////////////////////////      
+                       desertLightsDown();
 
                 } else {
 
@@ -605,12 +632,16 @@
 
                     document.getElementById("slider").style.display = "none";
 
-                    //DISABLE/////////////////////////////////////      desertLightsUp();
+                    //DISABLE/////////////////////////////////////      
+                    desertLightsUp();
 
 
 
 
                 }
+
+                document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
+
 
 
            

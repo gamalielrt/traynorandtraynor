@@ -104,7 +104,7 @@ body {
     padding-top:5%;
     
 
-    background-color: rgba(55, 0, 255, 0.486);
+    /*background-color: rgba(55, 0, 255, 0.486);*/
 
     height:calc(97% - 210px);
     /*text-align: center;*/
@@ -155,14 +155,16 @@ body {
 }
 
 #sliderarea {
-  background-color: blueviolet;
+  /*background-color: blueviolet;*/
+
+
   height:70%;
   width: 85%;
   margin:auto;
 }
 
 #captionarea {
-  background-color: cadetblue;
+  /*background-color: cadetblue;*/
   
 
   flex-grow: 1;
@@ -185,7 +187,7 @@ body {
     margin: auto;
     /*padding-top: 5%;*/
     /*width:70%;*/
-    background-color: blueviolet;
+    /*background-color: blueviolet;*/
     /*max-height: calc(100%-120px);*/
     overflow: hidden;
     padding-top: auto;
@@ -286,7 +288,7 @@ body {
   }
 
   #caption-wrapper {
-    background-color:darkred;
+    /*background-color:darkred;*/
     height: 100%;
 
 
@@ -296,7 +298,7 @@ body {
 
 
   #caption {
-    background-color:darkolivegreen;
+    /*background-color:darkolivegreen;*/
 
     width:85%;
     margin: auto;

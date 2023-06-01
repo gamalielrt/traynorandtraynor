@@ -1875,4 +1875,4 @@ function animate() {
 
 
 
-//init();
+init();
