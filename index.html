@@ -115,6 +115,19 @@
 
             window.addEventListener( 'resize', landscapeLayout, false );
 
+            window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+                const portrait = e.matches;
+
+                if (portrait) {
+                    landscapeLayout();
+                    console.log("portrait")
+                } else {
+                    landscapeLayout();
+                    console.log("landscape")
+
+                }
+            });
+
 
             sliderArea = document.getElementById("sliderarea");
             slider = document.getElementById("slider");
