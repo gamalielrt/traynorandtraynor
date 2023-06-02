@@ -161,6 +161,7 @@ body {
   height:70%;
   width: 85%;
   margin:auto;
+  padding-top: 5%;
 }
 
 #captionarea {
@@ -190,7 +191,9 @@ body {
     /*background-color: blueviolet;*/
     /*max-height: calc(100%-120px);*/
     overflow: hidden;
-    padding-top: auto;
+    /*top: auto;*/
+    position: relative;
+    bottom: 0;
     /*max-width: 500px;
     width:85%;*/
     
@@ -302,6 +305,7 @@ body {
 
     width:85%;
     margin: auto;
+    top:0;
 
 
     /*position: absolute;
