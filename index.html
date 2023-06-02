@@ -120,6 +120,8 @@
 
             window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
                 const portrait = e.matches;
+                window.scrollTo(0,0);
+
 
                 if (portrait) {
                     landscapeLayout();
