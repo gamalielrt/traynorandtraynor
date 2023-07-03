@@ -90,6 +90,9 @@ function THREEgoToVisual () {
 
     //gsap.to(hlight, {intensity:0 , duration:10});
 
+    gsap.to(scene.fog, {density:0.00007, duration:3}); //0.47
+
+
 
 
 }
@@ -121,6 +124,9 @@ function THREEgoToAbout () {
 
     gsap.to(hlight, {intensity:0.8 , duration:3});
 
+    gsap.to(scene.fog, {density:0.00007, duration:3}); //0.47
+
+
 
 }
 
@@ -149,13 +155,16 @@ function clubLightsUp () {
 function desertLightsDown () {
     gsap.to(hlight, {intensity:0.2 , duration:3});
 
-    gsap.to(scene.fog.color, {r:0.47, duration:3});
-    gsap.to(scene.fog.color, {g:0.26, duration:3});
-    gsap.to(scene.fog.color, {b:0.13, duration:3});
+    gsap.to(scene.fog.color, {r:0.04, duration:3}); //0.47
+    gsap.to(scene.fog.color, {g:0.06, duration:3}); //0.26
+    gsap.to(scene.fog.color, {b:0.10, duration:3}); //0.13
 
-    gsap.to(scene.background, {r:0.47, duration:3});
-    gsap.to(scene.background, {g:0.26, duration:3});
-    gsap.to(scene.background, {b:0.13, duration:3});
+    gsap.to(scene.background, {r:0.4, duration:3}); //0.47
+    gsap.to(scene.background, {g:0.6, duration:3}); //0.26
+    gsap.to(scene.background, {b:0.10, duration:3}); //0.13
+
+    gsap.to(scene.fog, {density:0.00003, duration:3}); //0.47
+
 
 
 
@@ -173,6 +182,9 @@ function desertLightsUp () {
     gsap.to(scene.background, {r:0.90, duration:3});
     gsap.to(scene.background, {g:0.48, duration:3});
     gsap.to(scene.background, {b:0.19, duration:3});
+
+    gsap.to(scene.fog, {density:0.00007, duration:3}); //0.47
+
 
 
 }
@@ -240,7 +252,32 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
 
-    scene.fog = new THREE.FogExp2( bgcolour, 0.00007 );
+    scene.fog = new THREE.FogExp2( bgcolour, 0.00007 ); //0.00007
+
+    /*scene.background = new THREE.CubeTextureLoader()
+    .setPath('assets/skybox1/')
+    .load( [
+      
+        'stars1.png',
+        'stars1.png',
+        'stars1.png',
+        'stars1.png',
+        'stars1.png',
+        'stars1.png'
+
+    ])*/
+
+    skyboxGeo = new THREE.BoxGeometry(37000, 37000, 37000);
+    textureLoader = new THREE.TextureLoader();
+
+    var skyTex = textureLoader.load('assets/skybox1/stars2.png');
+
+    skyboxMat = new THREE.MeshBasicMaterial(
+        {map:skyTex,
+        side: THREE.DoubleSide}
+    )
+    skybox = new THREE.Mesh(skyboxGeo, skyboxMat);
+    scene.add(skybox);
     
 
     var axesHelper = new THREE.AxesHelper( 50000 );

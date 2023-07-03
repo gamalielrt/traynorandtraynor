@@ -145,9 +145,14 @@
 
                 //console.log(document.getElementById("captionarea").offsetHeight);
 
-                console.log(document.getElementById("slider").offsetWidth);
+                console.log(document.getElementById("slider").offsetWidth + '= slider width');
+                
+                console.log(document.getElementById("sliderarea").offsetWidth + '= sliderarea width');
 
-                document.getElementById("slider").style.margin = "auto";
+                size();
+
+
+                //document.getElementById("slider").style.margin = "auto";
 
 
 
@@ -158,20 +163,38 @@
 
                     // LANDSCAPE
 
-                    console.log("landscape");
+                    console.log("Layout - landscape code");
+
+                    capMargin = (window.innerWidth - document.getElementById("sliderarea").offsetWidth)/2;
 
 
 
-                    document.getElementById("maincontent").style.display = "flex";
+                    //document.getElementById("maincontent").style.display = "flex";
 
-                    document.getElementById("maincontent").style.paddingTop = "0";
-                    document.getElementById("sliderarea").style.width = "60%";
+                    //document.getElementById("maincontent").style.paddingTop = "0";
+                    document.getElementById("sliderarea").style.width = "80%";
                     document.getElementById("sliderarea").style.height = "90%";
+                    
 
                     //console.log(document.getElementById("sliderarea").offsetWidth);
 
-                    document.getElementById("caption").style.position = "absolute";
+                    //document.getElementById("caption").style.position = "absolute";
+                    
+                    document.getElementById("slider").style.height = document.getElementById("sliderarea").offsetHeight + 'px';
+                    document.getElementById("slider").style.width = document.getElementById("sliderarea").offsetHeight + 'px';
+                    document.getElementById("slider").style.margin = 'unset';
+
+                    document.getElementById("caption").style.display = 'inline-block';
+
+                    document.getElementById("caption").style.position = 'absolute';
                     document.getElementById("caption").style.top = '40%';
+                    document.getElementById("caption").style.left = document.getElementById("slider").offsetWidth + capMargin +'px';
+                    document.getElementById("caption").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth;
+
+
+
+
+
 
 
 
@@ -179,7 +202,7 @@
                     if (sliderArea.offsetWidth>sliderArea.offsetHeight) {
 
                         //console.log("square sides are "+ sliderArea.offsetHeight);
-                        document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
+                        //document.getElementById("slider").style.offsetHeigh = sliderArea.offsetHeigh + 'px';
 
                         } else {
 
@@ -192,36 +215,65 @@
 
                     // PORTRAIT
 
-                    console.log("portrait");
+
+                    console.log("Layout - portrait code");
+                    /*
 
                     document.getElementById("maincontent").style.display = "block";
 
 
                     document.getElementById("maincontent").style.paddingTop = "5";
+
+                    //document.getElementById("caption").style.position = "static";
+                    //document.getElementById("caption").style.top = '0%';
+
+                    document.getElementById("slider").style.width = "100%";
+
+
+                    */
                     document.getElementById("sliderarea").style.width = "85%";
                     document.getElementById("sliderarea").style.height = "70%";
 
-                    document.getElementById("caption").style.position = "static";
-                    document.getElementById("caption").style.top = '0%';
+                    document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
+                    document.getElementById("slider").style.height = '100%';
+                    document.getElementById("slider").style.width = '100%';
 
 
+                    document.getElementById("slider").style.margin = 'auto';
+
+                    document.getElementById("caption").style.position = 'relative';
+                    document.getElementById("caption").style.left = 'unset';
+                    document.getElementById("caption").style.margin = 'auto';
+
+
+
+
+
+
+
+
+
+
+                    /*
 
                     if (sliderArea.offsetWidth>sliderArea.offsetHeight) {
 
-                        console.log("square sides are "+ sliderArea.offsetHeight);
+                        console.log("square sides are "+ sliderArea.offsetHeight+ 'Width more than Height');
                         document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
-                        document.getElementById("slider").style.margin = "auto";
+                        //document.getElementById("slider").style.margin = "auto";
 
 
                         } else {
 
-                        console.log("square sides are "+ sliderArea.offsetWidth);
+                        console.log("square sides are "+ sliderArea.offsetWidth + 'Height more than width');
                         document.getElementById("slider").style.margin = "auto";
 
 
                     }
 
-                    document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
+                    */
+
+                    //document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
 
 
                     
@@ -229,6 +281,8 @@
                 }
 
             }
+
+            
 
 
             function navigateToPage(page) {
@@ -252,7 +306,8 @@
                         document.getElementById("slider").style.display = "none";
                         document.getElementById("caption").innerHTML = '';
 
-                            THREEgoToMusic();
+                        //DISABLE/////////////////////////////////////      
+                        THREEgoToMusic();
 
                         //DISABLE/////////////////////////////////////      
                         desertLightsUp();
@@ -291,7 +346,10 @@
 
                         //albumSelected = false;
 
-                            THREEgoToVisual();
+
+                        //DISABLE/////////////////////////////////////      
+
+                        THREEgoToVisual();
 
                         //DISABLE/////////////////////////////////////      
                         desertLightsUp();
@@ -334,8 +392,9 @@
                     document.getElementById("slider").style.display = "none";
                     document.getElementById("caption").innerHTML = '';
 
+                    //DISABLE/////////////////////////////////////      
 
-                        THREEgoToAbout();
+                    THREEgoToAbout();
                     
                     //DISABLE/////////////////////////////////////      
                     clubLightsUp();
@@ -568,7 +627,7 @@
 
                 onAlbums = true;
 
-                console.log(onAlbums);
+                //console.log(onAlbums);
 
 
 
@@ -624,7 +683,7 @@
 
                     displayCaption(i);
                     
-                    console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
+                    //console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
 
                        //DISABLE/////////////////////////////////////      
                        desertLightsDown();
@@ -679,6 +738,8 @@
 
 
             }
+
+            
 
 
 

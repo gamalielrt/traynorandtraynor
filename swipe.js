@@ -83,15 +83,12 @@ function startOnImage(imageIndex) {
     f = 1 - f;
   }
 
-  console.log("dx:"+ dx, window.innerWidth);
-  //console.log("0x:"+ x0);
-
-  console.log("s:"+ s );
-
-  console.log("f:" + f );
-  console.log("i:" + i );
-  console.log("N:" + N);
-  console.log("w:"+ w );
+  //console.log("dx:"+ dx, window.innerWidth);
+  //console.log("s:"+ s );
+  //console.log("f:" + f );
+  //console.log("i:" + i );
+  //console.log("N:" + N);
+  //console.log("w:"+ w );
 
 
   //_C.style.setProperty("--tx", "0px");
