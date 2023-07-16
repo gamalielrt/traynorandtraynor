@@ -500,6 +500,12 @@
 
                     case (2) :
 
+                        if (albumActive == true) {
+                            albumActive = false;
+                            console.log('albumActive : ', albumActive);
+                        }
+
+
 
                         displayVisualPosts();
                         document.getElementById("contentbrowser").style.display = 'block';
@@ -680,14 +686,13 @@
 
             function clickVisual(value) {
 
-                landscapeLayout();
-
                 window.scrollTo(0,0)
                 console.log('Caption:', visualPostList.visualPosts[value].caption);
                 if (visualSelected) {
 
 
 
+                    albumActive = true;
 
 
 
@@ -712,8 +717,16 @@
 
                 }
                 
-                ////////////document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
-                document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetHeight - 10 + "px";
+                landscapeLayout();
+
+                if (window.innerWidth>window.innerHeight) {
+                    //LANDSCAPE
+                    document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetHeight - 60 + "px";
+                } else {
+                    //PORTRAIT
+                    document.getElementById("caption").style.width = document.getElementById("slider").offsetWidth + "px";
+
+                }
 
 
             }
@@ -770,22 +783,22 @@
 
             albumList = new Albums();
 
-            albumList.newAlbum('Fat White Family', 'Serfs Up!', 'Domino', '<strong>Feet</strong></p><p>Co-write, Additional production</p<p>Backing vocals, drum machine programming, vocal fx, accordion, synths, cello, violin, harmonica</p><p>&nbsp;</p><p><strong>Bobby&rsquo;s Boyfriend</strong></p><p>Co-write, Additional production</p><p>Backing Vocals, drums, percussion, guitar, synths, violin, baritone sax</p><p>&nbsp;</p><p><strong>Oh Sebastian</strong></p><p>String arrangement, cello, violin</p><p>&nbsp;</p><p><strong>Tastes Good With The Money</strong></p><p>Drums, electronic drums</p><p>&nbsp;</p><p><strong>Fringe Runner</strong></p><p>Synths</p><p>&nbsp;</p><p><strong>Kim&rsquo;s Sunsets</strong></p><p>Guitar, drums, synths</p>', 'FatWhiteFamily-SerfsUp!.jpg');
-            albumList.newAlbum('Jessica Winter', 'Psycho', 'Roya', 'Strings', 'JessicaWinter&S-Type-Psycho.png');
-            albumList.newAlbum('Kelora', 'Gloomerald', 'Kelora', 'Mix', 'Kelora-Gloomerald.jpg');
+            albumList.newAlbum('Fat White Family', 'Serfs Up!', 'Domino', '<p><strong>Feet</strong></p><p>Co-write, Additional production</p<p>Backing vocals, drum machine programming, vocal fx, accordion, synths, cello, violin, harmonica</p><p>&nbsp;</p><p><strong>Bobby&rsquo;s Boyfriend</strong></p><p>Co-write, Additional production</p><p>Backing Vocals, drums, percussion, guitar, synths, violin, baritone sax</p><p>&nbsp;</p><p><strong>Oh Sebastian</strong></p><p>String arrangement, cello, violin</p><p>&nbsp;</p><p><strong>Tastes Good With The Money</strong></p><p>Drums, electronic drums</p><p>&nbsp;</p><p><strong>Fringe Runner</strong></p><p>Synths</p><p>&nbsp;</p><p><strong>Kim&rsquo;s Sunsets</strong></p><p>Guitar, drums, synths</p>', 'FatWhiteFamily-SerfsUp!.jpg');
             albumList.newAlbum('Jazmin Bean', 'Acoustic Session', 'Interscope/Island', 'Production/Mix', 'JazminBean-AcousticChurchSession.jpg');
-            albumList.newAlbum('Kae Tempest', 'The Line is a Curve', 'Fiction', 'Cello', 'KaeTempest-TheLineIsACurve.jpg');
-            albumList.newAlbum('Katy J Pearson', 'Return', 'Heavenly Records', 'Strings', 'KatieJPearson-Return.jpg');
-            albumList.newAlbum('Phobophobes', 'Minature World', 'RIP Records', 'Production', 'Phobophobes-MiniatureWorld.png');
-            albumList.newAlbum('Texas', 'Hi', 'PIAS', 'Harmonica', 'Texas-Hi.jpg');
-            albumList.newAlbum('Tina', 'Mental Health Music', 'Speedy Wunderground', 'Cello', 'Tina-PositiveMentalHealthMusic.jpg');
-            albumList.newAlbum('Dan Lyons', 'SubSuberbia','Futureproof Records', 'Cello', 'DanLyons-Subsuburbia.jpg');
-            albumList.newAlbum('Jessica Winter', 'More Sad Music', 'Roya', 'Strings', 'JessicaWinter-MoreSadMusic.jpg');
+            albumList.newAlbum('Kelora', 'Gloomerald', 'Kelora', 'Mix', 'Kelora-Gloomerald.jpg');
+            albumList.newAlbum('Kae Tempest', 'The Line is a Curve', 'Fiction', '<p><strong>Water in the Rain</strong></p>Cello', 'KaeTempest-TheLineIsACurve.jpg');
+            albumList.newAlbum('Jessica Winter', 'Psycho', 'Roya', 'String Arrangement, Violin, Viola, Cello', 'JessicaWinter&S-Type-Psycho.png');
             albumList.newAlbum('Sweat', 'Sentimental Sunset EP', 'Sweat', 'Production', 'Sweat-SentimentalSunset.jpeg');
+            albumList.newAlbum('Brian Destiny', 'Brians got Talent', 'Dash the Henge', '<p><p><strong>Is It Gonna Be Love?</strong></p><p>Co-write, production, backing vocals, drum machines, drums, synths, guitars, violin</p><p>&nbsp;</p><p><strong>What If I Told You That</strong></p><p>Co-write, production, backing vocals, drum machines, drums, synths, guitars, saxophone</p><p>&nbsp;</p><p><strong>Feed The Horse</strong></p><p>Co-write, production, backing vocals, drum machines, drums, synths, guitars, saxophone</p><p>&nbsp;</p><p><strong>Never Again</strong></p><p>Co-write, production, backing vocals, cello, drum machines, drums, synths</p>', 'BrianDestiny-BriansGotTalent.jpg');
+            albumList.newAlbum('Phobophobes', 'Minature World', 'RIP Records', 'Production', 'Phobophobes-MiniatureWorld.png');
+            albumList.newAlbum('Katy J Pearson', 'Return', 'Heavenly Records', '<p><strong>Tonight, Beautiful Soul, Somthing Real</strong> </p><p>Violin, Cello</p><p><strong>Return, Hey You</strong></p><p>Cello</p><p><strong>Miracle</strong></p><p>Violin</p>', 'KatieJPearson-Return.jpg');
+            albumList.newAlbum('Texas', 'Hi', 'BMG', '<p><strong>Moonchild</strong></p><p>Harmonica</p>', 'Texas-Hi.jpg');
+            albumList.newAlbum('Ti&ntilde;a', 'Mental Health Music', 'Speedy Wunderground', '<p><strong>Rosalina,&nbsp;It&rsquo;s No Use,&nbsp;People</strong></p><p>Cello</p>', 'Tina-PositiveMentalHealthMusic.jpg');
+            albumList.newAlbum('Jessica Winter', 'More Sad Music', 'Roya', 'String Arrangement, Violin, Viola, Cello', 'JessicaWinter-MoreSadMusic.jpg');
             albumList.newAlbum('Lunch Money Life', 'Under the Mercies', 'Wolf Tone', 'Cello', 'LunchMoneyLife-UnderTheMercies.jpg');
-            albumList.newAlbum('MT Hadly', 'There isnt a Window I Wont Look out Of', 'Empty', 'Cello', 'MTHadley-ThereIsntAWindowIWontLookOutOf.jpg');
+            albumList.newAlbum('MT Hadly', 'There isnt a Window I Wont Look out Of', 'Empty', '<p><strong>Suddenly,&nbsp;You Know When to Laugh,&nbsp;Pardon Me,&nbsp;Signed Curtain</strong></p><p>Cello</p>', 'MTHadley-ThereIsntAWindowIWontLookOutOf.jpg');
+            albumList.newAlbum('Dan Lyons', 'SubSuberbia','Futureproof Records', '<p><strong>Big Moon,&nbsp;Biarritz,&nbsp;Easy Aperture</strong></p><p>Cello</p>', 'DanLyons-Subsuburbia.jpg');
             albumList.newAlbum('Honey Hahs', 'Blue Sky', 'Honey Hahs', 'Production', 'HoneyHahs-BlueSky.jpg');
-            albumList.newAlbum('Brian Destiny', 'Brians got Talent', 'Dash the Henge', 'Production', 'BrianDestiny-BriansGotTalent.jpg');
 
 
 
@@ -882,9 +895,6 @@
 
                 landscapeLayout();
 
-
-                //document.getElementById("captionarea").style.width = document.getElementById("slider").offsetHeight + "px";
-
                 if (window.innerWidth>window.innerHeight) {
                     //LANDSCAPE
                     document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetHeight - 60 + "px";
@@ -918,7 +928,7 @@
             function displayCaption (x) {
 
                 if (onAlbums == true) {
-                    document.getElementById("caption").innerHTML = '<b>' + albumList.albums[x].artist + '</b><br>' + '   ' + albumList.albums[x].albumname + ' (' + albumList.albums[x].label + ')<p>' + albumList.albums[x].credit ;
+                    document.getElementById("caption").innerHTML = '<h1 style ="font-size: 13px" >' + albumList.albums[x].artist + '</h1>' + '   ' + albumList.albums[x].albumname + ' (' + albumList.albums[x].label + ')<p>' + '<h1 style ="font-size: 11px">' +albumList.albums[x].credit + '</h1>';
 
                 } else {
 
