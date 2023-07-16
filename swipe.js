@@ -64,7 +64,7 @@ function startOnImage(imageIndex) {
 
 
   let imageWidth = document.getElementById("slider").offsetWidth;
-  console.log(imageWidth);
+  //console.log(imageWidth);
 
   //_C.style.setProperty("--tx", `${-imageWidth*(imageIndex-1)}px`);
 

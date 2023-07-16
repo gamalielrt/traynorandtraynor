@@ -7,7 +7,7 @@ body {
     height: 100vh;
     color: black;
     font-family: 'Space Grotesk', sans-serif;    line-height: 1;
-    font-size: 10px;
+    font-size: 12px;
     overflow: hidden;
     /*background-color: rgb(230, 122, 48);*/
     background-color: black;
@@ -50,6 +50,16 @@ body {
   justify-content: space-between;
   right: 0;
   margin: auto;
+}
+
+.svgObj {
+  pointer-events: none;
+  
+}
+
+.svg-wrp {
+  cursor:auto;
+  
 }
 
 .musicbutton, .visualbutton, .aboutbutton, .titlegif {
@@ -158,30 +168,16 @@ body {
   /*background-color: blueviolet;*/
 
 
-  height:70%;
-  width: 85%;
+  height:90%;
+  width: 80%;
   margin:auto;
   /*padding-top: 5%;*/
 }
 
-#captionarea {
-  /*background-color: cadetblue;*/
-  position:static;
-  display: inline-block;
-  
 
-  /*flex-grow: 1;*/
 
-  /*padding :10%;*/
-  
 
-  
-  
-  /*position: absolute;
-  top: 70%;
-  width: 100%;*/
 
-}
 
 /*--------------------SLIDER------------------*/
 
@@ -190,7 +186,7 @@ body {
     margin:auto;
     /*padding-top: 5%;*/
     /*width:70%;*/
-    /*background-color: blueviolet;*/
+    /*background-color:chocolate;*/
     /*max-height: calc(100%-120px);*/
     overflow: hidden;
     /*top: auto;*/
@@ -292,6 +288,38 @@ body {
     /*pointer-events: none;*/
   }
 
+  #captionarea {
+    /*background-color: cadetblue;*/
+    /*position:static;*/
+    display: inline-block;
+
+    height: 100%;
+
+
+    
+
+    overflow: hidden scroll;
+
+    /*vertical-align: middle;*/
+
+    /*position: fixed;*/
+
+    
+  
+    /*flex-grow: 1;*/
+  
+    /*padding :10%;*/
+    
+  
+    
+    
+    /*position: absolute;
+    top: 70%;
+    width: 100%;*/
+  
+  }
+  
+
   #caption-wrapper {
     /*background-color:darkred;*/
     /*height: 100%;*/
@@ -300,14 +328,19 @@ body {
 
 
 
+
+
+
   }
 
 
   #caption {
+    text-align: center;
     /*background-color:darkolivegreen;*/
+    
+    
 
-    /*width:100%;*/
-    margin: auto;
+    /*margin: auto;*/
     /*top:0;*/
 
 

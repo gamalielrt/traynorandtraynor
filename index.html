@@ -25,13 +25,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 
 
-        <div id="buttons" >
+        <!--<div id="buttons" >
             <img id="musicbutton" src="assets/symbol1.png" height="80" width="80" onClick="navigateToPage(1)">
-            <!--<img id="visualbutton" src="assets/symbol2.png" height="80" width="80" onClick="navigateToPage(2)">-->
             <img id="aboutbutton" src="assets/symbol3.png" height="80" width="80" onClick="navigateToPage(2)">
             <img id="titlegif" src="assets/chromegif.png" height="100" width="100" onClick="navigateToPage(3)">
 
+        </div>-->
+        <div id="buttons" >
+            <div id="musicbutton" class="svg-wrp" onClick="navigateToPage(1)"><object class="svgObj" id = "musicSvg" data="assets/symbol1.svg" height="80" width="80" ></object></div>
+            <div id="aboutbutton" class="svg-wrp" onClick="navigateToPage(2)"><object class="svgObj" id = "aboutSvg" data="assets/symbol3.svg" height="80" width="80" ></object></div>
+            <img id="titlegif" src="assets/chromegif.png" height="100" width="100" onClick="navigateToPage(3)">
+
         </div>
+
 
         <div id = "contentbrowser" hidden>
             <div id = "contentbrowserItems">
@@ -77,6 +83,11 @@
             let onAlbums = Boolean;
 
             var contentbrowser = document.getElementById('contentbrowser');
+
+            var albumActive = false;
+            var albumSelected = false;
+
+
 
             const isTouchDevice = () => {
                 try {
@@ -143,11 +154,22 @@
 
             function landscapeLayout() {
 
+                console.log('landscapeLayout()', 'albumActive : ', albumActive)
+
+                //console.log(document.getElementById("sliderarea").offsetHeight)
+
                 //console.log(document.getElementById("captionarea").offsetHeight);
 
-                console.log(document.getElementById("slider").offsetWidth + '= slider width');
+                //console.log(document.getElementById("slider").offsetWidth + '= slider width');
                 
-                console.log(document.getElementById("sliderarea").offsetWidth + '= sliderarea width');
+                //console.log(document.getElementById("sliderarea").offsetWidth + '= sliderarea width');
+
+
+                ///// ADDED THIS >
+
+                //document.getElementById("slider").style.display = 'inline-block';
+
+
 
                 size();
 
@@ -161,35 +183,92 @@
                 if (window.innerWidth>window.innerHeight) {
 
 
-                    // LANDSCAPE
+                    /////////// LANDSCAPE /////////
 
-                    console.log("Layout - landscape code");
+                    //console.log('landscapeLayout()')
+
+
+
+
+
+
+                    //console.log("Layout - landscape code");
+
+                    //console.log("slide height = " + document.getElementById("sliderarea").offsetHeight)
+                    //console.log("windowheight = " + window.innerHeight)
+
 
                     capMargin = (window.innerWidth - document.getElementById("sliderarea").offsetWidth)/2;
+
+                    document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth - 60 + "px";
+
+                    document.getElementById("captionarea").style.height = '100%';
+                    document.getElementById("captionarea").style.display = 'fixed';
+
+                    document.getElementById("caption").style.width = '100%';
+
 
 
 
                     //document.getElementById("maincontent").style.display = "flex";
 
                     //document.getElementById("maincontent").style.paddingTop = "0";
+                    document.getElementById("slider").style.maxWidth = 'unset';
+
                     document.getElementById("sliderarea").style.width = "80%";
-                    document.getElementById("sliderarea").style.height = "90%";
                     
 
                     //console.log(document.getElementById("sliderarea").offsetWidth);
 
                     //document.getElementById("caption").style.position = "absolute";
+
                     
                     document.getElementById("slider").style.height = document.getElementById("sliderarea").offsetHeight + 'px';
                     document.getElementById("slider").style.width = document.getElementById("sliderarea").offsetHeight + 'px';
                     document.getElementById("slider").style.margin = 'unset';
 
-                    document.getElementById("caption").style.display = 'inline-block';
+                    if (albumActive == true) {
+                        document.getElementById("slider").style.display = 'inline-block';
+                    }
 
-                    document.getElementById("caption").style.position = 'absolute';
-                    document.getElementById("caption").style.top = '40%';
-                    document.getElementById("caption").style.left = document.getElementById("slider").offsetWidth + capMargin +'px';
-                    document.getElementById("caption").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth;
+
+
+
+                    
+
+                    // Absolute - relative
+
+                    //document.getElementById("caption").style.position = 'relative';
+
+                    //40% - 0px
+
+
+                    //document.getElementById("caption").style.top = '40px';
+
+                    ///////// MUTED THIS >
+
+                    //document.getElementById("caption").style.left = document.getElementById("sliderarea").offsetHeight + capMargin + 20 + 'px';
+
+
+
+
+
+                    //document.getElementById("caption").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth;
+
+                    if (window.innerHeight < 750) {
+                        document.getElementById("sliderarea").style.height = "90%";
+                        document.getElementById("sliderarea").style.paddingTop = '0%' //window.innerHeight - 500 + 'px';
+
+
+
+                    } else if (window.innerHeight >= 750) {
+                        document.getElementById("sliderarea").style.maxHeight = '400px';
+                        document.getElementById("sliderarea").style.paddingTop = '5%' //window.innerHeight - 500 + 'px';
+
+
+                    }
+
+                
 
 
 
@@ -213,10 +292,21 @@
 
                 } else {
 
-                    // PORTRAIT
+                    //////////// PORTRAIT ///////////
+
+
+
+                    //document.getElementById("captionarea").style.width = document.getElementById("slider").offsetHeight + "px";
 
 
                     console.log("Layout - portrait code");
+                    console.log("slider.offsetWidth : ", document.getElementById("slider").offsetWidth)
+                    console.log("sliderarea.offsetWidth : ", document.getElementById("sliderarea").offsetWidth)
+
+                    console.log("caption.offsetWidth : ", document.getElementById("caption").offsetWidth)
+                    console.log("captionarea.offsetWidth : ", document.getElementById("captionarea").offsetWidth)
+
+
                     /*
 
                     document.getElementById("maincontent").style.display = "block";
@@ -234,16 +324,34 @@
                     document.getElementById("sliderarea").style.width = "85%";
                     document.getElementById("sliderarea").style.height = "70%";
 
+                    document.getElementById("sliderarea").style.paddingTop = '0%'
+
+
                     document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
                     document.getElementById("slider").style.height = '100%';
                     document.getElementById("slider").style.width = '100%';
 
 
                     document.getElementById("slider").style.margin = 'auto';
+                    if (albumActive == true) {
+                        document.getElementById("slider").style.display = 'block';
+                    }
+
+
 
                     document.getElementById("caption").style.position = 'relative';
                     document.getElementById("caption").style.left = 'unset';
                     document.getElementById("caption").style.margin = 'auto';
+
+                    document.getElementById("captionarea").style.height = '100px';
+
+                    document.getElementById("captionarea").style.width = '100%'
+
+                    document.getElementById("caption").style.width = document.getElementById("slider").offsetWidth + "px";
+
+                     //document.getElementById("sliderarea").offsetWidth;
+                    //document.getElementById("caption").style.width = '100%'//document.getElementById("slider").offsetWidth;
+
 
 
 
@@ -282,16 +390,77 @@
 
             }
 
+
+            function buttonChange () {
+                var musicSvg = document.getElementById("musicSvg");
+                var musicSvgDoc = musicSvg.contentDocument;
+                var musicSvgDocFill = musicSvgDoc.getElementById("primaryColour");
+
+
+                //gsap.to(primaryColour, {fill: "rgb(0,0,0)", duration:3});
+                console.log(musicSvgDocFill);
+
+                //primaryColour.style.fill = 'red';
+            }
+
+            //buttonChange();
+
+
+            function changeSVGColor() {
+                var svg = document.getElementById("musicSvg").contentDocument;
+                var elements = svg.getElementsByClassName("primaryColour");
+                console.log(elements);
+
+                //elements.style.fill = "rgb(255,0,0)";
+
+                //for (var i = 0; i < elements.length; i++) elements[i].style.fill = "rgb(255,0,0)";
+            }
+
+            changeSVGColor();
+
+
+
+
+
+
             
 
 
             function navigateToPage(page) {
+
+                
+
+                
+                
+
+                if (window.innerHeight < 750) {
+                        document.getElementById("sliderarea").style.height = "90%";
+                        document.getElementById("sliderarea").style.paddingTop = '0%' //window.innerHeight - 500 + 'px';
+
+
+
+                    } else if (window.innerHeight >= 750) {
+                        document.getElementById("sliderarea").style.maxHeight = '400px';
+                        document.getElementById("sliderarea").style.paddingTop = '5%' //window.innerHeight - 500 + 'px';
+
+
+                    }
+
 
                 switch (page) {
 
                     // Music
 
                     case (1) :
+                    buttonChange();
+
+                    if (albumActive == true) {
+                        albumActive = false;
+                        console.log('albumActive : ', albumActive);
+                    }
+
+
+
 
 
                         //maincontent.style.display = 'none';
@@ -306,12 +475,12 @@
                         document.getElementById("slider").style.display = "none";
                         document.getElementById("caption").innerHTML = '';
 
-                        //DISABLE/////////////////////////////////////      
+                        //*************************//DISABLE/////////////////////////////////////      
                         THREEgoToMusic();
 
-                        //DISABLE/////////////////////////////////////      
+                        //*************************//DISABLE/////////////////////////////////////      
                         desertLightsUp();
-                        //DISABLE/////////////////////////////////////      
+                        //*************************//DISABLE/////////////////////////////////////      
                         clubLightsUp();
 
                         window.scrollTo(0,0);
@@ -347,13 +516,13 @@
                         //albumSelected = false;
 
 
-                        //DISABLE/////////////////////////////////////      
+                        //*************************//DISABLE/////////////////////////////////////      
 
                         THREEgoToVisual();
 
-                        //DISABLE/////////////////////////////////////      
+                        //*************************//DISABLE/////////////////////////////////////      
                         desertLightsUp();
-                        //DISABLE/////////////////////////////////////      
+                        //*************************//DISABLE/////////////////////////////////////      
                         clubLightsUp();
 
                         window.scrollTo(0,0);
@@ -392,11 +561,11 @@
                     document.getElementById("slider").style.display = "none";
                     document.getElementById("caption").innerHTML = '';
 
-                    //DISABLE/////////////////////////////////////      
+                    //*************************//DISABLE/////////////////////////////////////      
 
                     THREEgoToAbout();
                     
-                    //DISABLE/////////////////////////////////////      
+                    //*************************//DISABLE/////////////////////////////////////      
                     clubLightsUp();
 
                     window.scrollTo(0,0);
@@ -524,13 +693,13 @@
 
                     startOnImage(value+1);
 
-                    //DISABLE/////////////////////////////////////      
+                    //*************************//DISABLE/////////////////////////////////////      
                     clubLightsDown();
 
 
 
                     //visualSelected = false;
-                    document.getElementById("slider").style.display = "block";
+                    //document.getElementById("slider").style.display = "block";
                     displayCaption(value);
 
 
@@ -542,8 +711,10 @@
                     document.getElementById("slider").style.display = "none";
 
                 }
+                
+                ////////////document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
+                document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetHeight - 10 + "px";
 
-                document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
 
             }
 
@@ -557,10 +728,10 @@
 
 
             class Album {
-                constructor(artist, albumname, songs, credit, image) {
+                constructor(artist, albumname, label, credit, image) {
                     this._artist = artist;
                     this._albumname = albumname;
-                    this._songs = songs;
+                    this._label = label;
                     this._credit = credit;
                     this._image = image;
                 }
@@ -570,8 +741,8 @@
                 get albumname() {
                     return this._albumname;
                 }
-                get songs() {
-                    return this._songs;
+                get label() {
+                    return this._label;
                 }
                 get credit() {
                     return this._credit;
@@ -586,8 +757,8 @@
                     this.albums = [];
                 }
 
-                newAlbum (artist, albumname, songs, credit, image) {
-                    let a = new Album(artist, albumname, songs, credit, image);
+                newAlbum (artist, albumname, label, credit, image) {
+                    let a = new Album(artist, albumname, label, credit, image);
                     this.albums.push(a);
                     return a;
                 }
@@ -599,22 +770,22 @@
 
             albumList = new Albums();
 
-            albumList.newAlbum('Fat White Family', 'Serfs Up!<br>', 'Feet, Bobbys Boyfriend<br>', 'Writing/Additional Production <br>Tastes good with the Money ', 'FatWhiteFamily-SerfsUp!.jpg');
-            albumList.newAlbum('Jessica Winter', 'Psycho', 'Psycho', 'Strings', 'JessicaWinter&S-Type-Psycho.png');
-            albumList.newAlbum('Kelora', 'Gloomerald', 'All', 'Mix', 'Kelora-Gloomerald.jpg');
-            albumList.newAlbum('Jazmin Bean', 'Acoustic Session', 'Yandere, Carnage, Little Lamb', 'Production/Mix', 'JazminBean-AcousticChurchSession.jpg');
-            albumList.newAlbum('Kae Tempest', 'The Line is a Curve', 'Water in the Rain', 'Cello', 'KaeTempest-TheLineIsACurve.jpg');
-            albumList.newAlbum('Katy J Pearson', 'Return', 'Tonight, Beautiful Soul, Hey You', 'Strings', 'KatieJPearson-Return.jpg');
-            albumList.newAlbum('Phobophobes', 'Minature World', 'All tracks', 'Production', 'Phobophobes-MiniatureWorld.png');
-            albumList.newAlbum('Texas', 'Hi', 'Moonchild', 'Harmonica', 'Texas-Hi.jpg');
-            albumList.newAlbum('Tina', 'Mental Health Music', 'Rosalina, Its No Use, People', 'Cello', 'Tina-PositiveMentalHealthMusic.jpg');
-            albumList.newAlbum('Dan Lyons', 'SubSuberbia','Big Moon, Biarritz, Easy Aperture', 'Cello', 'DanLyons-Subsuburbia.jpg');
-            albumList.newAlbum('Jessica Winter', 'More Sad Music', 'I Think Your Going to Hurt me so Bad', 'Strings', 'JessicaWinter-MoreSadMusic.jpg');
-            albumList.newAlbum('Sweat', 'Sentimental Sunset EP', 'All Tracks', 'Production', 'Sweat-SentimentalSunset.jpeg');
-            albumList.newAlbum('Lunch Money Life', 'Under the Mercies', 'Under the Mercies', 'Cello', 'LunchMoneyLife-UnderTheMercies.jpg');
-            albumList.newAlbum('MT Hadly', 'There isnt a Window I Wont Look out Of', 'All', 'Cello', 'MTHadley-ThereIsntAWindowIWontLookOutOf.jpg');
-            albumList.newAlbum('Honey Hahs', 'Blue Sky', 'Blue Sky', 'Production', 'HoneyHahs-BlueSky.jpg');
-            albumList.newAlbum('Brian Destiny', 'Brians got Talent', 'All', 'Production', 'BrianDestiny-BriansGotTalent.jpg');
+            albumList.newAlbum('Fat White Family', 'Serfs Up!', 'Domino', '<strong>Feet</strong></p><p>Co-write, Additional production</p<p>Backing vocals, drum machine programming, vocal fx, accordion, synths, cello, violin, harmonica</p><p>&nbsp;</p><p><strong>Bobby&rsquo;s Boyfriend</strong></p><p>Co-write, Additional production</p><p>Backing Vocals, drums, percussion, guitar, synths, violin, baritone sax</p><p>&nbsp;</p><p><strong>Oh Sebastian</strong></p><p>String arrangement, cello, violin</p><p>&nbsp;</p><p><strong>Tastes Good With The Money</strong></p><p>Drums, electronic drums</p><p>&nbsp;</p><p><strong>Fringe Runner</strong></p><p>Synths</p><p>&nbsp;</p><p><strong>Kim&rsquo;s Sunsets</strong></p><p>Guitar, drums, synths</p>', 'FatWhiteFamily-SerfsUp!.jpg');
+            albumList.newAlbum('Jessica Winter', 'Psycho', 'Roya', 'Strings', 'JessicaWinter&S-Type-Psycho.png');
+            albumList.newAlbum('Kelora', 'Gloomerald', 'Kelora', 'Mix', 'Kelora-Gloomerald.jpg');
+            albumList.newAlbum('Jazmin Bean', 'Acoustic Session', 'Interscope/Island', 'Production/Mix', 'JazminBean-AcousticChurchSession.jpg');
+            albumList.newAlbum('Kae Tempest', 'The Line is a Curve', 'Fiction', 'Cello', 'KaeTempest-TheLineIsACurve.jpg');
+            albumList.newAlbum('Katy J Pearson', 'Return', 'Heavenly Records', 'Strings', 'KatieJPearson-Return.jpg');
+            albumList.newAlbum('Phobophobes', 'Minature World', 'RIP Records', 'Production', 'Phobophobes-MiniatureWorld.png');
+            albumList.newAlbum('Texas', 'Hi', 'PIAS', 'Harmonica', 'Texas-Hi.jpg');
+            albumList.newAlbum('Tina', 'Mental Health Music', 'Speedy Wunderground', 'Cello', 'Tina-PositiveMentalHealthMusic.jpg');
+            albumList.newAlbum('Dan Lyons', 'SubSuberbia','Futureproof Records', 'Cello', 'DanLyons-Subsuburbia.jpg');
+            albumList.newAlbum('Jessica Winter', 'More Sad Music', 'Roya', 'Strings', 'JessicaWinter-MoreSadMusic.jpg');
+            albumList.newAlbum('Sweat', 'Sentimental Sunset EP', 'Sweat', 'Production', 'Sweat-SentimentalSunset.jpeg');
+            albumList.newAlbum('Lunch Money Life', 'Under the Mercies', 'Wolf Tone', 'Cello', 'LunchMoneyLife-UnderTheMercies.jpg');
+            albumList.newAlbum('MT Hadly', 'There isnt a Window I Wont Look out Of', 'Empty', 'Cello', 'MTHadley-ThereIsntAWindowIWontLookOutOf.jpg');
+            albumList.newAlbum('Honey Hahs', 'Blue Sky', 'Honey Hahs', 'Production', 'HoneyHahs-BlueSky.jpg');
+            albumList.newAlbum('Brian Destiny', 'Brians got Talent', 'Dash the Henge', 'Production', 'BrianDestiny-BriansGotTalent.jpg');
 
 
 
@@ -663,12 +834,11 @@
 
             //When album clicked
 
-            var albumSelected = false;
 
 
             function clickAlbum(value) {
 
-                landscapeLayout();
+
 
 
                 window.scrollTo(0,0)
@@ -676,26 +846,33 @@
                 if (!albumSelected) {
 
                     //albumSelected = true;
+                    albumActive = true;
 
-                    document.getElementById("slider").style.display = "block";
+
+                    //document.getElementById("slider").style.display = "block";
 
                     startOnImage(value+1);
 
+                    //setTimeout(displayCaption, 1000, i);
                     displayCaption(i);
+
                     
                     //console.log('Artist:', albumList.albums[value].artist,', Album:', albumList.albums[value].albumname,', Song:',albumList.albums[value].songs ,', Credit:',albumList.albums[value].credit )
 
-                       //DISABLE/////////////////////////////////////      
-                       desertLightsDown();
+                    //*************************//DISABLE/////////////////////////////////////      
+                    desertLightsDown();
 
                 } else {
 
                     albumSelected = false;
 
+                    //albumActive = false;
+
+
 
                     document.getElementById("slider").style.display = "none";
 
-                    //DISABLE/////////////////////////////////////      
+                    //*************************//DISABLE/////////////////////////////////////      
                     desertLightsUp();
 
 
@@ -703,7 +880,21 @@
 
                 }
 
-                document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
+                landscapeLayout();
+
+
+                //document.getElementById("captionarea").style.width = document.getElementById("slider").offsetHeight + "px";
+
+                if (window.innerWidth>window.innerHeight) {
+                    //LANDSCAPE
+                    document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetHeight - 60 + "px";
+                } else {
+                    //PORTRAIT
+                    document.getElementById("caption").style.width = document.getElementById("slider").offsetWidth + "px";
+
+                }
+
+                
 
 
 
@@ -727,7 +918,7 @@
             function displayCaption (x) {
 
                 if (onAlbums == true) {
-                    document.getElementById("caption").innerHTML = '<b>' + albumList.albums[x].artist + '</b><br>' + '   ' + albumList.albums[x].albumname + '   ' + albumList.albums[x].songs + '   ' + albumList.albums[x].credit ;
+                    document.getElementById("caption").innerHTML = '<b>' + albumList.albums[x].artist + '</b><br>' + '   ' + albumList.albums[x].albumname + ' (' + albumList.albums[x].label + ')<p>' + albumList.albums[x].credit ;
 
                 } else {
 
