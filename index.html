@@ -200,7 +200,7 @@
 
                     capMargin = (window.innerWidth - document.getElementById("sliderarea").offsetWidth)/2;
 
-                    document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth - 60 + "px";
+                    document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth - 80 + "px";
 
                     document.getElementById("captionarea").style.height = '100%';
                     document.getElementById("captionarea").style.display = 'fixed';
@@ -215,7 +215,10 @@
                     //document.getElementById("maincontent").style.paddingTop = "0";
                     document.getElementById("slider").style.maxWidth = 'unset';
 
-                    document.getElementById("sliderarea").style.width = "80%";
+                    document.getElementById("sliderarea").style.width = "90%"; //"80%""
+
+                    //document.getElementById("captionarea").style.paddingLeft = '40px';
+
                     
 
                     //console.log(document.getElementById("sliderarea").offsetWidth);
@@ -259,11 +262,17 @@
                         document.getElementById("sliderarea").style.height = "90%";
                         document.getElementById("sliderarea").style.paddingTop = '0%' //window.innerHeight - 500 + 'px';
 
+                        document.getElementById("captionarea").style.paddingLeft = '20px';
+
+
 
 
                     } else if (window.innerHeight >= 750) {
                         document.getElementById("sliderarea").style.maxHeight = '400px';
                         document.getElementById("sliderarea").style.paddingTop = '5%' //window.innerHeight - 500 + 'px';
+
+                        document.getElementById("captionarea").style.paddingLeft = '50px';
+
 
 
                     }
@@ -300,11 +309,14 @@
 
 
                     console.log("Layout - portrait code");
-                    console.log("slider.offsetWidth : ", document.getElementById("slider").offsetWidth)
+                    //console.log("slider.offsetWidth : ", document.getElementById("slider").offsetWidth)
                     console.log("sliderarea.offsetWidth : ", document.getElementById("sliderarea").offsetWidth)
 
-                    console.log("caption.offsetWidth : ", document.getElementById("caption").offsetWidth)
-                    console.log("captionarea.offsetWidth : ", document.getElementById("captionarea").offsetWidth)
+                    console.log("sliderarea.offsetHeight : ", document.getElementById("sliderarea").offsetHeight)
+
+
+                    //console.log("caption.offsetWidth : ", document.getElementById("caption").offsetWidth)
+                    //console.log("captionarea.offsetWidth : ", document.getElementById("captionarea").offsetWidth)
 
 
                     /*
@@ -321,6 +333,9 @@
 
 
                     */
+
+                    document.getElementById("captionarea").style.paddingLeft = 'unset';
+
                     document.getElementById("sliderarea").style.width = "85%";
                     document.getElementById("sliderarea").style.height = "70%";
 
@@ -328,8 +343,11 @@
 
 
                     document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
-                    document.getElementById("slider").style.height = '100%';
                     document.getElementById("slider").style.width = '100%';
+
+                    document.getElementById("slider").style.height = 'unset';
+
+                    
 
 
                     document.getElementById("slider").style.margin = 'auto';
@@ -343,7 +361,7 @@
                     document.getElementById("caption").style.left = 'unset';
                     document.getElementById("caption").style.margin = 'auto';
 
-                    document.getElementById("captionarea").style.height = '100px';
+                    //document.getElementById("captionarea").style.height = '100px';
 
                     document.getElementById("captionarea").style.width = '100%'
 
@@ -354,6 +372,36 @@
 
 
 
+                    document.getElementById("captionarea").style.height = window.innerHeight - document.getElementById("slider").offsetHeight - 240 + 'px';;//200px';
+
+
+
+
+                    // CODE TO MAKE CAPTION LONGER ON HIGH PORTRAIT
+
+
+
+
+                    if (document.getElementById("sliderarea").offsetHeight >= document.getElementById("sliderarea").offsetWidth) {
+
+
+                        //document.getElementById("captionarea").style.height = '200px';
+
+                        //document.getElementById("captionarea").style.position = 'relative';
+                        //document.getElementById("captionarea").style.position.top = '-50px';
+
+                        document.getElementById("slider").style.height = document.getElementById("sliderarea").offsetWidth;
+
+
+
+                    } else if (document.getElementById("sliderarea").offsetHeight < document.getElementById("sliderarea").offsetWidth) {
+                        
+                        
+                        //document.getElementById("captionarea").style.height = '100px';
+
+
+                    }
+                    
 
 
 
@@ -792,7 +840,7 @@
             albumList.newAlbum('Brian Destiny', 'Brians got Talent', 'Dash the Henge', '<p><p><strong>Is It Gonna Be Love?</strong></p><p>Co-write, production, backing vocals, drum machines, drums, synths, guitars, violin</p><p>&nbsp;</p><p><strong>What If I Told You That</strong></p><p>Co-write, production, backing vocals, drum machines, drums, synths, guitars, saxophone</p><p>&nbsp;</p><p><strong>Feed The Horse</strong></p><p>Co-write, production, backing vocals, drum machines, drums, synths, guitars, saxophone</p><p>&nbsp;</p><p><strong>Never Again</strong></p><p>Co-write, production, backing vocals, cello, drum machines, drums, synths</p>', 'BrianDestiny-BriansGotTalent.jpg');
             albumList.newAlbum('Phobophobes', 'Minature World', 'RIP Records', 'Production', 'Phobophobes-MiniatureWorld.png');
             albumList.newAlbum('Katy J Pearson', 'Return', 'Heavenly Records', '<p><strong>Tonight, Beautiful Soul, Somthing Real</strong> </p><p>Violin, Cello</p><p><strong>Return, Hey You</strong></p><p>Cello</p><p><strong>Miracle</strong></p><p>Violin</p>', 'KatieJPearson-Return.jpg');
-            albumList.newAlbum('Texas', 'Hi', 'BMG', '<p><strong>Moonchild</strong></p><p>Harmonica</p>', 'Texas-Hi.jpg');
+            albumList.newAlbum('Texas', 'Hi!', 'BMG', '<p><strong>Moonchild</strong></p><p>Harmonica</p>', 'Texas-Hi.jpg');
             albumList.newAlbum('Ti&ntilde;a', 'Mental Health Music', 'Speedy Wunderground', '<p><strong>Rosalina,&nbsp;It&rsquo;s No Use,&nbsp;People</strong></p><p>Cello</p>', 'Tina-PositiveMentalHealthMusic.jpg');
             albumList.newAlbum('Jessica Winter', 'More Sad Music', 'Roya', 'String Arrangement, Violin, Viola, Cello', 'JessicaWinter-MoreSadMusic.jpg');
             albumList.newAlbum('Lunch Money Life', 'Under the Mercies', 'Wolf Tone', 'Cello', 'LunchMoneyLife-UnderTheMercies.jpg');
