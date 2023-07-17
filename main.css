@@ -7,7 +7,7 @@ body {
     height: 100vh;
     color: black;
     font-family: 'Space Grotesk', sans-serif;    line-height: 1;
-    font-size: 12px;
+    font-size: 11px;
     overflow: hidden;
     /*background-color: rgb(230, 122, 48);*/
     background-color: black;
@@ -336,6 +336,7 @@ body {
 
   #caption {
     text-align: center;
+    padding-top: 5px;
     /*background-color:darkolivegreen;*/
     
     

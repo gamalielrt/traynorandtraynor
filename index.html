@@ -977,7 +977,8 @@
             function displayCaption (x) {
 
                 if (onAlbums == true) {
-                    document.getElementById("caption").innerHTML = '<h1 style ="font-size: 13px" >' + albumList.albums[x].artist + '</h1>' + '   ' + albumList.albums[x].albumname + ' (' + albumList.albums[x].label + ')<p>' + '<h1 style ="font-size: 11px">' +albumList.albums[x].credit + '</h1>';
+                    //document.getElementById("caption").innerHTML = '<h1 style ="font-size: 13px" >' + albumList.albums[x].artist + '</h1>' + '   ' + albumList.albums[x].albumname + ' (' + albumList.albums[x].label + ')<p>' + '<h1 style ="font-size: 11px">' +albumList.albums[x].credit + '</h1>';
+                    document.getElementById("caption").innerHTML = '<h1 style ="font-size: 13px; font-weight: bolder;" >' +  '   ' + albumList.albums[x].albumname + ' (' + albumList.albums[x].label + ')<p>' +'</h1>'+ '<h1 style ="font-size: 12px; font-weight: normal;">'  + albumList.albums[x].artist + '</h1><p>' + albumList.albums[x].credit  ;
 
                 } else {
 
