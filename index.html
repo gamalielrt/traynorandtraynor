@@ -32,8 +32,8 @@
 
         </div>-->
         <div id="buttons" >
-            <div id="musicbutton" class="svg-wrp" onClick="navigateToPage(1)"><object class="svgObj" id = "musicSvg" data="assets/symbol1.svg" height="80" width="80" ></object></div>
-            <div id="aboutbutton" class="svg-wrp" onClick="navigateToPage(2)"><object class="svgObj" id = "aboutSvg" data="assets/symbol3.svg" height="80" width="80" ></object></div>
+            <div id="musicbutton" class="svg-wrp" onClick="navigateToPage(1)"><object class="svgObj" id = "musicSvg" data="assets/symbol1.svg" height="80" width="80" onLoad = "buttonColourInit()"></object></div>
+            <div id="visualbutton" class="svg-wrp" onClick="navigateToPage(2)"><object class="svgObj" id = "visualSvg" data="assets/symbol3.svg" height="80" width="80" onLoad = "buttonColourInit()" ></object></div>
             <img id="titlegif" src="assets/chromegif.png" height="100" width="100" onClick="navigateToPage(3)">
 
         </div>
@@ -67,6 +67,13 @@
                 </div>
 
 
+                <div id = "aboutpage" hidden>
+                    <div id = "aboutcontent" >
+                        @sentimentaldante // @gamali3lrt
+                    </div>
+                </div>
+
+
                 
 
                 <!--<div id = contenttablemiddle ></div>-->
@@ -87,6 +94,8 @@
             var albumActive = false;
             var albumSelected = false;
 
+            
+
 
 
             const isTouchDevice = () => {
@@ -102,30 +111,73 @@
 
             maincontent = document.getElementById("maincontent");
 
+            
+            
+            
+            
+            
+            
+            
+            
+            ////////////////  SYMBOLS
 
 
-            var menuOpen = false;
+            function buttonColourInit () {
+                var musicSvg = document.getElementById("musicSvg");
+                var musicSvgDoc = musicSvg.contentDocument;
+                var musicSvgDocFill = musicSvgDoc.getElementById("primaryColour");
 
-            function activateMenu() {
-
-                switch (menuOpen) {
-                    case false :
-                        //console.log("menu is Open");
-                        menuOpen = true;
-                        document.getElementById("menu").style.display = 'block';
-                        document.getElementById("menuicon").src = "assets/minus.png";
-                        break;
-                    case true :
-                        //console.log("menu is Closed");
-                        document.getElementById("menu").style.display = 'none';
-                        document.getElementById("menuicon").src = "assets/plus.png";
+                var visualSvg = document.getElementById("visualSvg");
+                var visualSvgDoc = visualSvg.contentDocument;
+                var visualSvgDocFill = visualSvgDoc.getElementById("primaryColour");
 
 
-                        menuOpen = false;
-                        break;
+
+
+                musicSvgDocFill.style.fill = 'rgb(76, 33, 70)';
+                visualSvgDocFill.style.fill = 'rgb(76, 33, 70)';
+
+            }
+
+            function buttonColourChange (page) {
+                var musicSvg = document.getElementById("musicSvg");
+                var musicSvgDoc = musicSvg.contentDocument;
+                var musicSvgDocFill = musicSvgDoc.getElementById("primaryColour");
+
+                var visualSvg = document.getElementById("visualSvg");
+                var visualSvgDoc = visualSvg.contentDocument;
+                var visualSvgDocFill = visualSvgDoc.getElementById("primaryColour");
+
+                switch (page) {
+                    case (1) :
+                        gsap.to(musicSvgDocFill.style, {fill: 'rgb(76, 33, 70)', duration:3});
+                        gsap.to(visualSvgDocFill.style, {fill: 'rgb(76, 33, 70)', duration:3});
+                    break;
+
+                    case (2) :
+                        gsap.to(musicSvgDocFill.style, {fill: 'rgb(29,28,88)', duration:3});
+                        gsap.to(visualSvgDocFill.style, {fill: 'rgb(29,28,88)', duration:3});
+                    break;
+
+                    case (3) :
+                        gsap.to(musicSvgDocFill.style, {fill: 'rgb(50,57,79)', duration:3});
+                        gsap.to(visualSvgDocFill.style, {fill: 'rgb(50,57,79)', duration:3});
+                    break;
+
+
+
 
                 }
+
+
+
             }
+
+
+
+
+            //////////////////     LAYOUT
+
 
             window.addEventListener( 'resize', landscapeLayout, false );
 
@@ -154,147 +206,34 @@
 
             function landscapeLayout() {
 
-                console.log('landscapeLayout()', 'albumActive : ', albumActive)
-
-                //console.log(document.getElementById("sliderarea").offsetHeight)
-
-                //console.log(document.getElementById("captionarea").offsetHeight);
-
-                //console.log(document.getElementById("slider").offsetWidth + '= slider width');
-                
-                //console.log(document.getElementById("sliderarea").offsetWidth + '= sliderarea width');
-
-
-                ///// ADDED THIS >
-
-                //document.getElementById("slider").style.display = 'inline-block';
-
-
-
                 size();
-
-
-                //document.getElementById("slider").style.margin = "auto";
-
-
-
-
 
                 if (window.innerWidth>window.innerHeight) {
 
-
                     /////////// LANDSCAPE /////////
-
-                    //console.log('landscapeLayout()')
-
-
-
-
-
-
-                    //console.log("Layout - landscape code");
-
-                    //console.log("slide height = " + document.getElementById("sliderarea").offsetHeight)
-                    //console.log("windowheight = " + window.innerHeight)
-
 
                     capMargin = (window.innerWidth - document.getElementById("sliderarea").offsetWidth)/2;
 
                     document.getElementById("captionarea").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth - 80 + "px";
-
                     document.getElementById("captionarea").style.height = '100%';
                     document.getElementById("captionarea").style.display = 'fixed';
-
                     document.getElementById("caption").style.width = '100%';
-
-
-
-
-                    //document.getElementById("maincontent").style.display = "flex";
-
-                    //document.getElementById("maincontent").style.paddingTop = "0";
                     document.getElementById("slider").style.maxWidth = 'unset';
-
                     document.getElementById("sliderarea").style.width = "90%"; //"80%""
-
-                    //document.getElementById("captionarea").style.paddingLeft = '40px';
-
-                    
-
-                    //console.log(document.getElementById("sliderarea").offsetWidth);
-
-                    //document.getElementById("caption").style.position = "absolute";
-
-                    
                     document.getElementById("slider").style.height = document.getElementById("sliderarea").offsetHeight + 'px';
                     document.getElementById("slider").style.width = document.getElementById("sliderarea").offsetHeight + 'px';
                     document.getElementById("slider").style.margin = 'unset';
-
                     if (albumActive == true) {
                         document.getElementById("slider").style.display = 'inline-block';
                     }
-
-
-
-
-                    
-
-                    // Absolute - relative
-
-                    //document.getElementById("caption").style.position = 'relative';
-
-                    //40% - 0px
-
-
-                    //document.getElementById("caption").style.top = '40px';
-
-                    ///////// MUTED THIS >
-
-                    //document.getElementById("caption").style.left = document.getElementById("sliderarea").offsetHeight + capMargin + 20 + 'px';
-
-
-
-
-
-                    //document.getElementById("caption").style.width = document.getElementById("sliderarea").offsetWidth - document.getElementById("slider").offsetWidth;
-
                     if (window.innerHeight < 750) {
                         document.getElementById("sliderarea").style.height = "90%";
                         document.getElementById("sliderarea").style.paddingTop = '0%' //window.innerHeight - 500 + 'px';
-
                         document.getElementById("captionarea").style.paddingLeft = '20px';
-
-
-
-
                     } else if (window.innerHeight >= 750) {
                         document.getElementById("sliderarea").style.maxHeight = '400px';
                         document.getElementById("sliderarea").style.paddingTop = '5%' //window.innerHeight - 500 + 'px';
-
                         document.getElementById("captionarea").style.paddingLeft = '50px';
-
-
-
-                    }
-
-                
-
-
-
-
-
-
-
-
-
-                    if (sliderArea.offsetWidth>sliderArea.offsetHeight) {
-
-                        //console.log("square sides are "+ sliderArea.offsetHeight);
-                        //document.getElementById("slider").style.offsetHeigh = sliderArea.offsetHeigh + 'px';
-
-                        } else {
-
-                        //console.log("square sides are "+ sliderArea.offsetWidth);
 
                     }
 
@@ -304,219 +243,76 @@
                     //////////// PORTRAIT ///////////
 
 
-
-                    //document.getElementById("captionarea").style.width = document.getElementById("slider").offsetHeight + "px";
-
-
-                    console.log("Layout - portrait code");
-                    //console.log("slider.offsetWidth : ", document.getElementById("slider").offsetWidth)
-                    console.log("sliderarea.offsetWidth : ", document.getElementById("sliderarea").offsetWidth)
-
-                    console.log("sliderarea.offsetHeight : ", document.getElementById("sliderarea").offsetHeight)
-
-
-                    //console.log("caption.offsetWidth : ", document.getElementById("caption").offsetWidth)
-                    //console.log("captionarea.offsetWidth : ", document.getElementById("captionarea").offsetWidth)
-
-
-                    /*
-
-                    document.getElementById("maincontent").style.display = "block";
-
-
-                    document.getElementById("maincontent").style.paddingTop = "5";
-
-                    //document.getElementById("caption").style.position = "static";
-                    //document.getElementById("caption").style.top = '0%';
-
-                    document.getElementById("slider").style.width = "100%";
-
-
-                    */
-
                     document.getElementById("captionarea").style.paddingLeft = 'unset';
-
                     document.getElementById("sliderarea").style.width = "85%";
                     document.getElementById("sliderarea").style.height = "70%";
-
                     document.getElementById("sliderarea").style.paddingTop = '0%'
-
-
                     document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
                     document.getElementById("slider").style.width = '100%';
-
                     document.getElementById("slider").style.height = 'unset';
-
-                    
-
-
                     document.getElementById("slider").style.margin = 'auto';
                     if (albumActive == true) {
                         document.getElementById("slider").style.display = 'block';
                     }
-
-
-
                     document.getElementById("caption").style.position = 'relative';
                     document.getElementById("caption").style.left = 'unset';
                     document.getElementById("caption").style.margin = 'auto';
-
-                    //document.getElementById("captionarea").style.height = '100px';
-
                     document.getElementById("captionarea").style.width = '100%'
-
-
                     document.getElementById("caption").style.width = document.getElementById("slider").offsetWidth + "px";
-
-                     //document.getElementById("sliderarea").offsetWidth;
-                    //document.getElementById("caption").style.width = '100%'//document.getElementById("slider").offsetWidth;
-
-
-
                     document.getElementById("captionarea").style.height = window.innerHeight - document.getElementById("slider").offsetHeight - 240 + 'px';;//200px';
-
-
-
-
+                    
                     // CODE TO MAKE CAPTION LONGER ON HIGH PORTRAIT
-
-
-
 
                     if (document.getElementById("sliderarea").offsetHeight >= document.getElementById("sliderarea").offsetWidth) {
 
-
-                        //document.getElementById("captionarea").style.height = '200px';
-
-                        //document.getElementById("captionarea").style.position = 'relative';
-                        //document.getElementById("captionarea").style.position.top = '-50px';
-
                         document.getElementById("slider").style.height = document.getElementById("sliderarea").offsetWidth;
 
-
-
                     } else if (document.getElementById("sliderarea").offsetHeight < document.getElementById("sliderarea").offsetWidth) {
-                        
-                        
-                        //document.getElementById("captionarea").style.height = '100px';
-
-
                     }
-                    
-
-
-
-
-
-
-
-
-                    /*
-
-                    if (sliderArea.offsetWidth>sliderArea.offsetHeight) {
-
-                        console.log("square sides are "+ sliderArea.offsetHeight+ 'Width more than Height');
-                        document.getElementById("slider").style.maxWidth = sliderArea.offsetHeight + 'px';
-                        //document.getElementById("slider").style.margin = "auto";
-
-
-                        } else {
-
-                        console.log("square sides are "+ sliderArea.offsetWidth + 'Height more than width');
-                        document.getElementById("slider").style.margin = "auto";
-
-
-                    }
-
-                    */
-
-                    //document.getElementById("caption").style.width = document.getElementById("slider").offsetHeight + "px";
-
-
-                    
-
                 }
-
             }
-
-
-            function buttonChange () {
-                var musicSvg = document.getElementById("musicSvg");
-                var musicSvgDoc = musicSvg.contentDocument;
-                var musicSvgDocFill = musicSvgDoc.getElementById("primaryColour");
-
-
-                //gsap.to(primaryColour, {fill: "rgb(0,0,0)", duration:3});
-                console.log(musicSvgDocFill);
-
-                //primaryColour.style.fill = 'red';
-            }
-
-            //buttonChange();
-
-
-            function changeSVGColor() {
-                var svg = document.getElementById("musicSvg").contentDocument;
-                var elements = svg.getElementsByClassName("primaryColour");
-                console.log(elements);
-
-                //elements.style.fill = "rgb(255,0,0)";
-
-                //for (var i = 0; i < elements.length; i++) elements[i].style.fill = "rgb(255,0,0)";
-            }
-
-            changeSVGColor();
-
-
-
-
 
 
             
-
-
+            
+            
+            
+            
+            ///////////////  NAVAGATION
+            
+            
+            
             function navigateToPage(page) {
 
-                
-
-                
-                
 
                 if (window.innerHeight < 750) {
                         document.getElementById("sliderarea").style.height = "90%";
                         document.getElementById("sliderarea").style.paddingTop = '0%' //window.innerHeight - 500 + 'px';
 
-
-
                     } else if (window.innerHeight >= 750) {
                         document.getElementById("sliderarea").style.maxHeight = '400px';
                         document.getElementById("sliderarea").style.paddingTop = '5%' //window.innerHeight - 500 + 'px';
 
-
                     }
-
 
                 switch (page) {
 
                     // Music
 
                     case (1) :
-                    buttonChange();
 
-                    if (albumActive == true) {
-                        albumActive = false;
-                        console.log('albumActive : ', albumActive);
-                    }
+                        buttonColourChange(1);
 
+                        if (albumActive == true) {
+                            albumActive = false;
+                            console.log('albumActive : ', albumActive);
+                        }
 
-
-
+                        document.getElementById("aboutpage").style.display = 'none';
 
                         //maincontent.style.display = 'none';
                         document.getElementById("contentbrowser").style.display = 'block';
                         
-
-
                         displayMusic();
 
                         //albumSelected = false;
@@ -549,28 +345,22 @@
 
                     case (2) :
 
+                        buttonColourChange(2);
+
                         if (albumActive == true) {
                             albumActive = false;
                             console.log('albumActive : ', albumActive);
                         }
 
-
+                        document.getElementById("aboutpage").style.display = 'none';
 
                         displayVisualPosts();
                         document.getElementById("contentbrowser").style.display = 'block';
-
-
-
 
                         document.getElementById("slider").style.display = "none";
                         document.getElementById("caption").innerHTML = '';
 
                         
-
-
-                        //albumSelected = false;
-
-
                         //*************************//DISABLE/////////////////////////////////////      
 
                         THREEgoToVisual();
@@ -586,49 +376,41 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                         break;
 
                     // About
 
 
                     case (3) :
+                        buttonColourChange(3);
 
-
-                    document.getElementById("contentbrowser").style = 'hidden';
-
-
-                    //albumSelected = false;
-
-
-                    document.getElementById("slider").style.display = "none";
-                    document.getElementById("caption").innerHTML = '';
-
-                    //*************************//DISABLE/////////////////////////////////////      
-
-                    THREEgoToAbout();
-                    
-                    //*************************//DISABLE/////////////////////////////////////      
-                    clubLightsUp();
-
-                    window.scrollTo(0,0);
+                        if (albumActive == true) {
+                            albumActive = false;
+                            console.log('albumActive : ', albumActive);
+                        }
 
 
 
+                        document.getElementById("contentbrowser").style = 'hidden';
+
+                        document.getElementById("aboutpage").style.display = 'block';
 
 
+
+                        //albumSelected = false;
+
+
+                        document.getElementById("slider").style.display = "none";
+                        document.getElementById("caption").innerHTML = '';
+
+                        //*************************//DISABLE/////////////////////////////////////      
+
+                        THREEgoToAbout();
+                        
+                        //*************************//DISABLE/////////////////////////////////////      
+                        clubLightsUp();
+
+                        window.scrollTo(0,0);
 
 
 
@@ -718,7 +500,7 @@
 
                 for (let i=0; i<visualPostList.numberOfVisualPosts; i++) {
 
-                    document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img class= "itemThumbImg" id="al'+ i +'" onClick= "clickVisual('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/visualImages/'+ visualPostList.visualPosts[i].content +'"> </div>';
+                    document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img class= "itemThumbImg lazy" id="al'+ i +'" onClick= "clickVisual('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" data-src="assets/visualImages/'+ visualPostList.visualPosts[i].content +'"> </div>';
                 }
                 document.getElementById("slider-container").innerHTML = '';
 
@@ -729,11 +511,17 @@
                 N = _C.children.length;
                 _C.style.setProperty("--n", N);
 
+                lazyloadImageFunction();
+
+
             }
 
             var visualSelected = true;
 
             function clickVisual(value) {
+
+                document.getElementById("caption").scrollTo(0,0);
+
 
                 window.scrollTo(0,0)
                 console.log('Caption:', visualPostList.visualPosts[value].caption);
@@ -867,7 +655,7 @@
                 document.getElementById("contentbrowserItems").innerHTML = '';
 
                 for (let i=0; i<albumList.numberOfAlbums; i++ ) {
-                    document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img class= "itemThumbImg" id="al'+ i +'" onClick= "clickAlbum('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" src="assets/discography/'+ albumList.albums[i].image +'"> </div>';
+                    document.getElementById("contentbrowserItems").innerHTML += '<div class= "itemThumb" id = "aldiv'+ i +'"><img  class = "itemThumbImg lazy" id="al'+ i +'" onClick= "clickAlbum('+ i +')" onMouseOver="itemMouseOver(this)" onMouseOut="albumMouseOut(this)" data-src="assets/discography/'+ albumList.albums[i].image +'"> </div>';
 
                 }
 
@@ -885,13 +673,11 @@
 
                 _C.style.setProperty("--n", N);
 
+                lazyloadImageFunction();
+
 
 
             }
-
-
-
-
 
 
             //When album clicked
@@ -899,6 +685,8 @@
 
 
             function clickAlbum(value) {
+
+                document.getElementById("caption").scrollTo(0,0);
 
 
 
@@ -989,6 +777,61 @@
 
 
             }
+
+            function lazyloadImageFunction () {
+
+                console.log("lazyLoad")
+                var lazyloadImages;    
+
+                if ("IntersectionObserver" in window) {
+                    lazyloadImages = document.querySelectorAll(".lazy");
+                    console.log("intersection", lazyloadImages);
+
+                    var imageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+
+                            var image = entry.target;
+                            image.src = image.dataset.src;
+                            image.classList.remove("lazy");
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                    });
+
+                    lazyloadImages.forEach(function(image) {
+                        imageObserver.observe(image);
+                    });
+                } else {  
+                    var lazyloadThrottleTimeout;
+                    lazyloadImages = document.querySelectorAll(".lazy");
+                    
+                    function lazyload () {
+                    if(lazyloadThrottleTimeout) {
+                        clearTimeout(lazyloadThrottleTimeout);
+                    }    
+
+                    lazyloadThrottleTimeout = setTimeout(function() {
+                        var scrollTop = window.pageYOffset;
+                        lazyloadImages.forEach(function(img) {
+                            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            }
+                        });
+                        if(lazyloadImages.length == 0) { 
+                        document.removeEventListener("scroll", lazyload);
+                        window.removeEventListener("resize", lazyload);
+                        window.removeEventListener("orientationChange", lazyload);
+                        }
+                    }, 20);
+                    }
+
+                    document.addEventListener("scroll", lazyload);
+                    window.addEventListener("resize", lazyload);
+                    window.addEventListener("orientationChange", lazyload);
+                }
+            };
 
             
 

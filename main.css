@@ -40,6 +40,9 @@ body {
     
 
 }
+
+/*--------------- MENU --------------*/
+
 #buttons {
   z-index: 5;
   position: absolute;
@@ -50,6 +53,7 @@ body {
   justify-content: space-between;
   right: 0;
   margin: auto;
+
 }
 
 .svgObj {
@@ -62,7 +66,7 @@ body {
   
 }
 
-.musicbutton, .visualbutton, .aboutbutton, .titlegif {
+.musicbutton, .visualbutton, .visualbutton, .titlegif {
   vertical-align: center;
   display: inline-block;
 
@@ -83,6 +87,7 @@ body {
 }
 
 
+/*--------------- MAIN CONTENT --------------*/
 
 
 #contenttablemiddle {
@@ -100,34 +105,24 @@ body {
     padding-bottom: 100px;
 
 
-    /*padding-left:3%;*/
-
-
-
 
 }
 
 #maincontent {
     z-index: 1;
-    /*width: 100%;*/
     margin-top: 95px; /*95*/
-    /*padding-top:5%;*/
-    
-
-    /*background-color: rgba(55, 0, 255, 0.486);*/
 
     height:calc(100% - 210px);
-    /*text-align: center;*/
     width: 100%;
 
     justify-content: center;
 
     display: block;
 
-
 }
 
 
+/*--------------- CONTENT BROWSER --------------*/
 
 
 
@@ -184,16 +179,7 @@ body {
 #slider {
     z-index:3;
     margin:auto;
-    /*padding-top: 5%;*/
-    /*width:70%;*/
-    /*background-color:chocolate;*/
-    /*max-height: calc(100%-120px);*/
     overflow: hidden;
-    /*top: auto;*/
-    /*position: relative;*/
-    /*bottom: 0;*/
-    /*max-width: 500px;
-    width:85%;*/
     
   }
   
@@ -215,49 +201,6 @@ body {
     color: #fff;
   }
 
-    /* slider controls*/
-
-  /*
-  .control {
-    position: absolute;
-    top: 50%;
-    width: 40px;
-    height: 10px;
-    color: #fff;
-    font-size: 3rem;
-    padding: 0;
-    margin: 0;
-    line-height: 0;
-  }
-  
-  .prev,
-  .next {
-    cursor: pointer;
-    transition: all 0.2s ease;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-     user-select: none;
-    background: rgba(0,0,0,0.3);
-    padding: 1rem;
-  }
-  
-  .prev {
-    left: 1.1rem;
-  }
-  
-  .next {
-    right: 1.1rem;
-  }
-  
-  .prev:hover,
-  .next:hover {
-    transform: scale(1.5,1.5);
-  }
-
-  */
   
   .slider-container {
     /* 
@@ -288,74 +231,51 @@ body {
     /*pointer-events: none;*/
   }
 
+
+
+/*--------------- CAPTION --------------*/
+
+
+
+
   #captionarea {
     /*background-color: cadetblue;*/
-    /*position:static;*/
     display: inline-block;
 
     height: 100%;
 
-
-    
-
     overflow: hidden scroll;
 
-    /*vertical-align: middle;*/
-
-    /*position: fixed;*/
-
-    
-  
-    /*flex-grow: 1;*/
-  
-    /*padding :10%;*/
-    
-  
-    
-    
-    /*position: absolute;
-    top: 70%;
-    width: 100%;*/
   
   }
-  
-
-  #caption-wrapper {
-    /*background-color:darkred;*/
-    /*height: 100%;*/
-    /*display: inline-block;*/
-
-
-
-
-
-
-
-  }
-
 
   #caption {
     text-align: center;
     padding-top: 5px;
-    /*background-color:darkolivegreen;*/
-    
-    
-
-    /*margin: auto;*/
-    /*top:0;*/
-
-
-    /*position: absolute;
-    top:40%;*/
-    
-    
-
-    /*display:flex;
-    align-items: center;
-    justify-content: center;*/
-
 
 
 
   }
+
+
+  /*--------------- ABOUT --------------*/
+
+  #aboutpage {
+    /*background-color: blue;*/
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+  }
+
+  #aboutcontent {
+    font-size: 13px;
+    /*background-color: red;*/
+    text-align: center;
+    margin-top: 40%;
+
+  }
+
+
+
 
