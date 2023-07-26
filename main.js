@@ -1575,6 +1575,29 @@ function init() {
     } );
 
 
+    /////////////  DESERT MASK
+
+
+    loader.load( 'assets/newdesertassets/mask6.obj', function ( cablesmesh ) {
+                    
+
+        cablesmesh.traverse( function ( node ) {
+
+            if ( node.isMesh ) node.material = cablesmtl;             
+
+        } );
+
+        cablesmesh.position.y = 300;
+        scene.add( cablesmesh );
+    }); 
+
+
+
+
+
+    ////////////////  ORBITS
+
+
 
     scene.add(orbit1Group);
     scene.add(orbit2Group);
