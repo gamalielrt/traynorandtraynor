@@ -55,7 +55,6 @@ function THREEgoToMusic () {
     gsap.to(scene.fog.color, {g:0.48, duration:3});
     gsap.to(scene.fog.color, {b:0.19, duration:3});
 
-    //gsap.to(hlight, {intensity:1 , duration:3});
 
 
 
@@ -88,7 +87,6 @@ function THREEgoToVisual () {
     gsap.to(scene.fog.color, {g:0.48, duration:3});
     gsap.to(scene.fog.color, {b:0.19, duration:3});
 
-    //gsap.to(hlight, {intensity:0 , duration:10});
 
     gsap.to(scene.fog, {density:0.00007, duration:3}); //0.47
 
@@ -152,8 +150,28 @@ function clubLightsUp () {
 
 }
 
+var desertNight = false
+
 function desertLightsDown () {
+
+    if (!desertNight) {
+        desertNight = true;
+        console.log("desertNight : ",desertNight);
+        var lightFlashInterval = setInterval(function () {
+            toplight.intensity = 14;
+            setTimeout(function() {
+                toplight.intensity = 0;
+            },100);
+        },8000);
+        console.log(lightFlashInterval);
+    
+    }
+
+
     gsap.to(hlight, {intensity:0.2 , duration:3});
+
+    gsap.to(hlight1, {intensity:0.2 , duration:3});
+
 
     gsap.to(scene.fog.color, {r:0.04, duration:3}); //0.47
     gsap.to(scene.fog.color, {g:0.06, duration:3}); //0.26
@@ -168,11 +186,25 @@ function desertLightsDown () {
 
 
 
+
+}
+
+function stopLightFlash () {
+    clearInterval(lightFlashInterval);
+
 }
 
 function desertLightsUp () {
 
+    desertNight = false;
+    console.log("desertNight : ",desertNight);
+    stopLightFlash ();
+
+
     gsap.to(hlight, {intensity:0.8 , duration:3});
+
+    //gsap.to(toplight, {intensity:0 , duration:0.1});
+
 
     gsap.to(scene.fog.color, {r:0.90, duration:3});
     gsap.to(scene.fog.color, {g:0.48, duration:3});
@@ -184,6 +216,8 @@ function desertLightsUp () {
     gsap.to(scene.background, {b:0.19, duration:3});
 
     gsap.to(scene.fog, {density:0.00007, duration:3}); //0.47
+
+
 
 
 
@@ -392,6 +426,23 @@ function init() {
         hlight = new THREE.AmbientLight (0xffffff,2);
         scene.add(hlight);
 
+        hlight1 = new THREE.AmbientLight (0x4c2146,1);
+        scene.add(hlight1);
+
+       // toplight = new THREE.AmbientLight (0x4c2146,0);
+        
+        //scene.add(toplight);
+
+
+
+
+        toplight = new THREE.PointLight(0x4c2146, 0,6000,2);
+        toplight.position.set(0,2000,500);
+        scene.add(toplight);
+
+        //var toplightHelper = new THREE.PointLightHelper( toplight, 100 );
+        //scene.add( toplightHelper );
+
 
         var light1 = new THREE.PointLight(0xeb8334, 2);
         light1.position.set(0,10000,30);
@@ -405,27 +456,9 @@ function init() {
         light3.position.set(0,380,300);
         //scene.add(light3);
 
-        var light3Helper = new THREE.PointLightHelper( light3, 9 );
-        //scene.add( light3Helper );
 
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         
@@ -643,25 +676,6 @@ function init() {
 
     }
 
-
-    
-
-    
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-    
 
 
 
